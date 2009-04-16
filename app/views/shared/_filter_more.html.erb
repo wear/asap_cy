@@ -1,0 +1,22 @@
+<% if @area.nil? %> 
+<span>所有地区:</span>  
+<ul>
+	<%= render :partial => '/shared/filter_link', :collection => @areas, :as => :filter, :locals => { :current_filter => @area, :more_filter => @type }%>
+</ul>
+<% else %> 
+     <span>所有地区:</span>  
+   <ul>
+	<%= render :partial => '/shared/filter_link', :collection => @areas, :as => :filter, :locals => { :current_filter => @area, :more_filter => @type }%>
+   </ul> 
+
+<% end %>
+<% if @type.nil? %>
+		 <span>所有分类:</span>   
+	<ul>   
+		<%= render :partial => '/shared/filter_link', :collection => @types, :as => :filter, :locals => { :current_filter => @type, :more_filter => @area }%> 
+	</ul>      
+<% else %>
+	<span>所有分类:</span> 
+  <ul>
+		<%= render :partial => '/shared/filter_link', :collection => @types, :as => :filter, :locals => { :current_filter => @type, :more_filter => @area }%>  
+<% end %>   

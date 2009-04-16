@@ -1,0 +1,13 @@
+<% content_for :sidebar do %>
+<h2>商户操作</h2>    
+<ul>
+	<li><%= link_to "返回", admin_vendors_path%></li> 
+</ul>
+<% end %>
+
+<% form_for @vendor, :url => admin_vendor_path(@vendor),:html => { :multipart => true, :method => :put}  do |f| %>
+<%= f.error_messages %> 
+	<%= render :partial => 'form', :locals => { :f => f } %>
+
+	<p><%= f.submit "提交" %></p>
+<% end %>

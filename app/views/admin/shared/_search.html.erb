@@ -1,0 +1,5 @@
+<% form_tag path,:class => "search-form",:method=>:get do%>           
+    <%= link_to '未确认门店', pending_admin_vendors_path %>
+ 	查找: <%= text_field_tag :query,params[:query] %>
+	<%= submit_tag "搜索"%>
+<% end %> 

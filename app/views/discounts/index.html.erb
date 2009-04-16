@@ -1,0 +1,32 @@
+
+<h3>近一周折扣项目</h3>
+<div id="vendor_discounts">
+  <%= render :partial => 'list' %>    
+</div> 
+
+<h3>门店打折情况</h3>
+<% if @vendors %>
+<div id="vendor_discounts">
+	<table>
+	  <tr>
+	    <th>名称</th>
+	    <th>别名</th>
+		<th>地址</th>
+		<th>折扣</th>
+		<th>更改</th>
+	  </tr> 
+	<% @vendors.each do |vendor| -%>
+	  <tr>
+		<td><%= vendor.name %></td>
+		<td><%= vendor.alias %></td> 
+		<td><%= vendor.address %></td> 
+		<td><%= vendor.discount_count %></td> 
+		<td><%= link_to "更改",edit_vendor_path(vendor) %></td>
+	  </tr>
+		<% end -%>
+	<%# end -%> 
+    </table> 
+ </div>
+<% else %>
+请添加门店
+<% end %>     

@@ -1,0 +1,12 @@
+<div id="discount_area" class="span-6">
+	<div class="d-head">
+		<%=image_tag "icon/discount.gif" %>
+		 <b>优惠</b>
+	</div>
+	
+	<div id="d-content">
+	    <span class="d-title"><%=h @vendor.discount.name %></span><br />
+		<span class='d-time'>时间:<%= distance_date(@vendor.discount.start_date,@vendor.discount.stop_date)%> <%= distance_time(@vendor.discount.start_at,@vendor.discount.stop_at) %> <br />折扣:<%= @vendor.discount.count%></span> 				      	
+	   <p> <%=display_br(@vendor.discount.description) %></p>
+	</div>
+</div>	  

@@ -1,0 +1,14 @@
+<table>
+	<tr>    
+		<th>name</th>
+		<th>point</th>
+		<th>desc</th>
+	</tr>   
+	<% @cards.each do |card| -%>
+	<tr>
+		<td><%=link_to h(card.name),card %></td>
+		<td><%= card.point %></td>
+		<td><%= card.desc %></td>
+	</tr> 
+	<% end -%>
+</table>

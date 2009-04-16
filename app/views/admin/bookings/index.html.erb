@@ -1,0 +1,27 @@
+<h1>订单列表</h1>
+
+<table>
+  <tr>
+	<th>用户</th>
+	<th>商户</th>
+	<th>就餐时间</th>
+	<th>创建时间</th>
+	<th>目前状态</th>
+  </tr>
+
+<% for booking in @bookings %>
+  <tr>
+	<td><%= h(booking_user_name(booking.bookable))%></td>
+	<td><%=link_to  booking.vendor.name,booking.vendor,:target => '_blank' %></td>
+	<td><%= format_booking_time(booking) %> </td>
+	<td><%= formated_time(booking.created_at) %> </td> 
+	<td><%= booking_state(booking) %> </td> 
+    <td><%= link_to '详细', admin_booking_path(booking) %></td>
+    <td><%= link_to '删除', admin_booking_path(booking), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<div id="pagination">
+	分页:&nbsp;<%= will_paginate(@bookings,:container => false) %>  
+</div>
+

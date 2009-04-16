@@ -1,0 +1,49 @@
+<%= render :partial => '/shared/user_box' %> 
+<div class='span-11'> 
+	<p>
+<%= complete_prfile(@user) %>
+</p>
+<h3>最新预定记录</h3>
+<table>
+  <tr>
+	<th>商户</th> 
+	<th>就餐时间</th>
+	<th>折扣</th>
+	<th>状态</th>
+  </tr>
+  <tr>
+<% @user.bookings.lastest_create.each do |booking| -%> 
+   <td><%=link_to h(booking.vendor.name),booking.vendor %></td> 
+	<td><%= formated_date(booking.date)%> <%=booktime(booking.time_range) %></td>
+   <td><%= booking_discount(booking)%></td> 
+	<td><%= booking.status %></td> 
+<% end -%>
+</tr>                                   
+</table>
+<h3>最新添加商户</h3>
+<table>
+  <tr>
+	<th>名称</th>
+	<th>添加时间</th> 
+	<th>状态</th>
+  </tr>
+  <tr>
+<% @user.vendors.lastest_create.each do |vendor| -%> 
+   <td><%=link_to h(vendor.name),vendor %></td>
+   <td><%= vendor.created_at.to_s :db %></td>
+	<td><%= vendor_status(vendor) %></td>
+<% end -%>
+</tr>                                   
+</table> 
+
+<h3>最新点评</h3>
+
+<% @user.reviews.lastest_create.each do |review| -%> 
+	<p> 
+		<%=link_to h(review.vendor.name), review.vendor %><br />
+		<%= render :partial => "/shared/review", :locals => { :review => review, :limit => true, :avatar => false, :show_title => false } %>
+	</p> 
+<% end -%>
+
+</div> 
+

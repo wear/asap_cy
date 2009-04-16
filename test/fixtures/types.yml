@@ -1,0 +1,24 @@
+# == Schema Information
+# Schema version: 20081223080043
+#
+# Table name: types
+#
+#  id         :integer(4)      not null, primary key
+#  name       :string(255)
+#  parent_id  :integer(4)
+#  order      :integer(4)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  parent_id: 1
+  order: 1
+
+two:
+  name: MyString
+  parent_id: 1
+  order: 1

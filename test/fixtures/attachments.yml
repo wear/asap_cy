@@ -1,0 +1,38 @@
+# == Schema Information
+# Schema version: 20081223080043
+#
+# Table name: attachments
+#
+#  id              :integer(4)      not null, primary key
+#  size            :integer(4)
+#  content_type    :string(255)
+#  filename        :string(255)
+#  height          :integer(4)
+#  width           :integer(4)
+#  parent_id       :integer(4)
+#  thumbnail       :string(255)
+#  attachable_id   :integer(4)
+#  attachable_type :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  size: 1
+  content_type: MyString
+  filename: MyString
+  height: 1
+  width: 1
+  parent_id: 1
+  thumbnail: MyString
+
+two:
+  size: 1
+  content_type: MyString
+  filename: MyString
+  height: 1
+  width: 1
+  parent_id: 1
+  thumbnail: MyString

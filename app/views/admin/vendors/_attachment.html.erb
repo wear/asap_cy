@@ -1,0 +1,16 @@
+<div class="attachment">
+			<% if attachment.new_record? -%>
+				<% fields_for "vendor[new_attachment_attributes][]",attachment do |p| -%>    
+				<%= p.file_field :uploaded_data,:size => '50', :index => nil -%>
+			    <%=link_to_function 'remove attachment', "this.up('.attachment').remove();",:class=>"remove_lnk" %>
+				<% end -%>   
+			<% else -%>
+				<% fields_for "vendor[existing_attachment_attributes][]",attachment do |p| -%>     
+			    <%= image_tag(attachment.public_filename(:thumb))%>
+			    <%= link_to_function 'remove attachment', "mark_for_destroy(this);",:class=>"remove_link" %>  
+	 			<%= p.hidden_field :id, :index => nil  %>
+				<%= p.hidden_field :should_destroy, :class => 'should_destroy', :index => nil %>
+			<% end -%> 
+			<% end %>
+
+</div>

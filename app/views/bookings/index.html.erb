@@ -1,0 +1,20 @@
+<h3>最新预定记录</h3>
+<table>
+  <tr>
+	<th>商户</th> 
+	<th>就餐时间</th>
+	<th>折扣</th>
+	<th>状态</th>
+	<th>创建时间</th>
+  </tr>
+  <tr>
+<% @bookings.each do |booking| -%> 
+   <td><%=link_to h(booking.vendor.name),booking.vendor %></td> 
+	<td><%= formated_date(booking.date)%> <%=booktime(booking.time_range) %></td>
+   <td><%= booking_discount(booking)%></td> 
+	<td><%= booking.status %></td> 
+   <td><%= formated_time(booking.created_at) %></td> 
+<% end -%>
+</tr>                                   
+</table> 
+<%= will_paginate @bookings %>

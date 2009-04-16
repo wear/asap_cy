@@ -1,0 +1,26 @@
+<%= render :partial => 'admin/shared/search', :locals => { :path => search_admin_merchants_path} %>   
+<% content_for :sidebar do %>
+	<h2>商户设置</h2>  
+	<ul>   
+ 		<li><%= link_to "新增商户", new_admin_merchant_path %></li> 
+	</ul>
+<% end %>
+<table>      
+	<tr>
+		<th>名称</th>
+		<th>联系人</th>
+		<th>电话</th>
+		<th></th>
+	</tr>
+	<% @merchants.each do |merchant| -%>
+	<tr>
+		<td><%=link_to merchant.name, admin_merchant_path(merchant) %></td> 
+		<td><%= merchant.contact %></td> 
+		<td><%= merchant.tel %></td>
+		<td><%= link_to "编辑",edit_admin_merchant_path(merchant) %> | <%=link_to "删除",admin_merchant_path(merchant),:confirm => '确定 删除吗?', :method => :delete %></td> 
+	</tr>                              
+	<% end -%>
+</table>  
+<div id="pagination">
+	分页:&nbsp;<%= will_paginate(@merchants,:container => false) %>  
+</div>

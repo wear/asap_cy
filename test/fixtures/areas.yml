@@ -1,0 +1,22 @@
+# == Schema Information
+# Schema version: 20081223080043
+#
+# Table name: areas
+#
+#  id         :integer(4)      not null, primary key
+#  parent_id  :integer(4)
+#  name       :string(255)
+#  order      :integer(4)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  parent_id: 1
+  name: MyString
+
+two:
+  parent_id: 1
+  name: MyString

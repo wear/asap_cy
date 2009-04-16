@@ -1,0 +1,14 @@
+<p>
+	<%=h @card.name %>
+</p>
+<p>
+	<%=h @card.point %>
+</p>
+<p>
+	<%=h @card.desc %>
+</p>
+<p>
+	<%=image_for @card %>
+</p> 
+
+<%=link_to "back",edit_admin_card_path%> | <%= link_to "list",admin_cards_path %>

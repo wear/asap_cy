@@ -1,0 +1,36 @@
+
+<li>
+<label class="desc">用户名<span class="req">*</span></label>
+	<div>
+		<%= f.text_field :login, :id => 'nick-name',:class=>'field text', :size=>'28'%>
+		<label for="Field0">由英文字母、数字组成，并以英文字母开头。</label> 
+	</div>
+</li>
+<li>
+<label class="desc">邮箱<span class="req">*</span></label>
+	<div>
+		<%= f.text_field :email,:class=>'field text', :size=>'28' %>
+		<label for="Field0">请正确填写您的常用邮件地址。</label> 
+	</div>
+</li>
+<li>
+<label class="desc">手机<span class="req">*</span></label>
+	<div>
+		<%= f.text_field :mobile,:class=>'field text', :size=>'28' %>
+		<label for="Field0">请正确填写您的常用手机号码。</label> 
+	</div>
+</li>
+<li>
+<label class="desc">密码<span class="req">*</span></label>
+	<div>
+		<%= f.password_field :password,:class=>'field text', :size=>'28' %>
+		<label for="Field0">密码由6位以上的字符组成。</label> 
+	</div>
+</li>
+<li>
+<label class="desc">密码确认<span class="req">*</span></label>
+	<div>
+		<%= f.password_field :password_confirmation,:class=>'field text', :size=>'28' %>
+		<label for="Field0">请再次输入密码。</label> 
+	</div>
+</li>

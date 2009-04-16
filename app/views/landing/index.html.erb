@@ -1,0 +1,40 @@
+<% content_for :javascripts do -%> 
+	<%= javascript_include_tag 'ui.tabs.js' %>
+  <script>
+  $(document).ready(function(){
+    $("#tabs").tabs();
+	$("#tabs").tabs("disable", 2);
+  });
+  </script>
+<% end -%> 
+<% content_for :head do -%>
+	<%= stylesheet_link_tag 'ui.tabs.css' %>
+<% end -%> 
+  	<div id="categories">
+		<span>地区</span>  
+		<%= render :partial => "/shared/filter", :locals => { :filters => @areas }%>
+		<div class='line'>&nbsp;</div>  
+		<span>菜系</span>
+		<%= render :partial => "/shared/filter", :locals => { :filters => @types }%>
+		<div class='line'>&nbsp;</div> 
+		<span>均价</span>
+		<%= render :partial => "/shared/filter", :locals => { :filters => @prices }%> 
+	</div> 
+    
+	<div id="right-content" class='span-16 last'>
+		<div > 
+			<ul id="tabs">
+		    <li><a href="#top-50"><span>本周首选Top30</span></a></li>
+			<li><a href="#nice"><span>品味经典</span></a></li>
+			<li class='collapsible_tab'><%= render :partial => 'shared/collapsible' %></li> 
+		  </ul>  
+			
+			<div id="top-50">
+				 <%= render :partial => 'table',:locals => { :show_type => '', :vendors => @vendors} %>
+			</div>      
+			<div id="nice">
+				<%= render :partial => 'shared/vendors_table',:locals => { :vendors => @nice } %>
+			</div> 
+		</div>
+	</div> 
+</div>    

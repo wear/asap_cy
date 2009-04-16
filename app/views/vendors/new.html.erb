@@ -1,0 +1,6 @@
+<% form_for @vendor do |f| -%> 
+	<%= f.error_messages %> 
+	<%= render :partial => '/admin/vendors/form', :locals => { :f => f } %> 
+	<%= submit_tag "添加" %>
+<% end %> 
+ 

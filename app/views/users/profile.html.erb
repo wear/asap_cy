@@ -1,0 +1,13 @@
+<% title "用户资料"%>
+<% sub_title(nick_name_for(@user)+'的资料') %>
+<% content_for :head do -%>
+	<%= stylesheet_link_tag 'partial/profile.css' %>
+<% end -%>   
+<%= render :partial => '/shared/user_box' %>  
+<div id="new_reviews">
+  	<h4>最新点评</h4>             
+	<div id="review">
+	   <%= render :partial => "/shared/review", :collection => @reviews,  :locals => {  :limit => true, :avatar => true, :show_title => true } %>                        
+	</div>
+</div>
+

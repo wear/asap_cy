@@ -1,0 +1,26 @@
+<h1>Listing forums</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Parent</th>
+    <th>Order</th>
+  </tr>
+
+<% for forums in @forums %>
+  <tr>
+    <td><%=h forums.name %></td>
+    <td><%=h forums.description %></td>
+    <td><%=h forums.parent_id %></td>
+    <td><%=h forums.order %></td>
+    <td><%= link_to 'Show', forums %></td>
+    <td><%= link_to 'Edit', edit_forums_path(forums) %></td>
+    <td><%= link_to 'Destroy', forums, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New forums', new_forums_path %>

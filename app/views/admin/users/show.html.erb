@@ -1,0 +1,28 @@
+<% content_for :sidebar do %>
+	<ul>
+	<li><%=link_to "编辑", edit_admin_user_path(@user)%></li>
+	</ul>
+<% end %>
+
+<h3>基本信息</h3>
+<div id="box">
+	<p><%=avatar_for(@user)%></p>
+	<p><span>name:</span><%= h @user.login %></p>
+	<p><span>email:</span><%= h @user.email %></p>
+</div> 
+<h3>点评</h3>
+<div id="box">
+	<p><span>点评数</span><%= @user.reviews.size %></p>
+	
+</div>
+
+
+<% admin_scope do %> 
+<h3>管理员<h3>
+	<div id="box">
+	   <p><span>角色</span>
+		<% @user.roles.each do |r| %> 
+			<%= r.title %>
+			<% end %></p> 
+	</div>
+<% end %>

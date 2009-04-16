@@ -1,0 +1,20 @@
+# == Schema Information
+# Schema version: 20081223080043
+#
+# Table name: ratings
+#
+#  id         :integer(4)      not null, primary key
+#  review_id  :integer(4)
+#  score      :integer(4)      default(0)
+#  vote_id    :integer(4)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value

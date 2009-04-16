@@ -1,0 +1,59 @@
+<% content_for :head do %> 
+	<%= stylesheet_link_tag "partial/vendor.css", :media => "screen, print" %>
+	<style type="text/css">
+
+	.stepcarousel{
+	position: relative; /*leave this value alone*/
+	border: 10px solid black;
+	overflow: scroll; /*leave this value alone*/
+	width: 170px; /*Width of Carousel Viewer itself*/
+	height: 170px; /*Height should enough to fit largest content's height*/
+	}
+
+	.stepcarousel .belt{
+	position: absolute; /*leave this value alone*/
+	left: 0;
+	top: 0;
+	}
+
+	.stepcarousel .panel{
+	float: left; /*leave this value alone*/
+	overflow: hidden; /*clip content that go outside dimensions of holding panel DIV*/
+	margin: 10px; /*margin around each panel*/
+	width: 150px; /*Width of each panel holding each content. If removed, widths should be individually defined on each content DIV then. */
+	}
+
+	</style>
+<% end %>
+<h3>基本资料</h3> 
+<div id="box">
+ 	<p><span>名称:</span><%=link_to @vendor.name, @vendor %></p>     
+	<p><span>地址:</span><%= @vendor.address %></p>
+    <p><span>地区:</span><%= @vendor.area.name %></p> 
+	<p><span>菜系:</span><%= type_of_caixi(@vendor) %></p> 
+	<p><span>靠近:</span><%= @vendor.nearby %></p>
+	<p><span>电话:</span><%= @vendor.tel1 %></p>    
+</div>
+	<h3>折扣信息</h3> 
+<div id="box">
+	<p><span>所属商户:</span><%= @vendor.merchant_name %></p>
+	<p><span>目前折扣:</span><pre><%= show_discount(@vendor) %></pre></p> 	
+</div>
+<% unless @vendor.attachments.blank? %> 
+	<h3>图片</h3>    
+<div id="box">
+	<%= render :partial => '/shared/photos' %>
+</div> 
+<% end %>
+<h3>点评信息</h3>
+<div id="box">
+	<%= render :partial => '/shared/ratings',:locals => { :vendor => @vendor, :write_review => false } %>
+</div>
+<% content_for :sidebar do %>
+<h2>商户操作</h2>    
+<ul> 
+   <li> <%=link_to "返回",edit_admin_vendor_path(@vendor)%> </li>
+   <li><%= link_to "编辑",edit_admin_vendor_path(@vendor) %> </li>
+   <li><%=link_to "删除",admin_vendor_path(@vendor),:confirm => '确定 删除吗?', :method => :delete %> </li>
+</ul>
+<% end %>  

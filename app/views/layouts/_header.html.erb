@@ -1,0 +1,30 @@
+ <div class="span-24" id='header'>
+ 	<div class="span-10 last" id='top-left'>
+ 	  <ul class='bookmark'>
+		<li>欢迎访问 <a href="#" class="B">满汉全席</a></li>
+		<li>即时餐饮打折平台 <a href="#" class="B" onclick="window.external.addFavorite('http://www.mhqx.com/','满汉全席 即时餐饮打折平台');return(false);">加入收藏</a></li>
+		</ul>
+		<ul id='nav-left'>
+		<li><%=link_to image_tag('mhqx_bg/xc.png'),cached_link(51) %></li>
+		<li><%=link_to image_tag('mhqx_bg/yy.png'),cached_link(17) %></li>
+		<li><%=link_to image_tag('mhqx_bg/xd.png'),cached_link(51) %></li>
+	   </ul>  
+ 	</div> 
+    <div id="logo" class='span-2 last'>
+		<%=link_to image_tag('/images/mhqx_bg/logo_mhqx.png'),'/'%>
+    </div>
+    <div class="span-10 last" id='login-area'>
+ 		<%= render :partial => '/layouts/login_area' %>
+		<ul id='nav-right'>
+		<li><%=link_to image_tag('mhqx_bg/ll.png'),cached_link(32) %></li>
+		<li><%=link_to image_tag('mhqx_bg/zc.png'),cached_link(2) %></li>
+		<li><%=link_to image_tag('mhqx_bg/jb.png'),cached_link(70) %></li>
+	   </ul> 
+    </div>
+ </div>
+ <div  style='padding-left:260px;'>
+	<div id='search-area' class='span-11'>
+		<%= render :partial => 'layouts/search_area' %>
+	</div>
+ </div>
+ 

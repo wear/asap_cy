@@ -1,0 +1,544 @@
+one:
+  id: 1
+  name: 王家大苑热气羊肉涮锅
+  address: 杨浦区包头路555号
+  alias: 包头路店
+  tel1: 65052787
+  area_id: 63
+  category_id: 1     
+  nearby: 市光路
+  merchant_id: 1
+  discount_id: 1 
+  pending: false
+
+
+two:
+  id: 2
+  name: 85度C
+  address: 黄浦区河南中路521-3号
+  alias: 宁波路店
+  tel1: 63518825
+  area_id: 38
+  category_id: 1
+  nearby: 宁波路
+  merchant_id: 1  
+  discount_id: 2   
+  pending: false 
+  
+three:
+  id: 3
+  name: 老丰阁
+  address: 黄浦区南京西路388号仙乐斯广场7楼
+  alias: 仙乐斯店
+  tel1: 63751266
+  area_id: 36
+  category_id: 1
+  nearby: 黄陂北路
+  merchant_id: 1
+  pending: false 
+    
+four:
+  id: 4
+  name: 都可茶饮
+  address: 静安区吴江路169号四季坊B1楼B104
+  alias: 四季坊店
+  tel1: 62677510
+  area_id: 17
+  category_id: 1
+  nearby: 地铁二号线3号口
+  pending: false 
+  
+five:
+  id: 5
+  name: 多利川菜馆中山公园店
+  address: 长宁区愚园路1389号
+  alias: 中山公园店
+  tel1: 62107610
+  area_id: 23
+  category_id: 1
+  nearby: 定西路
+  pending: false 
+    
+six:
+  id: 6
+  name: 芭芭露莎
+  address: 黄浦区南京西路231号人民公园内人工湖
+  alias: 
+  tel1: 63180220
+  area_id: 36
+  category_id: 1
+  nearby: 上海美术馆
+  pending: false 
+    
+seven:
+  id: 7
+  name: 喜多屋国际海鲜料理
+  address: 浦东新区陆家嘴西路168号正大广场7楼
+  alias: 正大店
+  tel1: 50470761
+  area_id: 26
+  category_id: 1
+  nearby:
+  pending: false 
+  
+eight:
+  id: 8
+  name: 三人行新概念川菜
+  address: 长宁区天山路651号
+  alias: 天山店
+  tel1: 62345769
+  area_id: 21
+  category_id: 1
+  nearby: 芙蓉江路     
+  pending: false 
+  
+nine:
+  id: 9
+  name: 静安面包房
+  address: 徐汇区斜土路2375号
+  alias: 斜土店
+  tel1: 64037507
+  area_id: 10
+  category_id: 1
+  nearby:
+  pending: false 
+  
+ten:
+  id: 10
+  name: 海底捞火锅店
+  address: 普陀区长寿路468号中环商务大厦4楼
+  alias: 长寿路店
+  tel1: 62770701
+  area_id: 19
+  category_id: 1
+  nearby: 常德路
+  pending: false 
+        
+eleven:
+  id: 11
+  name: 刘二贡栗
+  address: 杨浦区邯郸路600号万达商业广场
+  alias: 第一食品店
+  tel1: 
+  area_id: 61
+  category_id: 1
+  nearby: 
+  pending: false 
+    
+twel:
+  id: 8
+  name: 普罗旺斯的树 
+  address: 徐汇区肇嘉浜路1111号美罗城4楼4-2号
+  alias: 漕溪路
+  tel1: 64267698
+  area_id: 8
+  category_id: 1
+  nearby: 漕溪路
+  pending: false 
+    
+thirteen:
+  id: 13
+  name: 葡京制造
+  address: 徐汇区虹桥路1号港汇广场6楼605室
+  alias: 港汇广场店
+  tel1: 64478202
+  area_id: 20
+  category_id: 1
+  nearby: 
+  pending: false 
+        
+fourteen:
+  id: 14
+  name: 代官山
+  address: 徐汇区肇嘉浜路1111号美罗城4-5楼
+  alias: 美罗城店
+  tel1: 64267219
+  area_id: 8
+  category_id: 1
+  nearby: 天钥桥路 
+  pending: false 
+  
+fifteen:
+  id: 15
+  name: 四百度 
+  address: 徐汇区虹桥路1号港汇广场1楼1-5室
+  alias: 
+  tel1: 64470770
+  area_id: 8
+  category_id: 1
+  nearby: 味千拉面
+  pending: false 
+  
+sixteen:
+  id: 16
+  name: Brig No.10 Cafe
+  address: 卢湾区泰康路田子坊248弄10号
+  alias: 
+  tel1: 54669918
+  area_id: 2
+  category_id: 1
+  nearby:
+  pending: false 
+              
+eleven:
+  id: 17
+  name: 85度C
+  address: 静安区威海路600号
+  alias: 威海路店
+  tel1: 
+  area_id: 17
+  category_id: 1
+  nearby: 茂名北路
+  pending: false 
+  
+eighteen:
+  id: 18
+  name: C by House of Flour 
+  address: 静安区北京西路1228号(近西康路)
+  alias: 16
+  tel1: 64267698
+  area_id: 8
+  category_id: 1
+  nearby: 西康路
+  pending: false 
+  
+ninteen:
+  id: 19
+  name: 红宝石
+  address: 静安区石门一路366号
+  alias: 石门店
+  tel1: 62538397
+  area_id: 16
+  category_id: 1
+  nearby: 吴江路
+  pending: false 
+                    
+twenty:
+  id: 20
+  name: Awfully Chocolate
+  address: 静安区吴江路169号四季坊商业街1楼113单元
+  alias: 吴江路店
+  tel1: 2679390
+  area_id: 16
+  category_id: 1
+  nearby: 南京西路
+  pending: false 
+  
+twenty-one:
+  id: 21
+  name: 甜中甜蜜中蜜
+  address: 静安区吴江路88号小吃街东段
+  alias: 吴江一店
+  tel1: 62538533
+  area_id: 16
+  category_id: 1
+  nearby: 南京西路
+  pending: false 
+  
+twenty-two:
+  id: 22
+  name: 天母红
+  address: 浦东新区浦东南路1138号上海湾广场2楼
+  alias: 
+  tel1: 68880551
+  area_id: 27
+  category_id: 1
+  nearby: 东昌路地铁站  
+  pending: false 
+    
+twenty-three:
+  id: 23
+  name: 上海码头酒吧餐厅
+  address: 浦东新区滨江大道2852号
+  alias: 石门店
+  tel1: 
+  area_id: 27
+  category_id: 1
+  nearby: 
+  pending: false 
+  
+twenty-four:
+  id: 24
+  name: 十味观-汤包传奇
+  address: 徐汇区漕溪北路518号
+  alias: 徐汇店
+  tel1: 64694245
+  area_id: 11
+  category_id: 1
+  nearby: 蒲汇塘路
+  pending: false 
+  
+twenty-five:
+  id: 25
+  name: 海底捞火锅店
+  address: 虹口区海宁路269号2楼
+  alias: 海宁路店
+  tel1: 63097326
+  area_id: 54
+  category_id: 1
+  nearby: 吴淞路
+  pending: false 
+  
+twenty-six:
+  id: 26
+  name: 老李羊羯子 
+  address: 虹口区西江湾路103号
+  alias: 
+  tel1: 56662349
+  area_id: 53
+  category_id: 1
+  nearby: 同心路口
+  pending: false 
+    
+twenty-seven:
+  id: 27
+  name: 上海1号私藏菜
+  address: 静安区南京西路1856号3楼
+  alias: 静安寺店
+  tel1: 51501177
+  area_id: 17
+  category_id: 1
+  nearby: 乌鲁木齐路
+  pending: false 
+  
+twenty-eight:
+  id: 28
+  name: 逸彩港式餐厅 
+  address: 静安区万航渡路1号环球大厦B座4楼
+  alias: 
+  tel1: 68880551
+  area_id: 18
+  category_id: 1
+  nearby: 愚园路  
+  pending: false 
+  
+twenty-nine:
+  id: 29
+  name: 尝香汇
+  address: 普陀区长寿路393号亚新广场边楼4楼
+  alias: 石门店
+  tel1: 62995088
+  area_id: 19
+  category_id: 1
+  nearby: 
+  pending: false 
+  
+thirty:
+  id: 30
+  name: 头牌粥品
+  address: 静安区延平路98号98创意园A幢101室
+  alias: 
+  tel1: 62671373
+  area_id: 18
+  category_id: 1
+  nearby: 新闸路
+  pending: false 
+  
+thirty-one:
+  id: 31
+  name: 富苑
+  address: 静安区愚园东路18号东海广场2号楼1楼
+  alias: Fortune Garden
+  tel1: 62471388
+  area_id: 18
+  category_id: 1
+  nearby: 铜仁路
+  pending: false 
+  
+thirty-two:
+  id: 32
+  name: 保罗酒楼 
+  address: 静安区富民路271号
+  alias: 
+  tel1: 54037239
+  area_id: 18
+  category_id: 1
+  nearby: 长乐路
+  pending: false 
+     
+thirty-three:
+  id: 33
+  name: 牛满地
+  address: 静安区南京西路1728号百乐门大酒店19楼
+  alias: 
+  tel1: 62483777
+  area_id: 17
+  category_id: 1
+  nearby: 
+  pending: false 
+  
+thirty-four:
+  id: 34
+  name: 萤七人间
+  address: 静安区巨鹿路805号
+  alias: 
+  tel1: 54040707
+  area_id: 18
+  category_id: 1
+  nearby: 富民路
+  pending: false 
+  
+thirty-five:
+  id: 35
+  name: 巴厘岛
+  address: 静安区华山路189号静安公园3号门
+  alias: 
+  tel1: 62486970
+  area_id: 18
+  category_id: 1
+  nearby: 延安路高架
+  pending: false 
+     
+thirty-six:
+  id: 36
+  name: 豆捞坊
+  address: 静安区南京西路1728号百乐门大酒店20-21楼
+  alias: 
+  tel1: 62497188
+  area_id: 17
+  category_id: 1
+  nearby: 华山路
+  pending: false 
+  
+thirty-seven:
+  id: 37
+  name: 高木日本料理
+  address: 静安区南京西路1856号炫动乐百动漫城4楼西区
+  alias: 静安店
+  tel1: 62471388
+  area_id: 18
+  category_id: 1
+  nearby: 乌鲁木齐路
+  pending: false 
+  
+thirty-eight:
+  id: 38
+  name: 棒约翰比萨
+  address: 静安区武宁南路419号
+  alias: 达安店
+  tel1: 54037239
+  area_id: 19
+  category_id: 1
+  nearby: 长寿路 
+  pending: false 
+    
+thirty-nine:
+  id: 39
+  name: 乐活咖啡
+  address: 普陀区长寿路822弄71号
+  alias: 
+  tel1: 62497188
+  area_id: 19
+  category_id: 1
+  nearby: 武宁路家乐褔
+  pending: false 
+  
+fourty:
+  id: 40
+  name: 滇道云南特色料理
+  address: 静安区康定路1025号
+  alias: 静安店
+  tel1: 52289961
+  area_id: 18
+  category_id: 1
+  nearby: 武宁南路
+  pending: false 
+  
+fourty-one:
+  id: 41
+  name: 棒约翰比萨
+  address: 静安区武宁南路419号
+  alias: 达安店
+  tel1: 54037239
+  area_id: 19
+  category_id: 1
+  nearby: 长寿路
+  pending: false 
+    
+fourty-two:
+  id: 42
+  name: 王朝大酒店
+  address: 静安区万航渡路888号
+  alias: 静安店
+  tel1: 52289961
+  area_id: 19
+  category_id: 1
+  nearby: 长寿路口
+  pending: false 
+  
+fourty-three:
+  id: 43
+  name: 勃逊
+  address: 长宁区武定西路1455号
+  alias: 达安店
+  tel1: 62257088
+  area_id: 19
+  category_id: 1
+  nearby: 江苏路
+  pending: false 
+      
+fourty-four:
+  id: 44
+  name: 021上海菜主题餐厅
+  address: 普陀区长寿路1118号芳汇广场4楼
+  alias: 芳汇店
+  tel1: 54037239
+  area_id: 19
+  category_id: 1
+  nearby: 万航渡路
+  pending: false 
+  
+fourty-five:
+  id: 45
+  name: 地中海意大利餐厅
+  address: 静安区武定西路1317号
+  alias: 
+  tel1: 52389633
+  area_id: 19
+  category_id: 1
+  nearby: 江苏路
+  pending: false 
+  
+fourty-six:
+  id: 46
+  name: 源品私房菜
+  address: 静安区武宁南路183号
+  alias: 
+  tel1: 54037239
+  area_id: 19
+  category_id: 1
+  nearby: 武定西路
+  pending: false 
+    
+fourty-seven:
+  id: 47
+  name: 清迈府泰国料理
+  address: 静安区康定路1019号
+  alias: 
+  tel1: 54037239
+  area_id: 19
+  category_id: 1
+  nearby: 延平路
+  pending: false 
+  
+fourty-eight:
+  id: 48
+  name: 君悦轩
+  address: 静安区长寿路839号智慧广场2楼
+  alias: 
+  tel1: 52389633
+  area_id: 19
+  category_id: 1
+  nearby: 武宁南路
+  pending: false 
+  
+fourty-nine:
+  id: 49
+  name: 古觅纳
+  address: 静安区安远路739号
+  alias: 
+  tel1: 54037239
+  area_id: 19
+  category_id: 1
+  nearby: 延平路 
+  pending: false 

@@ -1,0 +1,141 @@
+<% content_for :head do -%> 
+	<%= stylesheet_link_tag 'form/structure.css' %>
+	<%= stylesheet_link_tag 'form/form.css' %>
+	<%= stylesheet_link_tag 'form/theme.css' %>
+	<%= stylesheet_link_tag "ui.datepicker.css" %>  
+    <%= stylesheet_link_tag "form/jquery-ui-slider-additions.css" %> 
+	<%= stylesheet_link_tag "jquery-ui-themeroller.css" %>
+   	<style type="text/css" media="screen">
+	.time{ height:120px; margin: 10px 0px;}
+	.time select { float: left;}
+	.ui-slider {clear:both; top:3em;}
+   	</style>
+<% end -%>
+
+<% content_for :javascripts do -%>
+	<%= javascript_include_tag "ui.datepicker.js" %>
+	<%= javascript_include_tag "form/wufoo.js" %> 
+	<%= javascript_include_tag "form/accessibleUISlider.jQuery.js" %>
+	<%= javascript_include_tag "jquery.ui.i18n.all.js" %>  
+	<script type="text/javascript" charset="utf-8">
+	$j(document).ready(function(){ 
+		$j("#start_date,#stop_date").datepicker($j.extend({}, 
+		$j.datepicker.regional["zh-CN"], { 
+			beforeShow: customRange,
+		    showStatus: true, 
+		    showOn: "both", 
+		    buttonImage: "/images/icon/calendar.png", 
+		    buttonImageOnly: true 
+		}));   
+		
+		$j('select#Field11, select#Field10').accessibleUISlider({width: 400});
+
+	}); 
+	
+	</script>
+<% end -%>  
+
+<ul> 
+		<li id="foli19"  class="  ">
+		<label class="name" id="title19" for="Field19">
+			折扣事由:
+		</label>
+	     <span> 
+		<%= f.text_field :name, :size => 40,  :class => "field text" %>
+		</span>
+		</li>		 
+	<li id="foli19"  class="  ">
+	<label class="desc" id="title19" for="Field19">
+		折扣额度:
+	</label>
+     <span> 
+	<%= f.text_field :count, :size => 10,  :class => "field text" %>
+	</span>
+	</li>	
+<li id="foli4" 		class="  ">
+	<label class="desc" id="title4" for="Field4">
+		开始日期:
+			</label>
+	<span>
+		<%= f.text_field :start_date, :class => "field text" ,:id => "start_date", :size => 12 %> 
+		 <%= f.text_field :stop_date, :class => "field text" ,:id => "stop_date",:size => 12 %>
+		<script type="text/javascript"> 
+		function customRange(input) { 
+		    return {minDate: (input.id == "stop_date" ? $j("#start_date").datepicker("getDate") : "0d"), 
+		        maxDate: (input.id == "start_date" ? $j("#stop_date").datepicker("getDate") : "1y")}; 
+		} 
+		</script> 
+	</span>
+	</li>
+	<li id="foli11"    class="time">
+		<label class="desc" id="title11" for="Field11">
+			时间段:
+				</label>
+		<div> 
+		   <span> <label class="desc" id="title11" for="Field11">
+				开始时间:
+					</label>  </span>
+			<select name="discount[start_at]" id="Field11" class="field select" >
+				<option value="6am">6:00</option>
+				<option value="7am">7:00</option>
+				<option value="8am">8:00</option>
+				<option value="9am" selected="selected">9:00</option>
+				<option value="10am">10:00</option>
+				<option value="11am">11:00</option>
+				<option value="12">Noon</option>
+				<option value="1pm">1:00</option>
+				<option value="2pm">2:00</option>
+				<option value="3pm">3:00</option>
+				<option value="4pm">4:00</option>
+				<option value="5pm">5:00</option>
+				<option value="6pm">6:00</option>
+				<option value="7pm">7:00</option>
+				<option value="8pm">8:00</option>
+				<option value="9pm">9:00</option>
+				<option value="10pm">10:00</option>
+				<option value="11pm">11:00</option>
+				<option value="12pm">12:00</option>
+			</select>  
+			<span>
+		 	<label class="desc" id="title11" for="Field11">
+				结束时间:
+					</label>  </span> 
+			<select name="discount[stop_at]" id="Field10" class="field select" >
+				<option value="6am">6:00</option>
+				<option value="7am">7:00</option>
+				<option value="8am">8:00</option>
+				<option value="9am">9:00</option>
+				<option value="10am">10:00</option>
+				<option value="11am">11:00</option>
+				<option value="12">Noon</option>
+				<option value="1pm">1:00</option>
+				<option value="2pm">2:00</option>
+				<option value="3pm">3:00</option>
+				<option value="4pm">4:00</option>
+				<option value="5pm">5:00</option>
+				<option value="6pm">6:00</option>
+				<option value="7pm">7:00</option>
+				<option value="8pm">8:00</option>
+				<option value="9pm" selected="selected">9:00</option>
+				<option value="10pm">10:00</option>
+				<option value="11pm">11:00</option>
+				<option value="12pm">12:00</option>
+			</select>
+		</div>
+		</li>
+		<li id="foli19"  class="  ">
+		<label class="desc" id="title19" for="Field19">
+			补充说明:
+		</label>
+	     <span> 
+		<%= f.text_area :description, :class => "field textarea small" %>
+		</span>
+		</li>
+<li id="foli4" 		class="  ">   
+		      <label class="desc" id="title19" for="Field19">图片:</label>
+		     <span> 
+			<%= f.file_field :ad_data, :class => "field text"  %>
+			</span>
+			</li>
+</ul>
+

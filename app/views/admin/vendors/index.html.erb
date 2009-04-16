@@ -1,0 +1,36 @@
+
+<% content_for :sidebar do -%>
+<h2>商户操作</h2> 
+<ul>
+	<li><%= link_to "新增门店", new_admin_vendor_path %></li>
+</ul>
+<% end -%>
+
+<%= render :partial => 'admin/shared/search', :locals => { :path => search_admin_vendors_path} %>
+
+
+<table>      
+	<tr>
+		<th>名称</th>
+		<th>别名</th>
+		<th>分类</th>
+		<th>所属区域</th>
+		<th>电话</th>
+		<th>靠近</th>
+		<th></th>
+	</tr>
+	<% @vendors.each do |vendor| -%>
+	<tr>
+		<td><%=link_to vendor.name, admin_vendor_path(vendor) %></td> 
+		<td><%= vendor.alias %></td> 
+		<td><%= vendor.category.name %></td>
+		<td><%= vendor.area.name %></td> 
+		<td><%= vendor.tel1 %></td>
+		<td><%= vendor.nearby %></td>
+		<td><%= link_to "编辑",edit_admin_vendor_path(vendor) %> | <%=link_to "删除",admin_vendor_path(vendor),:confirm => '确定 删除吗?', :method => :delete %></td> 
+	</tr>                              
+	<% end -%>
+</table>
+<div id="pagination">
+	分页:&nbsp;<%= will_paginate(@vendors) %>  
+</div>  

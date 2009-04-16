@@ -1,0 +1,73 @@
+* {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-TOP-STYLE: none; PADDING-TOP: 0px; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none
+}
+A {
+	COLOR: #6F1600; TEXT-DECORATION: underline
+}
+.a_d {
+	color: #C2740E;
+	text-decoration: none;
+}
+
+.B {
+	font-weight: bold;
+}
+.h {
+	color: #FFFFFF;
+}
+.htxt {
+	color: #FFFFFF;
+	background-color: #A1350B;
+	padding: 1px;
+}
+.rmb {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	color: #339900;
+}
+.soinput {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	border: 1px solid #631400;
+	width: 250px;
+	padding-top: 4px;
+	padding-right: 4px;
+	padding-bottom: 4px;
+	padding-left: 5px;
+}
+.sosel {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	padding-top: 4px;
+	padding-right: 3px;
+	padding-bottom: 4px;
+	padding-left: 5px;
+	height: 30px;
+	border: 1px solid #631400;
+}
+.clear {
+	CLEAR: both
+}
+BODY {
+	FONT-SIZE: 12px;
+	COLOR: #222227;
+	LINE-HEIGHT: 150%;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	TEXT-ALIGN: center;
+	background-color: #ffffff;
+	background-position: top;
+}
+.font14 {
+	font-size: 14px;
+	line-height: 30px;
+	white-space: normal;
+}
+.dot {
+	font-family: "ËÎÌו";
+	font-size: 12px;
+	word-spacing: 3px;
+}
+.Red {
+	COLOR: red
+}

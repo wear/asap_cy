@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  booking: 
+  paid_count: 1
+  oprater: 
+  point: 1
+  mercheant_chargment: false
+
+two:
+  booking: 
+  paid_count: 1
+  oprater: 
+  point: 1
+  mercheant_chargment: false

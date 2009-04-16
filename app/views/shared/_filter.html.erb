@@ -1,0 +1,6 @@
+<ul>
+<% filters.each do |child| -%>
+	<li><%=link_to child.name,vendors_path(:query => child.name,:cache_id => make_cache_id(child.name)) %>(<%=short_num(child.vendors_count)%>)</li> 
+<% end -%>
+</ul> 
+

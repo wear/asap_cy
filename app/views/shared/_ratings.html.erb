@@ -1,0 +1,13 @@
+<div class="vendor-rating" > 
+	<div class="span-4" id='rate'>
+	<%= render :partial => '/shared/star',:locals => { :vendor =>  vendor } %>
+	</div>
+	<% if write_review -%>
+		<div class="do_review">
+	  	<%=login_or_render(image_tag('icon/review.gif'),"normal","#my-review")%> 					  
+		</div>
+		<% end -%>
+<div style="font: 0px/0px sans-serif;clear: both;display: block"></div>
+	<%= render :partial => '/shared/score' , :locals => { :vendor => vendor } %>
+
+</div>     

@@ -1,0 +1,6 @@
+<div class="booking_right" class='span-5'>
+	<div id="booking-vendor-info">
+		 <%=link_to @vendor.name,vendor_path(@vendor),:class => "title"%> <br /><%=@vendor.address%>
+	</div>
+ <%= render :partial => 'vendors/discount_area' unless @vendor.discount.nil? %>      
+</div>      

@@ -1,0 +1,67 @@
+quentin:
+  id:                        1
+  login:                     quentin
+  email:                     quentin@example.com
+  salt:                      356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
+  crypted_password:          5880697bce6375a1bb6d3b6f895e17e43dc568a8 # 'monkey'
+  created_at:                <%= 5.days.ago.to_s :db  %>
+  remember_token_expires_at: <%= 1.days.from_now.to_s %>
+  remember_token:            77de68daecd823babbb58edb1c8e14d7106e83bb
+  activation_code:           
+  activated_at:              <%= 5.days.ago.to_s :db %>
+arron:
+    id:                        2
+    login:                     aaron
+    email:                     aaron@example.com
+    salt:                      356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
+    crypted_password:          5880697bce6375a1bb6d3b6f895e17e43dc568a8 # 'monkey'
+    created_at:                <%= 3.days.ago.to_s :db  %>
+    remember_token_expires_at: <%= 1.days.from_now.to_s %>
+    remember_token:            77de68daecd823babbb58edb1c8e14d7106e83bb
+    activation_code:           
+    activated_at:              <%= 5.days.ago.to_s :db %>
+    merchant_id:               1
+stephen:
+  id:                        3
+  login:                     stephen
+  email:                     stephen@example.com
+  salt:                      356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
+  crypted_password:          5880697bce6375a1bb6d3b6f895e17e43dc568a8 # 'monkey'
+  created_at:                <%= 3.days.ago.to_s :db  %>
+  remember_token_expires_at: <%= 1.days.from_now.to_s %>
+  remember_token:            77de68daecd823babbb58edb1c8e14d7106e83bb
+  activation_code:           
+  activated_at:              <%= 5.days.ago.to_s :db %>   
+bill:
+    id:                        4
+    login:                     bill
+    email:                     stephen@example.com
+    salt:                      356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
+    crypted_password:          5880697bce6375a1bb6d3b6f895e17e43dc568a8 # 'monkey'
+    created_at:                <%= 3.days.ago.to_s :db  %>
+    remember_token_expires_at: <%= 1.days.from_now.to_s %>
+    remember_token:            77de68daecd823babbb58edb1c8e14d7106e83bb
+    activation_code:           
+    activated_at:              <%= 5.days.ago.to_s :db %> 
+mashow:
+    id:                        5
+    login:                     mashow
+    email:                     mashow@example.com
+    salt:                      356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
+    crypted_password:          5880697bce6375a1bb6d3b6f895e17e43dc568a8 # 'monkey'
+    created_at:                <%= 3.days.ago.to_s :db  %>
+    remember_token_expires_at: <%= 1.days.from_now.to_s %>
+    remember_token:            77de68daecd823babbb58edb1c8e14d7106e83bb
+    activation_code:           
+    activated_at:              <%= 5.days.ago.to_s :db %>
+tom:
+    id:                        6
+    login:                     tom
+    email:                     tom@example.com
+    salt:                      356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
+    crypted_password:          5880697bce6375a1bb6d3b6f895e17e43dc568a8 # 'monkey'
+    created_at:                <%= 3.days.ago.to_s :db  %>
+    remember_token_expires_at: <%= 1.days.from_now.to_s %>
+    remember_token:            77de68daecd823babbb58edb1c8e14d7106e83bb
+    activation_code:           
+    activated_at:              <%= 5.days.ago.to_s :db %>

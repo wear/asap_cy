@@ -1,0 +1,11 @@
+<% content_for :head do -%> 
+	<%= stylesheet_link_tag "partial/search.css" %> 
+<% end -%> 
+
+<div id="results" class='span-16 last'>  
+ 	<%= render :partial => '/landing/table', :locals => {:show_type => 'search', :vendors => @vendors }  %> 
+</div>       
+
+<div id="categories">
+		<%= render :partial => "/shared/tag_filter", :locals => { :query => @query }%> 
+</div>

@@ -1,0 +1,2 @@
+page.replace_html "msg_div", flash_div
+flash.discard      

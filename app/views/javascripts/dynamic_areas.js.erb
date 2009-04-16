@@ -1,0 +1,25 @@
+var areas = new Array();
+<% for area in @areas -%>
+  areas.push(new Array(<%= area.parent_id %>, '<%=h area.name %>', <%= area.id %>));
+<% end -%>
+
+function districtSelected() {
+  district_id = $('location_id').getValue();
+  options = $('area_id').options;
+  options.length = 1;
+  areas.each(function(area) {
+    if (area[0] == district_id) {
+      options[options.length] = new Option(area[1], area[2]);
+    }
+  });
+  if (options.length == 1) {
+    $('area_field').hide();
+  } else {
+    $('area_field').show();
+  }
+}
+
+document.observe('dom:loaded', function() {
+  districtSelected();
+  $('location_id').observe('change', districtSelected);
+});

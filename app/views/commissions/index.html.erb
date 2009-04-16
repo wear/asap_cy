@@ -1,0 +1,28 @@
+<h1>Listing commissions</h1>
+
+<table>
+  <tr>
+    <th>Booking</th>
+    <th>Booking charge</th>
+    <th>Official</th>
+    <th>User</th>
+    <th>Valid</th>
+  </tr>
+
+<% for commission in @commissions %>
+  <tr>
+    <td><%=h commission.booking %></td>
+    <td><%=h commission.booking_charge %></td>
+    <td><%=h commission.official %></td>
+    <td><%=h commission.user %></td>
+    <td><%=h commission.valid %></td>
+    <td><%= link_to 'Show', commission %></td>
+    <td><%= link_to 'Edit', edit_commission_path(commission) %></td>
+    <td><%= link_to 'Destroy', commission, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New commission', new_commission_path %>

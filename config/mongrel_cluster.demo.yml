@@ -1,0 +1,8 @@
+--- 
+cwd: /home/seazhang/deploy/current
+address: 127.0.0.1
+port: 8001
+environment: development
+pid_file: tmp/pids/mongrel.pid
+log_file: log/mongrel.log
+servers: 1

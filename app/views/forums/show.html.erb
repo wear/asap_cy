@@ -1,0 +1,23 @@
+<p>
+  <b>Name:</b>
+  <%=h @forums.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @forums.description %>
+</p>
+
+<p>
+  <b>Parent:</b>
+  <%=h @forums.parent_id %>
+</p>
+
+<p>
+  <b>Order:</b>
+  <%=h @forums.order %>
+</p>
+
+
+<%= link_to 'Edit', edit_forums_path(@forums) %> |
+<%= link_to 'Back', forums_path %>

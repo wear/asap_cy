@@ -1,0 +1,14 @@
+<table border="0" cellspacing="5" cellpadding="5">
+	<tr>
+		<th>门店</th>
+		<th>网友评分</th>
+		<th>折扣</th>
+		<th>起始日期</th>
+	    <th>截止日期</th>
+		<th>时间段</th>
+	</tr>
+		<% vendor_discounts.each do |discount| -%>
+			<%= render :partial => 'discount', :locals => { :vendors => discount.vendors }%>
+		<% end -%>
+
+</table> 

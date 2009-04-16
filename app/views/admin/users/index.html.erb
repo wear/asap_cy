@@ -1,0 +1,25 @@
+<% content_for :sidebar do -%>
+	<%= link_to "新增", new_admin_user_path %>
+<% end -%>
+
+<% form_tag search_admin_users_path,:class => "search-form",:method=>:get do%>           
+	查找: <%= text_field_tag :query,params[:query] %>
+	<%= submit_tag "搜索"%>
+<% end %>  
+
+<table>      
+	<tr>
+		<th>名称</th>
+		<th>email</th> 
+		<th>手机</th>
+		<th></th>
+	</tr>
+	<% @users.each do |user| -%>
+	<tr>
+		<td><%=link_to user.login, user, :target =>"blank" %></td>
+		<td><%= user.email %></td> 
+		<td><%= user.mobile %></td>  
+		<td><%=link_to "编辑", edit_admin_user_path(user)%> | <%=link_to "删除",admin_user_path(user),:confirm => '确定删除吗?', :method => :delete %></td> 
+	</tr>                              
+	<% end -%>
+</table>

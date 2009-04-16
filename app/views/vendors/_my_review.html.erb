@@ -1,0 +1,11 @@
+ <h2>我的点评</h2> 
+<div id="notice-error">
+</div> 
+<% if current_user.reviewed?(@vendor) -%> 
+	<%= render :partial => "/shared/review", :locals => { :review =>  current_user.vendor_review(@vendor), :limit => true,:avatar => false, :show_title => false } %> 
+<% else -%>  
+	<% remote_form_for @review,:url => vendor_reviews_path(@vendor),:loading  => "$('spinner').show()",:complete => "$('spinner').hide()" do |f| %>
+		<%= render :partial => '/reviews/form', :locals => { :f => f } %>
+		<%= submit_tag "提交" %> <%=image_tag "icon/spinner_small.gif", :id => 'spinner', :style => "display:none;"%>
+	<% end -%>
+<% end -%>   

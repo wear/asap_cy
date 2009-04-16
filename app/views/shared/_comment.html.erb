@@ -1,0 +1,13 @@
+   <div class='span-2' style='text-align:center;margin-top:10px'>
+   	   <%=link_to avatar_for(comment.user),profile_user_path(comment.user) %> <br />
+ 	   <%=link_to nick_name_for(comment.user),profile_user_path(comment.user)%>
+   </div>
+   <div class='span-9'>
+   	  	<%= comment_content(comment,@vendor,@review,limit) %> <br />
+		<span class = 'time-stamp' >
+		<%= comment.created_at.to_s(:db)%> 
+		</span> 
+		<% current_user_scope(comment.user) do%>
+			<%=link_to "编辑", edit_vendor_review_comment_path(@vendor,@review,comment)%>
+		<% end %>
+   </div>             

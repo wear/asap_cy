@@ -1,0 +1,86 @@
+<% content_for :head do %>
+	<%= stylesheet_link_tag 'form/structure.css' %>
+	<%= stylesheet_link_tag 'form/form.css' %>
+	<%= stylesheet_link_tag 'form/theme.css' %>
+	<%= stylesheet_link_tag "ui.datepicker.css" %> 
+	<%= stylesheet_link_tag "jquery-ui-themeroller.css" %>
+<% end %>
+
+<% content_for :javascripts do %>
+	<%= javascript_include_tag "form/wufoo.js" %>
+	<%= javascript_include_tag "ui.datepicker.js" %>
+	<%= javascript_include_tag "jquery.ui.i18n.all.js" %>
+<script type="text/javascript">    
+	$j(document).ready(function(){   
+		$j("#calendar").datepicker($j.extend({}, 
+		$j.datepicker.regional["zh-CN"], {
+			minDate: "0d", 
+			maxDate: "1w", 
+		    showStatus: true, 
+		    showOn: "both", 
+		    buttonImage: "/images/icon/calendar.png", 
+		    buttonImageOnly: true 
+		})); 
+	 });
+</script>	
+<% end %>
+
+	<%= error_messages_for :booking %>
+<ul>
+	 
+	<li class="section first">
+	<h3>订单信息(必填)</h3>
+	</li>
+	<li> 
+		<label class="desc">就餐时间<span class="req">*</span></label>
+		<span class="left">
+		<%= f.text_field :date, :id => "calendar",:size => "15*15", :class => "field text" %>
+		<label>日期</label>
+		</span>
+		<span class="right">
+		<%=f.select :time_range,TIMERANGE,{},:class => "field select" %>
+		<label>选择一个时间段</label>
+		</span>
+	</li>
+	<li>
+	   	<label class="desc">就餐人数:<span class="req">*</span></label>
+		<span class="left">
+		<%=f.text_field :guest_count,:size => "15*15",:class=>"field text" %>
+		</span> 
+		<span>
+	</li>
+	   <li>
+		<label class="desc">其他要求:</label> 
+		<div>
+		<%=f.text_area :requirment, :class => "field textarea small" %>
+		</div>
+
+		<p class="instruct">有何特殊要求请在这里填写</p>
+	 </li>
+	<li class="section">
+		<h3>联系人信息</h3>
+		<div>请填写真实的订单联系人.</div>
+	</li> 
+	<li>
+	<label class="desc">名称<span class="req">*</span></label>
+		<div>
+		<%= f.text_field :contact,:class =>"field text" %> 
+		</div>
+	</li>
+	<li>
+	<label class="desc">手机:<span class="req">*</span></label>
+		<div>
+		<%= f.text_field :mobile, :class =>"field text" %> 
+		</div>
+	</li>
+	<%= f.hidden_field :vendor_id, :value => @vendor.id %>
+	<% unless @vendor.discount.nil? %>
+		<%= f.hidden_field :discount_id, :value => @vendor.discount_id %>
+		<%= f.hidden_field :discount_version, :value => @vendor.discount.version %>
+	<% end %>
+	<li class="buttons">
+	<%= submit_tag "下一步"%> 
+	</li>
+	</ul>     
+	 
+ 

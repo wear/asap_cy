@@ -1,0 +1,12 @@
+		<p>   
+			<%= render :partial => "/reviews/rating", :collection => @ratings  %>
+		</p>
+		<p>评价:<br /> <%= f.text_area :body, :size => "60x10"
+		 %></p> 
+		<p>
+		   热门菜:  <%=f.text_field :tag_list,  :size => 50 %>
+		</p> 
+		<p>
+		   分类标签: <%=f.text_field :dish_list,  :size => 50 %>
+		</p> 
+		<%= f.hidden_field :vendor_id %>      

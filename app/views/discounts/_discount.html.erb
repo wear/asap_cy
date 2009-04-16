@@ -1,0 +1,12 @@
+	<% vendors.each do |vendor| -%>
+	<tr> 
+	   <td><%=link_to vendor.name,vendor_path(vendor) %></td>
+		<td><%= render :partial => '/shared/star',:locals => { :vendor =>  vendor } %> </td>    
+		<td><%= vendor.discount.count %></td>
+		<td><%= vendor.discount.start_date %></td>
+	    <td><%= discount.stop_date %></td>
+		<td><%= distance_time(vendor.discount.start_at,vendor.discount.stop_at) %></td>
+		<td><%= link_to '编辑 ', edit_user_discount_path(current_user,vendor.discount) %></td>
+	    <td><%= link_to '删除', user_discount_path(current_user,vendor.discount), :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
+	<% end -%>   

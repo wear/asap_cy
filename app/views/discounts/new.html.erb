@@ -1,0 +1,18 @@
+                                                  
+<div id="wufoo_form">
+
+
+<div class="info">
+	<h2>新建折扣项目</h2>
+	<div></div>
+</div> 
+
+	<% form_for(@discount,:url => user_discounts_path(current_user), :html => { :multipart => true }) do |f| %>
+  		<%= f.error_messages %>
+		<%= render :partial => 'form',:locals => { :f => f } %>
+  		<p>
+    		<%= f.submit "新建" %>
+  		</p>
+	 <% end %>
+</div>
+

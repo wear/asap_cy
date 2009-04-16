@@ -1,0 +1,18 @@
+# == Schema Information
+# Schema version: 20081223080043
+#
+# Table name: categories
+#
+#  id         :integer(4)      not null, primary key
+#  name       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+   name: 餐馆
+
+# two:
+#   column: value

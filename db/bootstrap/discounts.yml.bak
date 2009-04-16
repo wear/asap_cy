@@ -1,0 +1,42 @@
+# == Schema Information
+# Schema version: 20081116034147
+#
+# Table name: discounts
+#
+#  id          :integer(11)     not null, primary key
+#  user_id     :integer(11)
+#  count       :float
+#  created_at  :datetime
+#  updated_at  :datetime
+#  description :string(255)
+#  start_date  :date
+#  stop_date   :date
+#  start_at    :time
+#  stop_at     :time
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  user_id: 2
+  name: 圣诞夜狂欢 
+  count: 7.5
+  description: 年终店庆吃喝100即返50
+  status: unused
+  start_date: 2008-11-22 
+  stop_date: 2008-11-27
+  start_at: 2000-01-01 12:00:00
+  stop_at:  2000-01-01 23:00:00
+
+two:
+  id: 2
+  user_id: 2
+  name: 10周年店庆 
+  count: 9  
+  description: 新店开业全单6折优惠 
+  status: unused          
+  start_date: 2008-11-25
+  stop_date: 2008-11-29 
+  start_at: 2000-01-01 12:00:00
+  stop_at:  2000-01-01 23:00:00

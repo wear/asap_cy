@@ -1,0 +1,10 @@
+			<%= select_tag :sort, options_for_select(Vote.find(:all).collect{|vote| [vote.name,vote.short_name]}.insert(0,['选择优先排序','']),@sort_item),{:onchange => "jQuery(this).parent().submit();return false;"}%>
+			<%= hidden_field_tag :query,@keyword %>
+			<% unless @search.nil? -%>
+				<% fields_for :search do |search_option| -%>
+				<%= search_option.hidden_field :caixi_id, :value => @caixi %>
+				<%= search_option.hidden_field :caixi_child_id, :value => @caixi_child %>
+				<%= search_option.hidden_field :district_id,:value => @district %>
+				<%= search_option.hidden_field :area_id,:value => @area %>
+				<% end -%>
+			<% end -%>              

@@ -1,0 +1,8 @@
+<%form_for @merchant, :url => admin_merchant_path(@merchant) do |f| -%> 
+      <%= f.error_messages %>  
+		<%= render :partial => 'form',:locals => { :f => f} %>
+
+		<p>
+		<%=f.submit "提交"%>
+		</p>
+<% end %>

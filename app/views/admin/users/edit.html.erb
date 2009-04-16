@@ -1,0 +1,16 @@
+<% form_for @user, :url => admin_user_path(@user) do |f| %> 
+	<p>
+	  <%= render :partial => '/users/profile', :locals => { :user => @user } %>    
+    </p>
+	<p><% if false %>
+		<span>权限:</span>
+		<% Role.find(:all).each do |r|%>
+			<%=check_box(:roles,r.id, {}, "yes", "no")%><%= r.title %>
+		<% end %> 
+		<% end %>
+		
+		<%= label_tag "权限"%> <br />
+		<%=  render :partial => "role", :collection => @roles %> 
+		</p>
+	<%=f.submit "提交"%>
+<% end %>

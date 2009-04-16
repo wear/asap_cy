@@ -1,0 +1,6 @@
+	<p>关键字:<%= text_field_tag :query, params[:query] %></p>
+	<p>菜系:<%= collection_select :search,:caixi_id, Type.find(:all,:conditions => " parent_id = 2" ), :id, :name, {:prompt => "选择菜系"},{:id => "caixi_id"}%></p> 
+	<p id='caixi_child_field' style='display:none;'>菜系:<%= collection_select :search,:caixi_child_id, Type.find(:all), :id, :name,{:prompt => "请选择"},{:id => "caixi_child_id"}%></p> 
+	<p>城区:<%= collection_select :search,:district_id, Area.find(:all,:conditions => " parent_id = 1" ), :id, :name, {:prompt => "选择城区"},{:id => "location_id"}   %></p> 
+	<p id='area_field' style='display:none;'>区域:<%= collection_select :search,:area_id, Area.find(:all), :id, :name, {:prompt => "选择区域"},{:id => "area_id"}  %></p>   
+

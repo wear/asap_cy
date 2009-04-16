@@ -1,0 +1,27 @@
+# == Schema Information
+# Schema version: 20081223080043
+#
+# Table name: merchants
+#
+#  id         :integer(4)      not null, primary key
+#  name       :string(255)
+#  contact    :string(255)
+#  tel        :integer(4)
+#  created_at :datetime
+#  updated_at :datetime
+#  pending    :boolean(1)      default(TRUE)
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  contact: MyString
+  tel: 1
+  user: 
+
+two:
+  name: MyString
+  contact: MyString
+  tel: 1
+  user: 

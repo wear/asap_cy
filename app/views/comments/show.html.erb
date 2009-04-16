@@ -1,0 +1,11 @@
+<div id="reviews">
+	<p>  
+		<%=link_to @review.vendor.name,vendor_path(@review.vendor),:class => 'title' %> <br />
+		<%= render :partial => "/shared/review", :locals => { :review =>  @review, :limit => false } %> 
+	 </p>
+</div>
+<div id="comment">
+	<%= render :partial => '/shared/comment',:locals => { :comment => @comment, :limit => false } %>
+</div>
+
+

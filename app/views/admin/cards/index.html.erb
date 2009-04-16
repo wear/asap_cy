@@ -1,0 +1,20 @@
+<% content_for :sidebar do -%>
+	<%= link_to "new", new_admin_card_path %>
+<% end -%>  
+
+
+
+<table>
+	<tr>    
+		<th>名称</th>
+		<th>点数</th>
+		<th>操作
+	</tr>   
+	<% @cards.each do |card| -%>
+	<tr>
+		<td><%=link_to h(card.name),admin_card_path(card) %></td>
+		<td><%= card.point.abs %></td>
+		<td><%=link_to "编辑",edit_admin_card_path(card)%> | <%=link_to "删除",admin_card_path(card),:confirm => '确定 删除吗?', :method => :delete %></td>
+	</tr> 
+	<% end -%>
+</table>

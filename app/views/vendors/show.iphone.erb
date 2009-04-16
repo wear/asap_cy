@@ -1,0 +1,30 @@
+
+<div id="top-title">
+  <%=@vendor.name%>(<%=@vendor.alias%>)  
+</div>
+<div >
+	<div class="vendor-rating" > 
+		<div class="span-4" id='rate'>
+		  <ul class="rating <%=star(@vendor.total)%>">
+	      <li class="one"><a href="#" title="1 Star">1</a></li>
+	      <li class="two"><a href="#" title="2 Stars">2</a></li>
+	      <li class="three"><a href="#" title="3 Stars">3</a></li>
+	      <li class="four"><a href="#" title="4 Stars">4</a></li>
+	      <li class="five"><a href="#" title="5 Stars">5</a></li>
+	      </ul>
+		</div>  
+	<div style="font: 0px/0px sans-serif;clear: both;display: block"></div>
+	<div id="score">
+	   	<span class='based-on'>共计<b><%=(@vendor.reviews_count)%></b>次点评
+		</span>
+		<ul class='vote'>
+		<% @vendor.rates.each do |rate|  -%>
+			<li >
+				<%= rate.vote.name%><span><%= rate.score %></span>
+			</li>
+		<%end -%>
+		</ul> 
+	</div> 
+
+	</div>
+</div>

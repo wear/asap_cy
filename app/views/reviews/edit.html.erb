@@ -1,0 +1,10 @@
+<div id="reviews">
+	<h3>修改点评</h3> 
+	<%= error_messages_for :review %>
+	<p>  
+		<% form_for @review, :url => user_review_path(@user,@review) do |f| %> 
+			<%= render :partial => 'form', :locals => { :f => f } %>
+  		<%= f.submit "提交" %> 
+		<% end -%>
+	 </p>
+</div>

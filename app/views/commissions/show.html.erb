@@ -1,0 +1,28 @@
+<p>
+  <b>Booking:</b>
+  <%=h @commission.booking %>
+</p>
+
+<p>
+  <b>Booking charge:</b>
+  <%=h @commission.booking_charge %>
+</p>
+
+<p>
+  <b>Official:</b>
+  <%=h @commission.official %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @commission.user %>
+</p>
+
+<p>
+  <b>Valid:</b>
+  <%=h @commission.valid %>
+</p>
+
+
+<%= link_to 'Edit', edit_commission_path(@commission) %> |
+<%= link_to 'Back', commissions_path %>

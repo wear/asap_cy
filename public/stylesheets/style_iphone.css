@@ -1,0 +1,149 @@
+
+#vendors {
+	  font-size:12px;  
+	background-color: #E5E5E5;
+	width:100%;
+}
+
+#vendor { 
+
+  margin: 0px 10px;
+  background-color: #ffffff;  
+}
+
+#vendor-title{
+	padding:5px 10px;
+	width:60%; 
+	height:29px;
+	float:left;
+	background-color:#FFFFFF;
+}
+
+#vendor-count{
+	text-align:right;
+	padding-right:40px;
+	width:80%;
+	float:left;
+}
+
+#vendor-get{
+	text-align:right; 	
+	padding:5px 5px;  
+	width:20%;
+     float:left;
+}
+
+#vendor-body{ 
+	clear:both;
+	height:42px;
+	margin:2px;
+	padding:2px;
+	background: #EFEFEF;   
+}
+
+#vendor-info{ 
+	width:60%;
+	float:left;
+	}
+
+#vendor-rate{
+	width:37%; 
+	height:40px;
+	padding-left:5px;
+	text-align: center ;
+	float:right;
+	border-left:1px dotted #CCCCCC;
+} 
+      
+/*-------------------rating-------------------*/
+.vendor-rating{
+	width:96%;
+	height:76px;
+	border: 1px solid #CCCCCC;
+	background: #EFEFEF;
+	margin:5px 5px;
+	padding: 5px 0px; 
+	font-size:12px;
+}
+
+#top-title{ 
+	height:27px;
+	width:100%; 
+	font-size:18px;
+	border-bottom:3px solid #EFEFEF;
+	clear:both;
+}
+#rate{
+	height:23px;
+}
+
+#score{
+	padding:0px 10px;
+} 
+
+.based-on{
+	font-family:Georgia;
+	font-style:italic;
+	font-size:10px;
+	font-weight:bold;
+	color:#9D9D9C;	
+} 
+
+
+.vote {
+	margin:0px;
+    padding:0px;
+	}
+/*<![CDATA[*/
+.vote li{
+		float:left;
+		list-style-image:none;
+		list-style-position:outside;
+		list-style-type:none;
+		border-left:1px solid #FFFFFF;
+		background-image:url("/images/bg/vote_bg.gif");
+		background-position:bottom;
+		background-repeat:repeat-x;
+		color:#FFFFFF;
+       	height:32px;
+       	font:300 10px/40px Arial; 
+       	overflow:hidden;
+		}
+/*]]>*/		
+.vote span{
+	font-family:Georgia;
+	font-style:italic;
+	font-size:30px;
+	font-weight:bold;
+	margin-left:10px;
+		} 
+/*----foot-------*/
+#foot{
+	text-align:center; 
+    margin: 0px 10px;   
+	padding:5px; 
+	background-color: #CCCCCC;
+}
+
+.toolbar{
+	text-align:center;
+}
+
+#header_text{
+	font-size:18px;
+	font-weight:bold;
+} 
+
+.title {
+   	font-size:14px;
+	font-weight:bold;
+    color:#CCCCCC;
+}
+
+#vendor-title a{
+	color:#9F9F9F;
+}
+
+.toolbar a:link,a:visited{
+    color:#ffffff;
+	text-decoration:none;}

@@ -1,0 +1,31 @@
+cn:
+  activerecord:      
+      models:
+          user: "用户" 
+          vendors: '门店'
+          review: '点评'
+          comment: '留言'
+      attributes:
+          user:
+              login:  "用户名"
+              email:  "电邮"
+              password: '密码'
+              password_confirmation: '密码确认'
+              mobile:  "手机"
+          vendor:
+              name: '名称'
+              area: '区域'
+              address: '地址'
+          review:
+              body: '内容'
+              ratings: '评价'
+          comment:
+              body: '内容'
+      errors: 
+              messages: 
+                       blank: '不能为空'
+                       too_short: '太短'
+                       invalid: '无效'
+                       taken: '已被使用'
+                       confirmation: '确认失败'
+   

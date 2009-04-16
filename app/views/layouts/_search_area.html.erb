@@ -1,0 +1,6 @@
+ <% form_tag vendors_path,:method => 'get',:onsubmit => "clear_query_box('search-input');return false;"  do -%> 
+ <%= text_field_tag :query,(fomatted_query(params[:query]) ||"如:川菜"),:size => 18,:class => "search-input" %> 
+	   <%=image_submit_tag "/images/mhqx_bg/so_bot_big.png",:align => 'absmiddle'%>
+ 	<% end -%>    
+
+      

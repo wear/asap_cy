@@ -1,0 +1,33 @@
+<% content_for :sidebar do %>
+	<h2>商户设置</h2>     
+	<ul>   
+ 		<li><%= link_to "返回", admin_merchant_path(@merchant) %></li> 
+	</ul>
+<% end %>
+<% form_tag search_vendors_admin_merchant_path(@merchant),:class => "search-form",:method=>:get do%>           
+	查找: <%= text_field_tag :query,params[:query] %>
+	<%= submit_tag "搜索"%>
+<% end %>  
+	<% form_tag admin_merchant_path(@merchant), :method => :put do |f| %>    
+<table>      
+	<tr>
+		<th></th>
+		<th>名称</th>
+		<th>别名</th>
+		<th>地址</th> 
+	</tr>
+	<% @vendors.each do |vendor| -%>
+	<tr>
+		<td><%= check_box_tag "merchant[vendor_ids][]", vendor.id,checked?(@merchant.vendors,vendor.id) %></td>
+		<td><%=link_to vendor.name, vendor, :target =>"blank" %></td>
+		<td><%= vendor.alias %></td>
+		<td><%= vendor.address %></td> 
+	</tr>
+	<p>
+	<%= render :partial => 'hidden_form' %>
+
+	<% end -%> 
+</table>
+<%= will_paginate(@vendors) %>  
+	<%= submit_tag "提交" %>
+	<% end %> 

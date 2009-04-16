@@ -1,0 +1,51 @@
+<h3>基本资料</h3>    
+<div id="box">  
+ <p> <%=label_tag "名称:"%><br />
+	 <%=f.text_field "name" %></p>
+	<p> <%=label_tag "别名:"%><br />
+	 <%=f.text_field "alias" %></p>
+	<p> <%=label_tag "分类:"%><br />
+	 <%= f.select :category_id,Category.find(:all).map{|c| [c.name,c.id]} %></p>
+	 <p><%=label_tag "地域:"%><br />
+	<select name="vendor[area_id]">
+	 <optgroup><option value="">请选择</option></optgroup>   
+	 <%= option_groups_from_collection_for_select(Area.find(:all,:conditions => ["parent_id = ?",1]), :children, :name, :id, :name, f.object.area_id )
+	%>
+	</select> 
+	<p><%=label_tag "菜系:"%><br />
+		<select name="vendor[type_ids]">
+		 <optgroup><option value="">请选择</option></optgroup>   
+		 <%= option_groups_from_collection_for_select(Type.find(:all,:conditions => ["parent_id = ?",2]), :children, :name, :id, :name, f.object.area_id )
+		%></select>     
+		</p>
+	<p> <%=label_tag "地址:"%><br />
+	 <%=f.text_field "address" %> </p> 
+	<p> <%=label_tag "靠近:"%><br />
+	 <%=f.text_field "nearby" %> </p>
+	<p> <%=label_tag "电话:"%><br />
+	 <%=f.text_field "tel1",:id => 'tel' %> </p> 
+</div> 
+<h3>图片</h3>
+<div id="box">
+	<div id="attachments">
+	  <%= render :partial => '/admin/vendors/attachment', :collection => @vendor.attachments %>
+	</div>
+	<p><%= add_attachment_link "Add a image" %></p>
+</div>
+<h3 id='add_tags'>标注</h3>
+<div id="box">
+	<%= render :partial => '/admin/vendors/tag_list', :locals => { :tags => @dishes } %>
+	<p><%=label_tag "特色菜"%><br />
+	<%= f.text_field :dish_list, :size => 60, :id => 'dishes' %> </p>
+	<%= render :partial => '/admin/vendors/tag_list',:locals => { :tags => @tags } %>
+	<p><%=label_tag "标签"%><br />
+	<%= f.text_field :tag_list, :size => 60, :id => 'tags' %></p>
+</div>
+<% unless @vendor.new_record? %> 
+<h3>是否待定</h3>
+<div id="box">
+   <%= f.check_box :pending %> 
+</div>
+<% end %>
+
+	

@@ -1,0 +1,40 @@
+.rating{
+width:80px;
+height:16px;
+margin:0 0 20px 0;
+padding:0;
+list-style:none;
+clear:both;
+position:relative;
+background: url(/images/bg/star-matrix.gif) no-repeat 0 0;
+}
+ul.rating li {
+cursor: pointer;
+/*ie5 mac doesn't like it if the list is floated but ie6 does\*/
+float:left;
+/* end hide*/
+text-indent:-999em;/* hide text*/
+}
+ul.rating li a {
+position:absolute;
+left:0;
+top:0;
+width:16px;
+height:16px;
+text-decoration:none;
+z-index: 200;
+}
+ul.rating li.one a {left:0}
+ul.rating li.two a {left:16px;}
+ul.rating li.three a {left:32px;}
+ul.rating li.four a {left:48px;}
+ul.rating li.five a {left:64px;}
+
+
+.nostar {background-position:0 0}
+.onestar {background-position:0 -16px}
+.twostar {background-position:0 -32px}
+.threestar {background-position:0 -48px}
+.fourstar {background-position:0 -64px}
+.fivestar {background-position:0 -80px}
+

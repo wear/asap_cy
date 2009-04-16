@@ -1,0 +1,61 @@
+<% content_for :head do -%>
+	<style type="text/css">
+
+	.stepcarousel{
+	position: relative; /*leave this value alone*/
+	overflow: scroll; /*leave this value alone*/
+	width: 100%; /*Width of Carousel Viewer itself*/
+	height: 170px; /*Height should enough to fit largest content's height*/
+	}
+
+	.stepcarousel .belt{
+	position: absolute; /*leave this value alone*/
+	left: 0;
+	top: 0;
+	}
+
+	.stepcarousel .panel{
+	float: left; /*leave this value alone*/
+	overflow: hidden; /*clip content that go outside dimensions of holding panel DIV*/
+	margin: 10px; /*margin around each panel*/
+	width: 150px; /*Width of each panel holding each content. If removed, widths should be individually defined on each content DIV then. */
+	}
+
+	</style>
+<% end %>
+<% content_for :javascripts do %>
+	<%= javascript_include_tag 'plugin/stepcarousel.js' %>
+<% end %>  
+  <script type="text/javascript">
+
+	stepcarousel.setup({
+		galleryid: 'mygallery', //id of carousel DIV
+		beltclass: 'belt', //class of inner "belt" DIV containing all the panel DIVs
+		panelclass: 'panel', //class of panel DIVs each holding content
+		panelbehavior: {speed:500, wraparound:false, persist:true},
+		defaultbuttons: {enable: true, moveby: 1, leftnav: ['/images/icon/next.gif', -5, 80], rightnav: ['/images/icon/pre.gif', -20, 80]},
+		statusvars: ['statusA', 'statusB', 'statusC'], //register 3 variables that contain current panel (start), current panel (last), and total panels
+		contenttype: ['inline'] //content setting ['inline'] or ['external', 'path_to_external_file']
+	})
+
+	</script>
+
+	<div id="mygallery" class="stepcarousel">
+	<div class="belt">
+	<% @vendor.attachments.each do |attachment| -%> 
+	 <div class="panel">
+		<%=link_to image_tag(attachment.public_filename(:thumb)) %> 
+	  </div>
+	 <% end -%>
+	</div>
+	</div>
+<% if false %>
+	<p>
+	<b>Current Panel:</b> <span id="statusA"></span> <b style="margin-left: 30px">Total Panels:</b> <span id="statusC"></span><br />
+
+	<a href="javascript:stepcarousel.stepBy('mygallery', -1)">Back 1 Panel</a> <a href="javascript:stepcarousel.stepBy('mygallery', 1)" style="margin-left: 80px">Forward 1 Panel</a> <br />
+
+	<a href="javascript:stepcarousel.stepTo('mygallery', 1)">To 1st Panel</a> <a href="javascript:stepcarousel.stepBy('mygallery', 2)" style="margin-left: 80px">Forward 2 Panels</a>
+
+	</p>
+<% end %>

@@ -1,0 +1,3 @@
+#page << "jQuery.facebox('#{(render :partial => '/shared/user_login_or_create').to_json}');" 
+
+page << "jQuery.facebox(#{(render :partial => '/shared/user_login_or_create').to_json})"

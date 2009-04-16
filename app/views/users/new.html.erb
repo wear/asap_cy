@@ -1,0 +1,24 @@
+<% content_for :head do %>
+	<%= stylesheet_link_tag 'form/structure.css' %>
+	<%= stylesheet_link_tag 'form/form.css' %>
+	<%= stylesheet_link_tag 'form/theme.css' %>
+<% end %>
+
+<% content_for :javascripts do -%>
+	<%= javascript_include_tag "form/wufoo.js" %>
+<% end -%>
+<div class="info">
+<h2>新用户注册</h2>
+<div>马上开始累积积分，换取丰厚奖励，享受品质服务！</div>
+</div>
+
+<ul>
+
+<% @user.password = @user.password_confirmation = nil %>
+<div class='span-10' style='padding-left:300px;'>
+	<%= error_messages_for :user %>
+		<% form_for @user,:html => {:class=> 'wufoo',:id=>'wufoo'} do |f| -%>
+			<%= render :partial => "form",:locals => {:f => f} %>
+		<li class="buttons"> <%= submit_tag '确定' %></li>
+	 <% end -%>   
+</div> 

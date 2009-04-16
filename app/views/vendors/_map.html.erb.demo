@@ -1,0 +1,54 @@
+<div id="map_canvas" style="width: 400px; height:300px"> </div>     
+
+<script type="text/javascript" charset="utf-8"> 
+	initLoader(); 
+	
+	var map = null;
+    var geocoder = null;
+
+	function mapsLoaded() {
+	  map = new google.maps.Map2(document.getElementById("map_canvas"));
+      geocoder = new GClientGeocoder();
+	  showAddress("上海市<%=@vendor.address.gsub(/\(\w+\)|\w+:/,'').split[0]%>")
+	}
+
+	function loadMaps() {
+	  google.load("maps", "2", {"callback" : mapsLoaded});
+	} 
+	
+	function showAddress(address) {
+      if (geocoder) {
+        geocoder.getLatLng(
+          address,
+          function(point) {
+            if (!point) {
+              alert("不能解析: " + address);
+            } else { 
+			html = "<%=@vendor.name%><br /><%=@vendor.address.chop!%>" 
+			var icon = new GIcon();
+			icon.image = "/images/icon/gicon.png";
+			icon.shadow = "/images/icon/gshadow.png";
+			icon.iconSize=new GSize(32,32);
+			icon.shadowSize=new GSize(21,32);
+			icon.iconAnchor=new GPoint(16,32);
+			icon.infoWindowAnchor=new GPoint(8,0);
+	        map.setCenter(point, 14);
+			map.addControl(new GSmallMapControl());
+	        var marker = new GMarker(point, icon ,html);
+	        map.addOverlay(marker);
+			marker.openInfoWindowHtml(html);
+
+            }
+          }
+        );
+      }
+    }
+
+	function initLoader() {
+		$('#map_canvas').innerHTML='loadding'
+	  var script = document.createElement("script");
+	  script.src = "http://www.google.com/jsapi?key=ABQIAAAAE4ZY3N7fdhJWRXy60lvXGRQvYf_AX_Bix1m0FsXeOxWAWuMNPhTY1VK6ugCiyhI0ERPS9Ou7WopMqg&callback=loadMaps";
+	  script.type = "text/javascript";
+	  document.getElementsByTagName("head")[0].appendChild(script);
+	}
+</script>

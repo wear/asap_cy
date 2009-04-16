@@ -1,0 +1,22 @@
+<% if logged_in? %>
+  <ul id='login'>
+	 <li><%=link_to '首页', '/' %></li> 
+	 <li><%=link_to nick_name_for(current_user), current_user %></li>
+	<% owner_scope do %> 
+	<li><%=link_to "打折",user_discounts_path(current_user) %></a> </li>
+	<% end -%>
+	<% admin_scope do %>
+       <li><%=link_to "后台管理","/admin" %></a> </li> 
+	<% end -%>
+       <li><%= link_to "注销", logout_path %></li>
+	<li><%= link_to '添加商户', new_vendor_path %></li>
+	<li><a href="/help" >使用帮助</a> </li>
+  </ul>
+<% else %>
+  <ul id='login'>
+       <li><%#=link_to "登陆",login_path %><a href="/login_box" rel="facebox">登陆</a> </li>
+       <li><%=link_to "注册",signup_path %></a></li>
+       <li><%=link_to "使用帮助",comatose_help_url%></a> </li>
+  </ul>
+<% end %> 
+  

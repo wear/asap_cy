@@ -1,0 +1,14 @@
+<div id="vendor-intro" class="span-15">
+	<ul>
+		<li class="vendor-desc"><span>简介:</span>地址: <%=h @vendor.address%>(靠近<%=h @vendor.nearby%>)<%=link_to image_tag('icon/maplocation.png',:style => 'margin-bottom:-10px;'),  map_vendor_path(@vendor), :target => '_blank'%> </li>
+		<li class="vendor-tags"><span>标签:</span>
+			<% @vendor.tags.each do |tag| -%>
+				<%= link_to tag.name, vendors_path(:query => tag.name )%>&nbsp;
+			<% end -%></li>
+		<li class="vendor-dishes"><span>特色菜:</span>
+			<% @vendor.dishes.each do |dish| -%>
+				<%= link_to dish.name, vendors_path(:query => dish.name )%>&nbsp;
+			<% end -%>
+			</li>
+	</ul>
+</div>    

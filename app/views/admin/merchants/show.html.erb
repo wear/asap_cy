@@ -1,0 +1,63 @@
+<% content_for :sidebar do %>
+	<h2>商户设置</h2>     
+	<ul>   
+ 		<li><%= link_to "编辑基本信息", edit_admin_merchant_path(@merchant) %></li> 
+		<li><%= link_to "为此商户增加用户", users_admin_merchant_path(@merchant) %></li> 
+ 		<li><%= link_to "为此商户增加门店", vendors_admin_merchant_path(@merchant) %></li> 
+	</ul>
+<% end %>
+<h3>基本信息</h3>
+<div id="box">
+	<p>
+		<span>名称:  </span> <%= @merchant.name %>
+	</p> 
+		<p> <span>联系人:</span><%= @merchant.contact %></p> 
+		<p> <span>联系电话:</span><%= @merchant.tel %></p>
+</div> 
+
+<h3>可打折用户</h3>
+	<div id="box">
+		<table>      
+			<tr>
+				<th>名称</th>
+				<th>email</th>
+				<th></th>         
+			</tr>
+		<% @merchant.users.each do |user| -%>
+			<% form_tag delete_user_admin_merchant_path(@merchant),:method => :put do -%> 
+				<tr>
+					<td><%=link_to user.login, user, :target =>"blank" %></td>
+					<td><%= user.email %></td>
+					<td><%= submit_tag "删除" %></td> 
+				</tr>
+				<p>
+			  <%= render :partial => 'hidden_form' %>     
+				<%= hidden_field_tag :user_id,user.id%>
+				<% end -%> 
+		<% end -%> 
+		</table> 
+	</div> 
+<h3>所有门店</h3>
+<div id="box"> 
+	<table>      
+		<tr>
+			<th>名称</th>
+			<th>别名</th>
+			<th>地址</th>
+			<th></th>  
+		</tr>                       
+	<% @merchant.vendors.each do |vendor| %>
+		<% form_tag delete_vendor_admin_merchant_path(@merchant),:method => :put do -%>
+			<tr>
+				<td><%=link_to vendor.name, vendor, :target =>"blank" %></td>
+				<td><%= vendor.alias %></td>
+				<td><%= vendor.address %></td> 
+				<td><%= submit_tag "删除" %></td> 
+			</tr>
+			<%= render :partial => 'hidden_form' %>
+
+			<%= hidden_field_tag :vendor_id,vendor.id %>  
+		<% end -%>    
+	<% end %> 
+			</table>       
+</div>

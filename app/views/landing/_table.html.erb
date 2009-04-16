@@ -1,0 +1,73 @@
+<% unless @vendors.blank? -%> 
+ 	<% content_for :javascripts do -%> 
+	<script src="/javascripts/plugin/tablesorter/jquery.tablesorter.mod.js" type="text/javascript"></script> 
+	<script src="/javascripts/plugin/tablesorter/jquery.tablesorter.collapsible.js" type="text/javascript"></script>  
+	<script type="text/javascript" charset="utf-8">
+	
+	var myTextExtraction = function(node)  
+	{  
+	    // extract data from markup and return it  
+	    return node.innerHTML;  
+	}
+	
+	$.tablesorter.addParser({ 
+	    // set a unique id 
+	    id: 'price', 
+	    is: function(s) { 
+	        // return false so this parser is not auto detected 
+	        return false; 
+	    }, 
+	    format: function(s) { 
+	        // format your data for normalization 
+	        return parseInt(s.replace('<span class="rmb">￥</span>',''));
+							        }, 
+							        // set type, either numeric or text 
+	     type: 'numeric' 
+	  });
+	
+	$(document).ready(function() { 
+	    $(".tablesorter").collapsible("td.collapsible", {
+									collapse: true
+								}).tablesorter({headers: {0: {sorter: false},1: {sorter: false}, 5:{ sorter: 'price'},7: {sorter: false}},
+								textExtraction: myTextExtraction,sortList: [[6,1]]}
+								); 
+								
+
+	  
+	   $("tr.first_row_class").hover(
+	   	function () {
+	   		$(this).children('td').attr("style","background-color:#e6edc1"); // row hilite colour
+	   	},
+	   	function () {
+	   		$(this).children('td').removeAttr("style"); 
+	   	}
+	   );
+	    
+		$('#expanded_all').click(function(){
+		   $("td.collapsible a").removeClass("expanded").click();
+		});
+		
+		$('#collapse_all').click(function(){
+		   $("td.collapsible a").addClass("expanded").click();
+		});
+		
+
+		$("tr.first_row_class").click(function(){         
+		   $(this).find('td.collapsible a').click();
+		   //return false;
+		});
+	}); 
+	
+	</script>    
+	<% end -%>
+<% end -%>  
+	<% if show_type == 'search' %>
+	   <div id="table-tip">
+		<ul>
+		   <li><%=link_to image_tag("mhqx_bg/back_bot.gif"),'#',:onclick => "javascript:history.back(-1);", :title=>"返回上一页"%></li>
+		   <li><span class='title'>查找结果:</span>有 <%= vendors.total_hits %> 家餐馆符合您的条件 <span class='light'><%= fomatted_query(@query) %> </span></li>
+			<li class='collapsible_tab'><%= render :partial => 'shared/collapsible' %></li>
+		</ul>	
+		</div>
+	<% end %> 
+	<%= render :partial => 'shared/vendors_table',:locals => { :vendors => vendors } %>

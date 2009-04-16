@@ -1,0 +1,12 @@
+<div class = "span-23">
+	<h2>订单信息</h2>
+	<p>日期:<%=@booking.date.strftime("%m-%d")%></p>  
+	<p>时间:<%=booktime(@booking.time_range)%></p> 
+	<p>人数:<%=@booking.guest_count%></p>
+	<h2>联系人</h2>
+   <p>名称:<%= @booking.contact %></p> 
+<p>手机:<%= @booking.mobile %></p> 
+<p>email:<%= @booking.email%></p> 
+</div>
+
+<%= link_to '编辑', edit_vendor_booking_path(@vendor) %> | <%= link_to "确定", run_vendor_booking_path(@vendor) %>

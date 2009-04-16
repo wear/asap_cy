@@ -1,0 +1,1 @@
+page.replace_html "map_#{@vendor.id}", :partial => 'vendors/map'

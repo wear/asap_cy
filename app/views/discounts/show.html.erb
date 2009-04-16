@@ -1,0 +1,38 @@
+<p>
+  <b>折扣:</b>
+  <%=h @discount.count %>
+</p>
+
+  
+<p>
+  <b>所用商户:</b> 
+<table>        
+	<tr>
+	<th>名称</th> 
+	<th>别名</th> 
+	<th>地址</th>
+	</tr>
+<% @discount.vendors.each do |vendor| -%> 
+<tr>
+  	<td><%=link_to h(vendor.name),vendor %> </td>
+	<td><%= vendor.alias %></td>
+	<td><%= vendor.address %></td>
+</tr>
+<% end -%>
+</table>
+</p>
+
+<p>
+  <b>日期:</b>
+  <%=distance_date(@discount.start_date,@discount.stop_date) %>
+</p>
+
+<p>
+  <b>时间:</b>
+  <%=distance_time(@discount.start_at,@discount.stop_at) %>           
+</p>
+<p>
+	<%= ad_for(@discount) %>
+</p>      
+<div style="font: 0px/0px sans-serif;clear: both;display: block"></div>       
+<%= link_to 'Back', user_discounts_path(current_user) %>

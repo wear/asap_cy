@@ -1,0 +1,18 @@
+<h1>Listing merchants</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for merchant in @merchants %>
+  <tr>
+    <td><%= link_to 'Show', merchant %></td>
+    <td><%= link_to 'Edit', edit_merchant_path(merchant) %></td>
+    <td><%= link_to 'Destroy', merchant, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New merchant', new_merchant_path %>

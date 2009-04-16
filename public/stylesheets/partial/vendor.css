@@ -1,0 +1,134 @@
+
+.vote {
+	margin:0px;
+	padding:0px;
+	}
+/*<![CDATA[*/
+.vote li{
+		float:left;
+		list-style-image:none;
+		list-style-position:outside;
+		list-style-type:none;
+		border-left:1px solid #FFFFFF;
+		background-image:url("/images/bg/vote_bg.gif");
+		background-position:bottom;
+		background-repeat:repeat-x;
+		color:#FFFFFF;
+       	height:35px;
+       	font:600 12px/30px Arial; 
+       	overflow:hidden;
+		}
+/*]]>*/		
+.vote span{
+	font-family:Georgia;
+	font-style:italic;
+	font-size:40px;
+	font-weight:bold;
+	margin-left:20px;
+		}
+
+#rating_area { float:left;}   	
+#booking_area{
+	padding:10px 20px;
+} 
+#discount_area{
+	margin:5px;
+	padding:0px 5px;
+	float:right;
+    border:1px solid #FFA724;
+	background-color:#FFFFCC;  
+}
+
+.d-head {  
+	width:100px;
+	height:20px;
+	font-weight: bold;   
+	padding: 0 0 1px 0;
+	margin-left:0;
+} 
+
+.d-head img {position:relative;top:6px;left:1px;}
+
+#d-content{
+	margin-top:5px;
+}
+
+.d-title{
+	font-size:24px;
+	color:#CC0000;
+	font-weight: bold;  
+}
+
+.d-time{                
+	font-size:14px;
+	font-weight: bold;  
+}
+
+#vendor-intro{
+	float:left;
+}
+#vendor-intro li span{
+   font-weight: bold;
+   margin-right:10px;
+}
+.vendor-desc{
+	list-style:none;
+	background:url("/images/icon/info.gif") no-repeat left 5px;
+	padding:5px 0 5px 30px;  
+}
+.vendor-tags{ 
+	list-style:none;
+	background:url("/images/icon/tags.gif") no-repeat left 5px;
+	padding:5px 0 5px 30px;
+}
+.vendor-dishes{ 
+	list-style:none;
+	background:url("/images/icon/dishes.gif") no-repeat left 5px;
+	padding:5px 0 5px 30px;
+}  
+
+
+#booking-form{ 
+
+	border-right:1px solid #CCCCCC;
+}
+
+.booking_right{
+	float:left;
+	width:300px;
+}
+
+#booking-vendor-info{
+	clear:both;
+	margin: 5px;
+	padding:10px;
+	border:1px solid #ececec;
+}
+
+.form-info{
+  padding:2px 12px;  
+} 
+
+#map{
+	float:left;
+	margin:10px;
+}
+
+#map_sidebar{
+	float:right;
+}
+
+#map_canvas{
+	width:500px;
+	height:300px;
+}
+
+h3{ 
+	padding-bottom:10px;
+	border-bottom: 1px solid #cccccc;
+}
+
+#photos{
+	margin:0px 30px;
+}   
+

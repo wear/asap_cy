@@ -1,0 +1,15 @@
+<% if current_user.admin? -%>
+<%=link_to '商家管理',admin_merchants_path%>
+<span class="separator"> | </span>   
+<%=link_to "门店管理",admin_vendors_path %>
+<span class="separator"> | </span> 
+<%=link_to '折扣管理',admin_discounts_path %> 
+<span class="separator"> | </span>   
+<%=link_to '用户管理',admin_users_path%> 
+<span class="separator"> | </span> 
+<%=link_to '点评管理',admin_reviews_path%>
+<span class="separator"> | </span> 
+<%=link_to '订单管理',admin_bookings_path%>
+<span class="separator"> | </span>
+<%=link_to '页面管理',"/admin/comatose"%>
+<% end -%>

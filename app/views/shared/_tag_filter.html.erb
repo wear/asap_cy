@@ -1,0 +1,21 @@
+
+<span>地区</span>  
+<ul>
+	<% @areas.each do |area| -%> 
+		<%=tag_filte(area,query)%>
+	<% end %>
+</ul>  
+<div class='line'>&nbsp;</div> 
+<span>菜系</span>  
+<ul>
+	<% @caixis.each do |caixi| -%> 
+		<%=tag_filte(caixi,query)%> 
+	<% end %>
+</ul>      
+<div class='line'>&nbsp;</div> 
+<span>均价</span>  
+<ul>
+	<% @avg_prices.each do |price| -%> 
+		<%=tag_filte(price,query)%> 
+	<% end %>
+</ul>

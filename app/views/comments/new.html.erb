@@ -1,0 +1,15 @@
+
+<%= render :partial => "/shared/review", :locals =>{ :vendor => @vendor, :limit => true,:avatar => true, :show_title => true } %>  
+<div id="comment">
+
+<h3>新建评论</h3>
+
+<% form_for(@comment,:url => vendor_review_comments_path(@vendor,@review)) do |f| %>
+  <%= f.error_messages %>
+ <%= render :partial => 'form', :locals => {:f => f}%>   
+
+  <p>
+    <%= f.submit "确定" %>
+  </p>
+<% end %>
+</div> 

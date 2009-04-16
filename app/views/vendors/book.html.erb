@@ -1,0 +1,30 @@
+<div id="booking_form">
+	<div id='top'>
+	   <a href="#" onclick="hideinfowindow();return false;" id="info_window_close_button">Close</a> 
+	</div>
+<div id="middle">
+	<div id="flash_error">
+		
+	</div>
+	<div class='span-4'>
+ 		<h3>注册用户预定</h3>
+		<% form_remote_tag :url => vendor_bookings_path(@vendor) do -%>
+			<%= render :partial => '/sessions/form' %> 
+			<p><%= submit_tag 'Log in' %></p>          
+		<% end -%>   
+	</div> 
+
+	<div class='span-5'>
+	  	<h3>手机预定</h3>
+	<% form_remote_tag :url => vendor_bookings_path(@vendor) do -%>
+		<p><%= label_tag 'mobile' %><br/>  
+		<%= text_field_tag :mobile %></p>
+		<p><%= submit_tag 'Log in' %></p>  
+	<% end -%>
+	</div>
+</div>
+
+	<div id="bottom">
+	</div>
+</div> 
+                           

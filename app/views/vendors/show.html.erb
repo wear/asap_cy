@@ -1,0 +1,47 @@
+<% content_for :head do %>
+	<%= stylesheet_link_tag "facebox.css" -%>
+	<style type="text/css" media="screen"></style> 
+<% end -%>
+
+<% content_for :javascripts do -%>
+	<%= javascript_include_tag "facebox.js" %>
+<% end -%>
+
+<% page_nav(link_to(@vendor.area.parent.name,@vendor.area.parent) + ' - ' + link_to(@vendor.area.name,@vendor.area) + ' - ' + link_to(@vendor.name,@vendor)) %>
+
+
+<div id="top-title">
+  <%=full_name_for @vendor %>  
+</div>
+<div class="span-10" id= 'rating_area'>
+	<%= render :partial => '/shared/ratings',:locals => { :vendor => @vendor,:write_review => true } %>   
+</div>  
+<div class="span-5" id='booking_area'> 
+		<%=online_booking_link(@vendor) %>
+</div>
+    
+	<%= render :partial => 'discount_area' unless @vendor.discount.nil? %> 
+
+	<%= render :partial => 'intro' %>
+                                                                     
+<div style="font: 0px/0px sans-serif;clear: both;display: block"></div> 
+<% unless @vendor.attachments.blank? %>
+	<h3>所有图片</h3>
+	<div id="photos">
+	 <%= render :partial => '/shared/photos' %>   
+	</div>         
+<% end %>  
+<div style="font: 0px/0px sans-serif;clear: both;display: block"></div>  
+<div id="reviews">
+	<h3>所有点评</h3>
+	<%= render :partial => "/shared/review", :collection => @vendor.reviews, :locals =>{ :limit => true,:avatar => true, :show_title => false } %>
+</div>    
+<div style="font: 0px/0px sans-serif;clear: both;display: block"></div> 
+<div id="my-review">
+	  <% if logged_in? -%> 
+		<%= render :partial => 'my_review' %>
+		<% else -%>
+		请<%=link_to "登陆",login_path %>后发布评论
+	  <% end %>
+</div>
+

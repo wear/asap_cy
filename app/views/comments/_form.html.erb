@@ -1,0 +1,6 @@
+  <p>
+    <%= f.label '内容' %><br />
+    <%= f.text_area :body,:cols => 50, :rows => 10 %>
+  </p>
+
+    <%= f.hidden_field :user_id,:value => current_user.id %>           

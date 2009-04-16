@@ -1,0 +1,13 @@
+<% sub_title(nick_name_for(@review.user)+'的点评')%>
+<div id="reviews">
+	<p>  
+		<%=link_to @review.vendor.name,vendor_path(@review.vendor),:class => 'title' %> <br />
+		<%= render :partial => "/shared/review", :locals => { :review =>  @review, :limit => false } %> 
+	 </p>
+</div> 
+
+<div id="comment"> 
+	<h3>所有回复</h3>
+	  <%= render :partial => '/shared/comment',:collection => @review.comments, :locals => {:limit => true}%>
+</div>
+

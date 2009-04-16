@@ -1,0 +1,499 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  name: 菜系
+  parent_id:  
+  order: 1
+
+first:
+  id: 2
+  name: 本帮江浙
+  parent_id: 1 
+  order: 2
+
+two:
+  id: 3 
+  name: 本帮
+  parent_id: 2
+  order: 3
+
+three:
+  id: 4
+  name: 杭帮
+  parent_id: 2
+  order: 3
+
+four:
+  id: 5 
+  name: 宁波
+  parent_id: 2
+  order: 3
+
+five:
+  id: 6
+  name: 淮扬
+  parent_id: 2
+  order: 3
+
+six:  
+  id: 7
+  name: 绍兴
+  parent_id: 2
+  order: 3
+
+seven:
+  id: 8
+  name: 蟹宴
+  parent_id: 2
+  order: 3
+
+eight:
+  id: 9
+  name: 其它江浙
+  parent_id: 2
+  order: 3
+
+night:
+  id: 10
+  name: 粤菜
+  parent_id: 1
+  order: 2
+
+ten:
+  id: 11
+  name: 粤菜
+  parent_id: 10
+  order: 3
+
+eleven:
+  id: 12
+  name: 茶餐厅
+  parent_id: 10
+  order: 3
+
+twelfth:
+  id: 13
+  name: 燕翅鲍
+  parent_id: 10
+  order: 3
+
+thirteen:
+  id: 14
+  name: 火锅
+  parent_id: 1
+  order: 2
+
+fourteen:
+  id: 15
+  name: 涮羊肉
+  parent_id: 14
+  order: 3
+
+fifteen:
+  id: 16
+  name: 火锅
+  parent_id: 14
+  order: 3
+
+sixteen:
+  id: 17
+  name: 小吃简餐
+  parent_id: 1
+  order: 2 
+
+eighteen:
+  id: 18
+  name: 快餐简餐
+  parent_id: 17
+  order: 3
+
+ninteen:
+  id: 19
+  name: 小吃
+  parent_id: 17
+  order: 3
+
+twenty:
+  id: 20
+  name: 锅贴
+  parent_id: 17
+  order: 3
+
+twenty-one:
+  id: 21
+  name: 小龙虾
+  parent_id: 17
+  order: 3
+
+twenty-two:
+  id: 22
+  name: 生煎
+  parent_id: 17
+  order: 3
+
+twenty-three:
+  id: 23
+  name: 小笼
+  parent_id: 17
+  order: 3 
+  
+twenty-four:
+  id: 24
+  name: 面馆
+  parent_id: 17
+  order: 3
+
+twenty-five:
+  id: 25
+  name: 烧烤
+  parent_id: 17
+  order: 3
+
+twenty-six:
+  id: 26
+  name: 米粉
+  parent_id: 17
+  order: 3
+
+twenty-eight:
+  id: 27
+  name: 麻辣烫
+  parent_id: 17
+  order: 3
+
+twenty-nine:
+  id: 28
+  name: 熟食
+  parent_id: 17
+  order: 3
+
+thirty:
+  id: 29
+  name: 零食
+  parent_id: 17
+  order: 3
+
+thirty-one:
+  id: 30
+  name: 馄饨
+  parent_id: 17
+  order: 3
+
+thirty-two:
+  id: 31
+  name: 白斩鸡
+  parent_id: 17
+  order: 3
+
+thirty-two:
+  id: 32
+  name: 日本
+  parent_id: 1
+  order: 2  
+  
+thirty-three:
+  id: 33
+  name: 日本料理
+  parent_id: 32
+  order: 3
+
+thirty-four:
+  id: 34
+  name: 日式烧烤
+  parent_id: 32
+  order: 3
+
+thirty-five:
+  id: 35
+  name: 日式简餐
+  parent_id: 32
+  order: 3
+
+thirty-six:
+  id: 36
+  name: 东南亚
+  parent_id: 1
+  order: 2
+
+thirty-seven:
+  id: 37
+  name: 泰国
+  parent_id: 36
+  order: 3
+
+thirty-eight:
+  id: 38
+  name: 新加坡
+  parent_id: 36
+  order: 3
+
+thirty-nine:
+  id: 39
+  name: 印度
+  parent_id: 36
+  order: 3
+
+fourty:
+  id: 40
+  name: 越南
+  parent_id: 36
+  order: 3 
+  
+fourty-one:
+  id: 41
+  name: 西餐
+  parent_id: 1
+  order: 2
+
+fourty-two:
+  id: 42
+  name: 法国
+  parent_id: 41
+  order: 3  
+
+fourty-three:
+  id: 43
+  name: 意大利
+  parent_id: 41
+  order: 3
+
+fourty-four:
+  id: 44
+  name: 西班牙
+  parent_id: 41
+  order: 3
+
+fourty-five:
+  id: 45
+  name: 比萨
+  parent_id: 41
+  order: 3
+
+fourty-six:
+  id: 46
+  name: 西式简餐
+  parent_id: 41
+  order: 3
+
+fourty-seven:
+  id: 47
+  name: 拉美烧烤
+  parent_id: 41
+  order: 3
+
+fourty-eight:
+  id: 48
+  name: 其它西餐
+  parent_id: 41
+  order: 3
+
+fourty-nine:
+  id: 49
+  name: 中东
+  parent_id: 41
+  order: 3
+
+fifty:
+  id: 50
+  name: 牛排
+  parent_id: 41
+  order: 3
+
+fifty-one:
+  id: 51
+  name: 面包甜点
+  parent_id: 1
+  order: 2
+
+fifty-two:
+  id: 52
+  name: 面包
+  parent_id: 51
+  order: 3  
+
+fifty-three:
+  id: 53
+  name: 冰激凌
+  parent_id: 51
+  order: 3
+
+fifty-four:
+  id: 54
+  name: 港台甜品
+  parent_id: 51
+  order: 3
+
+fifty-five:
+  id: 55
+  name: 西式甜点
+  parent_id: 51
+  order: 3
+
+fifty-six:
+  id: 56
+  name: 饮品
+  parent_id: 51
+  order: 3
+
+fourty-seven:
+  id: 57
+  name: 其他
+  parent_id: 1
+  order: 1
+
+fourty-eight:
+  id: 58
+  name: 北京
+  parent_id: 57
+  order: 3
+
+fourty-nine:
+  id: 59
+  name: 湖北
+  parent_id: 57
+  order: 3 
+
+sixty:
+  id: 60
+  name: 江西
+  parent_id: 57
+  order: 3
+  
+sixty-one:
+  id: 61
+  name: 云南
+  parent_id: 57
+  order: 3
+
+sixty-two:
+  id: 62
+  name: 酒吧
+  parent_id: 57
+  order: 3  
+
+sixty-three:
+  id: 63
+  name: 咖啡厅
+  parent_id: 57
+  order: 3
+
+sixty-four:
+  id: 64
+  name: 茶室
+  parent_id: 57
+  order: 3
+
+sixty-five:
+  id: 65
+  name: 创意菜
+  parent_id: 57
+  order: 3  
+  
+sixty-six:
+  id: 66
+  name: 闽菜
+  parent_id: 57
+  order: 3
+
+sixty-seven:
+  id: 67
+  name: 海鲜
+  parent_id: 57
+  order: 3
+
+sixty-eight:
+  id: 68
+  name: 其它中餐
+  parent_id: 57
+  order: 3
+
+sixty-nine:
+  id: 69
+  name: 川菜
+  parent_id: 1
+  order: 2  
+
+seventy:
+  id: 70
+  name: 自助餐
+  parent_id: 1
+  order: 2
+
+seventy-one:
+  id: 71
+  name: 湘菜
+  parent_id: 1
+  order: 2
+
+seventy-two:
+  id: 72
+  name: 台湾
+  parent_id: 1
+  order: 2
+  
+seventy-three:
+  id: 73
+  name: 东北
+  parent_id: 1
+  order: 2
+
+seventy-four:
+  id: 74
+  name: 新疆清真
+  parent_id: 1
+  order: 2 
+  
+seventy-five:
+  id: 75
+  name: 贵州
+  parent_id: 1
+  order: 2
+
+seventy-six:
+  id: 76
+  name: 素菜
+  parent_id: 1
+  order: 2
+
+seventy-seven:
+  id: 77
+  name: 均价
+  parent_id: 
+  order: 1 
+
+seventy-eight:
+  id: 78
+  name: 20-50
+  parent_id: 77 
+  order: 2
+
+seventy-nine:
+  id: 79
+  name: 51-80
+  parent_id: 77 
+  order: 2
+  
+eighty:
+  id: 80
+  name: 81-121
+  parent_id: 77 
+  order: 2
+  
+eight-one:
+  id: 81
+  name: 121-200
+  parent_id: 77 
+  order: 2
+
+eight-two:
+  id: 82
+  name: 201以上
+  parent_id: 77 
+  order: 2
+
+eight-three:
+  id: 83
+  name: 韩国
+  parent_id: 1 
+  order: 1 

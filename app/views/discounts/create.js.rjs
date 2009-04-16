@@ -1,0 +1,8 @@
+page.replace_html "msg_div", flash_div 
+page.replace_html "vendor_discounts",:partial => 'vendor_discounts', :locals => { :vendor_discounts => @user.discounts }
+page.visual_effect :highlight, "vendor_dicounts", :duration => 1
+page["discount_form"].reset 
+flash.discard 
+
+  
+

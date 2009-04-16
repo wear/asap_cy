@@ -1,0 +1,18 @@
+<% if ENV['RAILS_ENV'] == 'development' %>   
+  <p>
+  <% if User.find_by_login('quentin') %>
+    Login with <b>quentin/monkey</b> role as admin area or <b>aaron/monkey</b> role as owner to access merchant page.
+  <% else %>
+    <h3>Run rake db:bootstrap to setup startup data.</h3>
+  <% end %>
+  </p>
+<% end %>
+
+<h1>登陆</h1>      
+    
+<% form_remote_tag :url => session_path do -%> 
+<div id = 'login-form'>     
+	<%= render :partial => 'sessions/form' %>    
+</div>
+<p><%= submit_tag '确定' %></p>
+<% end -%>

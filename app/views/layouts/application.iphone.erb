@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charjuqeset=UTF-8" />
+  <title></title>
+  <meta name = "viewport" content = "width = device-width, user-scalable=no 
+      minimum-scale=1.0 maximum-scale=1.0"> 
+  <%= javascript_include_tag :defaults %>
+  <%= stylesheet_link_tag "style_iphone.css", :media => "screen, print" %>
+  <%= stylesheet_link_tag "star_rating.css", :media => "screen, print" %> 
+  <%= include_tank_engine_files %>
+  <%= yield :jquery %>
+  <%= javascript_include_tag "tank_engine" %>
+</head>
+<body>
+  <%= yield :toolbar %> 
+ <div id="vendors" > 
+  <%= iui_toolbar "满汉全席 餐饮打折平台 ( 上海 ) ", new_search_vendors_path %>  
+  <%= yield %>
+  <div id="foot">
+  	   版权所有 满汉全席
+  </div>
+</div>
+</body>
+</html>

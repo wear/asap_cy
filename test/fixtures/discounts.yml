@@ -1,0 +1,35 @@
+# == Schema Information
+# Schema version: 20081223080043
+#
+# Table name: discounts
+#
+#  id          :integer(4)      not null, primary key
+#  user_id     :integer(4)
+#  count       :float
+#  created_at  :datetime
+#  updated_at  :datetime
+#  description :string(255)
+#  start_date  :date
+#  stop_date   :date
+#  start_at    :time
+#  stop_at     :time
+#  name        :string(255)
+#  version     :integer(4)      default(1)
+#  status      :string(255)
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user: 
+  count: 1.5
+  vendor: 
+  start_at: 2008-10-17 10:12:04
+  stop_at: 2008-10-17 10:12:04
+
+two:
+  user: 
+  count: 1.5
+  vendor: 
+  start_at: 2008-10-17 10:12:04
+  stop_at: 2008-10-17 10:12:04

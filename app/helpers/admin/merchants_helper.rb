@@ -1,0 +1,3 @@
+module Admin::MerchantsHelper
+
+end

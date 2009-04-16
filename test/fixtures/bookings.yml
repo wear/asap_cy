@@ -1,0 +1,34 @@
+# == Schema Information
+# Schema version: 20081223080043
+#
+# Table name: bookings
+#
+#  id               :integer(4)      not null, primary key
+#  vendor_id        :integer(4)
+#  created_at       :datetime
+#  updated_at       :datetime
+#  date             :datetime
+#  time_range       :integer(4)
+#  guest_count      :integer(4)
+#  requirment       :string(255)
+#  bookable_id      :integer(4)
+#  bookable_type    :string(255)
+#  contact          :string(255)
+#  email            :string(255)
+#  mobile           :string(255)
+#  discount_id      :integer(4)
+#  discount_version :integer(4)
+#  status           :string(255)
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user: 
+  vendor: 
+  discount: 
+
+two:
+  user: 
+  vendor: 
+  discount: 

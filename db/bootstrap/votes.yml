@@ -1,0 +1,42 @@
+# == Schema Information
+# Schema version: 20080924084943
+#
+# Table name: votes
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+v_one:
+ name: 口味
+ short_name: taste
+ category_id: 1
+ spec: 1
+
+v_two:
+ name: 环境
+ short_name: env     
+ category_id: 1        
+ spec: 1
+
+v_three:
+ name: 服务
+ short_name: service     
+ category_id: 1        
+ spec: 1
+
+v_four:
+ name: 人均
+ short_name: avg     
+ category_id: 1        
+ spec: 2
+
+v_five:
+ name: 总评
+ short_name: sum     
+ category_id: 1        
+ spec: 3

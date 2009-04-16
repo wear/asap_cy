@@ -1,0 +1,66 @@
+<% content_for :head do %>
+	<%= stylesheet_link_tag 'partial/cropper.css' %>  
+<% end %>
+
+<% content_for :javascripts do %>
+<%= javascript_include_tag "prototype.js", "effects.js", "controls.js", "dragdrop.js" %>
+<%= javascript_include_tag 'builder.js', 'cropper.js' %>  
+    
+<script type="text/javascript" charset="utf-8">
+		
+		function onEndCrop( coords, dimensions ) {
+			$( 'x1' ).value = coords.x1;
+			$( 'y1' ).value = coords.y1;
+			$( 'x2' ).value = coords.x2;
+			$( 'y2' ).value = coords.y2;
+		}
+		
+		// example with a preview of crop results, must have minimumm dimensions
+		Event.observe( 
+			window, 
+			'load', 
+			function() { 
+				new Cropper.ImgWithPreview( 
+					'avatarImage',
+					{ 
+						minWidth: 30, 
+						minHeight: 30,
+						ratioDim: {x: $('avatarImage').width /2, y: $('avatarImage').width /2},
+						displayOnInit: true, 
+						onEndCrop: onEndCrop,
+						previewWrap: 'previewArea'
+					} 
+				) 
+			} 
+		);
+</script>
+<% end %>
+<h3>更新头像</h3>
+<%= avatar_for @user, 48 %>  
+
+<% if !@user.original_avatar_path.blank? -%>
+    <p>预览</p>
+    <div id="previewArea"></div>
+    <p>现图</p>
+    <p><%= image_tag image_path(@user.original_avatar_path), :id => "avatarImage"  %></p>
+    
+    <% form_for @user do |form| %>
+      <%= form.hidden_field :avatar_left, :id => 'x1' %>
+      <%= form.hidden_field :avatar_top, :id => 'y1' %>      
+      <%= form.hidden_field :avatar_right, :id => 'x2' %>
+      <%= form.hidden_field :avatar_bottom, :id => 'y2' %>
+      <%= submit_tag '保存' %>
+    <% end %> 
+<% end %>
+
+  <% form_for @user, :html => { :multipart => true } do |form| %>
+    <p>
+      <label for="avatar">上传一个头像</label> 
+      <%= form.file_field :avatar_data %> <br /> 
+	  <i>你可以在上传后对头像裁切已达到满意的效果.</i>
+    </p>
+  
+    <p>  
+      <%= submit_tag '上传' %>
+    </p>
+  <% end %>                                           

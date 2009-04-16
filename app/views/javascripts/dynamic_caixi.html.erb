@@ -1,0 +1,25 @@
+var types = new Array();
+<% for type in @types -%>
+  types.push(new Array(<%= type.parent_id %>, '<%=h type.name %>', <%= type.id %>));
+<% end -%>
+
+function caixiSelected() {
+  caixi_id = $('caixi_id').getValue();
+  options = $('caixi_child_id').options;
+  options.length = 1;
+  types.each(function(type) {
+    if (type[0] == caixi_id) {
+      options[options.length] = new Option(type[1], type[2]);
+    }
+  });
+  if (options.length == 1) {
+    $('caixi_child_field').hide();
+  } else {
+    $('caixi_child_field').show();
+  }
+}
+
+document.observe('dom:loaded', function() {
+  caixiSelected();
+  $('caixi_id').observe('change', caixiSelected);
+});

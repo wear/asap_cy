@@ -1,0 +1,9 @@
+<div id="recent_reviews">
+	<% @reviews.each do |review| -%>
+	<p>
+		<%=link_to review.vendor.name,vendor_path(review.vendor),:class => 'title' %> <br />
+		<%= render :partial => "/shared/review", :locals => { :review => review, :limit => true, :avatar => false, :show_title => false } %>
+	 </p>
+	<% end %>
+</div>
+

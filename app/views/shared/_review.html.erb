@@ -1,0 +1,29 @@
+<div style='clear:both;'>
+<% if avatar -%>
+   <div class='span-2' style='text-align:center;margin-top:10px'>
+   	   <%=link_to avatar_for(review.user),profile_user_path(review.user) %> <br />
+ 	   <%=link_to nick_name_for(review.user),profile_user_path(review.user)%>
+   </div> 
+<% end -%>
+<div class='span-12'>
+	<% if show_title -%>
+		<%=link_to full_name_for(review.vendor),review.vendor,:class=>'title' %>  <br />
+	<% end -%>
+<% review.ratings.each do |rate| -%>
+   <%= rate.vote.name %>: <%=rate.score %> 
+<% end -%><br /> 
+<% if limit && review.body.size > 360 -%>
+	 <%=formatted_content(review) %>  <br /> 
+<% else %>
+	<%= display_br(review.body) %>
+<% end %> <br />
+特色菜:<%= review.dish_list %><br /> 
+标签:<%= review.tag_list %><br /> 
+<span class = 'time-stamp' >
+<%= review.created_at.to_s(:db)%> 
+</span> <%= link_to '回复', new_vendor_review_comment_path(review.vendor,review)%>
+<% current_user_scope(review.user) do%>
+	<%=link_to "编辑", edit_user_review_path(review.user,review)%>
+<% end %> 
+</div> 
+</div>

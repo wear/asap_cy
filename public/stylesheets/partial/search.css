@@ -1,0 +1,70 @@
+
+/*-------------filter--------------*/   
+
+#search-filter{  
+	float:left;
+	width:25%;
+	border:1px solid #EFEFEF;
+	background:#F5F5F5;
+	margin:5px 0px;
+	padding:10px;
+	margin-bottom:10px;
+
+} 
+
+#results{  
+	float:right;
+	margin－left:20px;
+} 
+
+#res-title a { 
+	color: #0066CC;
+	text-decoration:underline;
+	font-weight: bold;
+}
+#res-title a:link,a:visited{color: #444444;}
+#res-title a:hover{color: #0033CC;text-decoration:none;}
+
+.vendor-rating{
+	border:0px;
+	background:#FFFFFF;
+	margin:0px;
+	padding:0px;
+}    
+
+#res-item{  
+	clear:both; 
+}   
+
+#results-header{
+  background: #F1F1F1;
+  border: 1px solid #E5E5E5;
+  height: 20px;
+  padding: 10px 2em;
+}
+#results-header .tips{
+	float:left;
+}             
+#results-header .pagination{
+	float:right;
+} 
+
+#result-filter{
+	float:right;
+
+	margin:10px;
+} 
+
+
+  .apple_pagination a, .apple_pagination span {
+    padding: .2em .3em; }
+  .apple_pagination span.disabled {
+    color: #AAA; }
+  .apple_pagination span.current {
+    font-weight: bold;
+    background: transparent url(/images/bg/apple-circle.gif) no-repeat 50% 50%; }
+  .apple_pagination a {
+    text-decoration: none;
+    color: black; }
+    .apple_pagination a:hover, .apple_pagination a:focus {
+      text-decoration: underline; }

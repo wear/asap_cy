@@ -1,0 +1,21 @@
+<div id="right-box" class='span-6'>
+	<div id="box-title">
+		茶余饭后
+	</div>
+	<div id="box-content"> 
+			<ul class='recent-reviews'>  
+	   <% @recent_reviews.each do |review| -%>
+				<li>
+				<div style='width:50px;float:left;text-align:center;'>
+					<%=link_to avatar_for(review.user),profile_user_path(review.user) %> <br />
+				 		<%= nick_name_for review.user %>
+				</div>
+				<div style='width:120px;float:right;padding:5px;'>
+					<%=link_to truncate(review.body,30),vendor_review_path(review.vendor,review) %>
+				</div>
+				</li>
+
+		<% end -%>   
+		  </ul>   
+	</div>
+</div>

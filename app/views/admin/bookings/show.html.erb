@@ -1,0 +1,33 @@
+
+<h1>订单</h1> 
+<h3>商户信息</h3>
+<div id="box">
+	<%= render :partial => 'vendor', :locals => { :vendor => @booking.vendor } %>
+<h3>订单信息</h3>
+<div id="box">
+	<p>就餐时间:<%=format_booking_time(@booking)%></p> 
+	<p>就餐人数: <%= @booking.guest_count %></p> 
+	<p>预定帐号: <%= booking_user_name(@booking.bookable) %></p>  
+	<p>其他说明: <%=h @booking.requirment %></p>
+	
+</div>                            
+<% unless @booking.discount.nil? %>
+<h3>折扣信息</h3>
+<div id="box"> 
+	<p>事由: <%= @booking.discount.name %></p>
+	<p>折扣: <%= @booking.discount.count%></p>
+	<p>时间: <%= full_distance_time(@booking.discount) %></p>
+	<p>其他说明: <%=h @booking.discount.description %></p>
+</div>
+<% end %>
+<h3>联系人信息</h3>
+<div id="box">
+	<p>联系人名称: <%=h @booking.contact %></p>
+	<p>联系电话:  <%= @booking.mobile %></p>
+</div>
+<h3>联系人信息</h3>
+<div id="box">
+	<%= booking_state @booking %>
+</div> 
+<p>
+<%= edit_booking_state(@booking) %></p>  

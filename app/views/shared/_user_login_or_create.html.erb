@@ -1,0 +1,26 @@
+<div id="form_with_two">
+
+<div id="middle">
+	<div id="flash_error">
+		
+	</div>
+	<div class='span-4'>
+ 		<h3>登陆</h3>
+		<% form_tag session_path do -%>  
+			<%= render :partial => '/sessions/form' %>
+			<p><%= submit_tag 'Log in' %></p>          
+		<% end -%>   
+	</div> 
+
+	<div class='span-5'>
+	  	<h3>注册</h3>
+		<% form_for :user, :url => users_path do |f| -%> 
+			<%= render :partial => '/users/form', :locals => { :f => f } %>
+		<p><%= submit_tag 'Sign up' %></p>
+		<% end -%>
+	</div>
+</div>
+
+	<div id="bottom">
+	</div>
+</div>

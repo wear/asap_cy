@@ -1,0 +1,44 @@
+<% owner_scope do -%>
+<h4>折扣管理</h4>      
+<div id='nav_list'>
+	<ul>  
+		<li>
+			<%=link_to "新建打折", new_user_discount_path(current_user)%>
+		 </li>
+		<li>
+			<%=link_to "管理打折", user_discounts_path(current_user)%>
+		 </li> 
+		<li>
+			<%=link_to "商户管理", merchant_path(current_user.merchant)%>
+			</li>
+	</ul>
+</div> 
+ <% end -%>  
+	<h4>订单管理</h4> 
+<div id="nav_list"> 
+	<ul>
+   	<li>
+		<%=link_to "预定记录", user_bookings_path(current_user)%>
+	 </li>
+	<li>
+   		<%=link_to "我的点评", user_reviews_path(current_user)%>	
+	</li>
+	</ul> 
+</div>  
+<h4>个人信息管理</h4>  
+<div id="nav_list">
+   <ul> 
+	<li>
+   		<%=link_to "个人信息", user_path(current_user)%>	
+	</li>
+	<li>
+		<%=link_to "个人设定", setting_user_path(current_user)%>
+	 </li>
+	<li>
+		<%=link_to "更新头像", avatar_user_path(current_user)%>
+	</li>
+	<li>
+		<%=link_to "修改密码", password_user_path(current_user)%>
+	 </li>
+	</ul>
+</div>       

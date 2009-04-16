@@ -1,0 +1,7 @@
+<div id="categories">   
+	<%= render :partial => "/shared/filter_more", :locals => { :filters => show_filter(@area) }%>
+</div>        
+
+<div id="right-content" class='span-16 last'>
+	<%= render :partial => '/landing/table',:locals => { :show_type => 'search', :vendors => @vendors} %>
+</div>

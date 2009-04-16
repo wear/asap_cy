@@ -1,0 +1,8 @@
+
+	<div id="vendor">
+		<% form_tag search_vendors_path,:method=>:get do%>           
+			<%= text_field_tag :query,params[:query] %>
+			<%= submit_tag "搜索"%>
+		<% end %>
+	</div>
+

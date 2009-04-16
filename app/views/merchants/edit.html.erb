@@ -1,0 +1,14 @@
+<h1>编辑商户</h1>
+
+<% form_for(@merchant) do |f| %>
+  <%= f.error_messages %>
+   <p>
+	<%= f.text_field :name %>
+	</p>
+  <p>
+    <%= f.submit "更新" %>
+  </p>
+<% end %>
+
+<%= link_to '显示', @merchant %>
+

@@ -1,0 +1,21 @@
+one:
+  id: 1
+  discount_id: 2
+  name: 圣诞夜狂欢 
+  count: 7.5
+  description: 年终店庆吃喝100即返50
+  start_date: 2008-11-22 
+  stop_date: 2008-11-27
+  start_at: 2000-01-01 12:00:00
+  stop_at:  2000-01-01 23:00:00
+  
+one:
+  id: 1
+  discount_id: 1
+  name: 圣诞夜狂欢 
+  count: 7.5
+  description: 年终店庆吃喝100即返50
+  start_date: 2008-11-22 
+  stop_date: 2008-11-27
+  start_at: 2000-01-01 12:00:00
+  stop_at:  2000-01-01 23:00:00

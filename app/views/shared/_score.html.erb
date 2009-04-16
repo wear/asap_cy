@@ -1,0 +1,11 @@
+<div id="score">
+   	<span class='based-on'>共计<b><%=(vendor.reviews_count)%></b>次点评
+	</span>
+	<ul class='vote'>
+	<% vendor.common_rates.each do |rate|  -%>
+		<li >
+			<%= rate.vote.name%><span><%= rate.score.to_i %></span>
+		</li>
+	<%end -%>
+	</ul> 
+</div>  

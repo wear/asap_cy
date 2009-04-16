@@ -1,0 +1,18 @@
+# == Schema Information
+# Schema version: 20081223080043
+#
+# Table name: mobile_users
+#
+#  id         :integer(4)      not null, primary key
+#  mobile     :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value
