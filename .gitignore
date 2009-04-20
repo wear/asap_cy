@@ -1,5 +1,15 @@
+.DS_Store
 log/*.log
 tmp/**/*
 config/database.yml
 db/*.sqlite3
 index/**/**/*
+log/*.pid
+public/about/*
+public/cache/*
+public/help/*
+public/index.html
+public/javascripts/all.js
+public/javascripts/tablesorter.js
+public/stylesheets/all.css
+

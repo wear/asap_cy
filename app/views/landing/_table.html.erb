@@ -1,7 +1,6 @@
 <% unless @vendors.blank? -%> 
  	<% content_for :javascripts do -%> 
-	<script src="/javascripts/plugin/tablesorter/jquery.tablesorter.mod.js" type="text/javascript"></script> 
-	<script src="/javascripts/plugin/tablesorter/jquery.tablesorter.collapsible.js" type="text/javascript"></script>  
+	<%= javascript_include_tag  'plugin/tablesorter/jquery.tablesorter.mod','plugin/tablesorter/jquery.tablesorter.collapsible',:cache => 'tablesorter' %>
 	<script type="text/javascript" charset="utf-8">
 	
 	var myTextExtraction = function(node)  

@@ -1,6 +1,5 @@
 class VendorsController < ApplicationController
 
-  acts_as_iphone_controller   
 #  after_filter :store_location, :only => [:index, :new, :show, :edit]
 #  before_filter :login_required, :only => [:edit,:update,:new,:create]
 
@@ -17,7 +16,7 @@ class VendorsController < ApplicationController
     @avg_prices = Type.find(:all,:conditions => ['parent_id =?',77])
     respond_to do |wants|
      wants.html {}
-     wants.iphone { }
+ #    wants.iphone { }
     end
   end
   
@@ -39,7 +38,7 @@ class VendorsController < ApplicationController
       wants.html {  }
       wants.js { }
       
-      wants.iphone {}
+  #    wants.iphone {}
     end
   end
   
@@ -48,7 +47,7 @@ class VendorsController < ApplicationController
     respond_to do |wants|
       wants.html {  }
       wants.js { }
-      wants.iphone {}
+   #   wants.iphone {}
     end
   end
   
@@ -77,7 +76,7 @@ class VendorsController < ApplicationController
       @vendors = Vendor.full_text_search(@query,{:per_page => 50,:page => params[:page]},{},@sort)
     respond_to do |wants|
       wants.html { }
-      wants.iphone {  }
+    #  wants.iphone {  }
     end
   end
   

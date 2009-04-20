@@ -1,6 +1,6 @@
 class LandingController < ApplicationController 
   caches_page :index
-  acts_as_iphone_controller
+#  acts_as_iphone_controller
   
   def index 
      build_sort 
@@ -13,7 +13,7 @@ class LandingController < ApplicationController
 #     @votes = Vote.find(:all)
      respond_to do |wants|
       wants.html 
-      wants.iphone
+#      wants.iphone
      end
   end 
   
