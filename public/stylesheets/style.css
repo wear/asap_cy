@@ -602,3 +602,7 @@ float:left;
 #wufoo{
 	text-align:left;
 }
+
+.tip{
+	color:rgb(170, 170, 170);
+}
