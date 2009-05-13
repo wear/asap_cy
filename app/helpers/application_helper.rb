@@ -9,6 +9,11 @@ module ApplicationHelper
     yield block if logged_in?
   end
   
+  def make_score(score)
+      new_score = (score.sum*10).to_i/10.0
+      new_score > 5.0 ? 5.0 : new_score
+  end
+  
   def admin_scope(&block)
     yield block if logged_in? && current_user.admin?
   end
