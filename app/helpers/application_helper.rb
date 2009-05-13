@@ -10,7 +10,7 @@ module ApplicationHelper
   end
   
   def make_score(score)
-      new_score = (score.sum*10).to_i/10.0
+      new_score = (score*10).to_i/10.0
       new_score > 5.0 ? 5.0 : new_score
   end
   
