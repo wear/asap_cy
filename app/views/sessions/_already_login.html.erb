@@ -1,0 +1,13 @@
+<ul id='login'>
+	 <li><%=link_to '首页', '/' %></li> 
+	 <li><%=link_to nick_name_for(current_user), current_user %></li>
+	<% owner_scope do %> 
+	<li><%=link_to "打折",user_discounts_path(current_user) %></a> </li>
+	<% end -%>
+	<% admin_scope do %>
+     <li><%=link_to "后台管理","/admin" %></a> </li> 
+	<% end -%>
+     <li><%= link_to "注销", logout_path %></li>
+	<li><%= link_to '添加商户', new_vendor_path %></li>
+	<li><a href="/help" >使用帮助</a> </li>
+</ul>

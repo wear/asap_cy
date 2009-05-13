@@ -3,7 +3,7 @@
 // 
 //  
 $j = jQuery; 
-
+$j.ajaxSetup({'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")} });
 jQuery(document).ready(function($) {
     // Binding focus and blur events for query input box
     $('#query').

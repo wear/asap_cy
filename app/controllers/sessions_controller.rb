@@ -3,6 +3,21 @@ class SessionsController < ApplicationController
    include FaceboxRender
   # render new.rhtml
   def new 
+  end  
+  
+  def login_status
+    respond_to do |wants|
+      wants.html {  } 
+      wants.js {
+        unless logged_in? 
+          render :partial => 'sessions/need_login'
+        else
+          render :partial => 'sessions/already_login'
+        end
+      }
+    end
+    
+      
   end
   
   def login_box

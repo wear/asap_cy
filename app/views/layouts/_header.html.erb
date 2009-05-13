@@ -14,7 +14,9 @@
 		<%=link_to image_tag('/images/mhqx_bg/logo_mhqx.png'),'/'%>
     </div>
     <div class="span-10 last" id='login-area'>
- 		<%= render :partial => '/layouts/login_area' %>
+		<div id='login-bar'>
+		    <%= render :partial => '/layouts/login_area' %>          	
+		</div>
 		<ul id='nav-right'>
 		<li><%=link_to image_tag('mhqx_bg/ll.png'),cached_link(32) %></li>
 		<li><%=link_to image_tag('mhqx_bg/zc.png'),cached_link(2) %></li>
