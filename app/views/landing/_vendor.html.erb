@@ -1,12 +1,12 @@
 <tr class='first_row_class'>
     <td >&nbsp;</td>
     <td class='vendor-name'><span class='vendor_title'><%= h(vendor.name)%></span></td> 
-    <td><%= vendor.taste.to_i %></td> 
-    <td><%= vendor.service.to_i %></td> 
-    <td><%= vendor.env.to_i %></td>	
+    <td><%= (vendor.taste*10).to_i/10.0 %></td> 
+    <td><%= (vendor.service*10).to_i/10.0 %></td> 
+    <td><%= (vendor.env*10).to_i/10.0 %></td>	
 	<td><span class='rmb'>￥</span><%= vendor.avg.to_i %></td>
 	<td><span class='B'><%= format_discount(vendor) %></span></td>
-    <td><span class='B'><%= (vendor.sum*10).round/10.0 %></span></td>
+    <td><span class='B'><%= (vendor.sum*10).to_i/10.0 %></span></td>
 	<td class="collapsible"></td>
 </tr> 
 <tr class="expand-child"> 
