@@ -21,7 +21,10 @@ class SessionsController < ApplicationController
   end
   
   def login_box
-     render :template => nil
+     respond_to do |wants|
+      wants.html {  }
+      wants.js { render_to_facebox }
+     end
   end
   
   def create

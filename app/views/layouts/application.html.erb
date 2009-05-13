@@ -14,11 +14,6 @@
 	<%= yield :javascripts %>          
 	<%= yield :head %>
 	<%= yield :body_tag %> 
-	<script type="text/javascript" charset="utf-8">
-		jQuery(document).ready(function($) {
-		  $('a[rel*=facebox]').facebox()
-		})
-	</script>
 	<body> 
 		<div class="container">
 			<%= render :partial => 'layouts/header' %>

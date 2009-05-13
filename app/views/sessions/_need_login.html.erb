@@ -1,5 +1,5 @@
 <ul id='login'>
-     <li><%#=link_to "登陆",login_path %><a href="/login_box" rel="facebox">登陆</a> </li>
+     <li><%=facebox_link_to '登陆',:url => login_box_path %>   </li>
      <li><%=link_to "注册",signup_path %></a></li>
      <li><%=link_to "使用帮助",comatose_help_url%></a> </li>
 </ul>
