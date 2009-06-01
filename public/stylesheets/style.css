@@ -606,3 +606,9 @@ float:left;
 .tip{
 	color:rgb(170, 170, 170);
 }
+
+#login-form{  
+	margin:0px auto;     
+	width:400px;
+	text-align:left;
+}

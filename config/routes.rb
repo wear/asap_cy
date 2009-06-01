@@ -12,14 +12,14 @@ ActionController::Routing::Routes.draw do |map|
   map.login_box '/login_box', :controller => 'sessions', :action => 'login_box'
   map.setting '/admin/setting', :controller => 'admin', :action => 'setting' 
   map.login_status '/login_status', :controller => 'sessions', :action => 'login_status'
-  
+  map.forgot_password '/forgot_password',:controller => 'users', :action => 'forgot_password'
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
 
   map.cached_list 'list/:cached_list', :controller => 'vendors',  :action => 'cached_list', :cached_id => nil    
   
   map.resources :users,:member => {:setting => :get, :password => :get, :change_password => :put, :avatar => :get, 
-    :change_avatar => :put, :profile => :get }, :has_many => [:reviews,:bookings] do |user|
+    :change_avatar => :put, :profile => :get },:collection => {:reset_password => :put}, :has_many => [:reviews,:bookings] do |user|
     user.resources :discounts,:member => { :close => :put }
   end
   

@@ -125,6 +125,11 @@ class User < ActiveRecord::Base
 #    u = find :first, :conditions => ['login = ? and activated_at IS NOT NULL', login] # need to get the salt
     u = User.find_user(login)  
     u && u.authenticated?(password) ? u : nil
+  end   
+  
+  def self.generate_new_password(length=6)
+    charactars = ("a".."z").to_a + ("A".."Z").to_a + ("1".."9").to_a
+    (0..length).inject([]) { |password, i| password << charactars[rand(charactars.size-1)] }.join
   end
   
   def self.find_user(coming_item)

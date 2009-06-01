@@ -1,5 +1,5 @@
 class UsersController < ApplicationController  
-  before_filter :login_required, :except => [:create,:activate,:new,:profile ]
+  before_filter :login_required, :except => [:create,:activate,:new,:profile,:forgot_password,:reset_password ]
   before_filter :assign_user,:except => [:create,:activate,:new,:show ]
 
   def show
@@ -89,6 +89,30 @@ class UsersController < ApplicationController
  	     @user.errors.add_to_base("现密码不正确")
  	     format.html { render :action => 'password' }
       end
+    end
+  end
+  
+  def forgot_password
+    respond_to do |wants|
+      wants.html { render :layout => 'application' }
+    end
+  end
+  
+  def reset_password
+    @user = User.find_by_email(params[:email])
+    if @user
+      new_password = User.generate_new_password
+      @user.password = new_password
+      @user.password_confirmation = new_password
+      @user.save
+      UserMailer.deliver_forgot_password(@user, new_password)
+      cookies.delete :auth_token
+      reset_session
+      flash[:notice] = "Sent new password to #{@user.email}"
+      redirect_to root_url
+    else
+      flash.now[:error] = 'Email not found'
+      render :action => "forgot_password",:layout => 'application'
     end
   end
   
