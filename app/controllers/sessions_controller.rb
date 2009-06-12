@@ -40,9 +40,13 @@ class SessionsController < ApplicationController
       handle_remember_cookie! new_cookie_flag
       
       respond_to do |wants|
-        wants.html { 
-          redirect_back_or_default('/')
-          flash[:notice] = "登录成功"
+        wants.html {           
+           flash[:notice] = "登录成功"    
+          if current_user.owner?
+               redirect_to user_discounts_path(current_user)
+          else
+            redirect_back_or_default('/')
+          end
            } 
         wants.js { }
       end

@@ -2,5 +2,10 @@ page << "jQuery.facebox.close();"
 if /booking/ =~ session[:return_to]
   page.redirect_to session[:return_to]
 else
-  page.replace 'login', :partial => '/layouts/login_area'
+  if current_user.owner?
+    page.redirect_to user_discounts_path(current_user)
+  else
+    page.replace 'login', :partial => '/layouts/login_area' 
+  end
+  
 end
