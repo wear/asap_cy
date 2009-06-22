@@ -2,8 +2,8 @@
     <td >&nbsp;</td>
     <td class='vendor-name'><span class='vendor_title'><%= h(vendor.name)%></span></td> 
     <td><%= make_score(vendor.taste) %></td> 
-    <td><%= make_score(vendor.service) %></td> 
-    <td><%= make_score(vendor.env) %></td>	
+	<td><%= make_score(vendor.env) %></td>
+    <td><%= make_score(vendor.service) %></td> 	
 	<td><span class='rmb'>￥</span><%= vendor.avg.to_i %></td>
 	<td><span class='B'><%= format_discount(vendor) %></span></td>
     <td><span class='B'><%= make_score(vendor.sum) %></span></td>
