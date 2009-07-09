@@ -1,7 +1,35 @@
+require 'net/http'                             
+require 'uri'
+
 class MobilesController < ApplicationController
-  
-    include FaceboxRender             
+  include FaceboxRender             
+  def index
+    data =  Builder::XmlMarkup.new 
+    data.instruct!  
+    data.XML{
+      data.System{
+        data.SystemID("mhqx001")
+        data.MsgID('0')
+        data.Signature("tellmewhy")
+        data.Command('Bind')
+      } 
+      data.User{
+        data.UserId("wear")
+        data.Phone("+8615001912259") 
+        data.VerifyCode("3659220")
+      }
+    }
     
+    url = URI.parse('http://www.hesine.com/openapi')
+    req = Net::HTTP::Post.new(url.path)
+    req["content-type"] = "application/xml"
+    req.body = data
+    @res = Net::HTTP.new(url.host, url.port).start {|http| http.request(req) }
+    
+    respond_to do |wants|
+      wants.html {  }
+    end
+  end  
   def new
     @mobile_user = MobileUser.new
     @vendor = Vendor.find(params[:vendor_id])
