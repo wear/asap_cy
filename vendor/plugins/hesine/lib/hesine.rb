@@ -24,7 +24,7 @@ module Hesine
     end 
     
     def load_configuration(config_file)
-       @config = YAML.load(ERB.new(File.read(config_file)).result)
+       @config = YAML.load(ERB.new(File.read(config_file)).result)[RAILS_ENV]
     end
     
     def request(xml)
