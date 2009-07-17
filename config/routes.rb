@@ -5,7 +5,7 @@ ActionController::Routing::Routes.draw do |map|
     merchant.resources :vendors
     merchant.resources :users
   end
-
+  map.send_verify_code '/send_verify_code/:phone', :controller => 'mobiles', :action => 'verify',:phone => nil  
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
@@ -15,7 +15,7 @@ ActionController::Routing::Routes.draw do |map|
   map.forgot_password '/forgot_password',:controller => 'users', :action => 'forgot_password'
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
-
+  map.openapi '/openapi',:controller => 'landing',:action => 'openapi'
   map.cached_list 'list/:cached_list', :controller => 'vendors',  :action => 'cached_list', :cached_id => nil    
   
   map.resources :users,:member => {:setting => :get, :password => :get, :change_password => :put, :avatar => :get, 

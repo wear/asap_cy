@@ -6,7 +6,14 @@ class MobilesController < ApplicationController
     respond_to do |wants|
      wants.html {  }
     end
-  end  
+  end 
+  
+  def verify
+    @res = Hesine.request(:command => 'Bind',:user_id => params[:phone],:phone => '+86' + params[:phone],:verify_code => '')
+    respond_to do |wants|
+      wants.js { render :text => Hesine::Response.cn_message(@res['StatusCode']) }
+    end
+  end 
   
   def new
     @mobile_user = MobileUser.new

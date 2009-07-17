@@ -29,7 +29,7 @@ module Hesine
     
     def request(xml)
       resource = RestClient::Resource.new 'http://www.hesine.com/openapi'   
-      resource.post params_builder, :content_type => 'application/xml'
+      Crack::XML.parse(resource.post(params_builder, :content_type => 'application/xml'))['Xml']
     end
     
     def url_encode(str)

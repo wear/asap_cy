@@ -18,6 +18,10 @@ class LandingController < ApplicationController
   end 
   
   def help
+  end 
+  
+  def openapi
+    
   end
   
   protected
@@ -29,7 +33,6 @@ class LandingController < ApplicationController
     avg_150 =  Vendor.full_text_search('121-200',{ :per_page => 5,:page => params[:page]},{},@sort)
     avg_200 =  Vendor.full_text_search('201以上',{ :per_page => 5,:page => params[:page]},{},@sort)
     @vendors = avg_20 + avg_50 + avg_100 + avg_150 + avg_200
-  end 
-
+  end  
   
 end
