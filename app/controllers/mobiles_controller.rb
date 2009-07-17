@@ -49,12 +49,12 @@ class MobilesController < ApplicationController
         data.System{
           data.SystemID("mhqx001")
           data.MsgID('0')
-          data.Signature("tellmewhy")
+          data.Signature("zzzzzz")
           data.Command('Bind')
         } 
         data.User{
           data.UserId("wear")
-          data.Phone("+8615001912259") 
+          data.Phone("+8613818185281") 
           data.VerifyCode("3659220")
         }
       }
