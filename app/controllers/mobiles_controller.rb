@@ -1,7 +1,9 @@
 class MobilesController < ApplicationController
   include FaceboxRender             
   def index          
-    @res = Hesine.request(:command => 'Bind',:user_id => 'wear',:phone => '+8615001912259',:verify_code => '365922')
+    resource = RestClient::Resource.new 'http://www.hesine.com/openapi'
+    
+    @res = resource.post generate_builder  , :content_type => 'application/xml'
     respond_to do |wants|
      wants.html {  }
     end
@@ -38,4 +40,43 @@ class MobilesController < ApplicationController
       end 
     end        
   end 
+  
+    protected
+  
+  def generate_builder
+  
+      data = Builder::XmlMarkup.new( :target => out_string = "", :indent => 2 )
+  
+      data.instruct!  
+  
+      data.XML{
+  
+        data.System{
+  
+          data.SystemID("mhqx001")
+  
+          data.MsgID('0')
+  
+          data.Signature("tellmewhy")
+  
+          data.Command('Bind')
+  
+        } 
+  
+        data.User{
+  
+          data.UserId("wear")
+  
+          data.Phone("+8615001912259") 
+  
+          data.VerifyCode("3659220")
+  
+        }
+  
+      }
+  
+      return out_string
+  
+  end
+  
 end
