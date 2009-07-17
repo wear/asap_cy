@@ -9,9 +9,9 @@ module Hesine
         data.instruct!  
         data.XML{
           data.System{
-            data.SystemID(@config['system_id'].to_s)
+            data.SystemID(@config['system_id'])
             data.MsgID('0')
-            data.Signature(@config['signature'].to_s)
+            data.Signature(@config['signature'])
             data.Command(encoded_params[:command])
           } 
           data.User{
