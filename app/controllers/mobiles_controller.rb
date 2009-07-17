@@ -44,39 +44,24 @@ class MobilesController < ApplicationController
     protected
   
   def generate_builder
-  
       data = Builder::XmlMarkup.new( :target => out_string = "", :indent => 2 )
-  
       data.instruct!  
   
       data.XML{
-  
         data.System{
-  
           data.SystemID("mhqx001")
-  
           data.MsgID('0')
-  
-          data.Signature("tellmewhy")
-  
+          data.Signature("zzzzzz")
           data.Command('Bind')
-  
         } 
   
         data.User{
-  
           data.UserId("wear")
-  
           data.Phone("+8615001912259") 
-  
           data.VerifyCode("3659220")
-  
         }
-  
       }
-  
       return out_string
-  
   end
   
 end
