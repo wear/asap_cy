@@ -1,5 +1,6 @@
 
-<% form_for @booking, :url => vendor_booking_path do |f| %>
+<% form_for @booking, :url => vendor_booking_path do |f| %> 
+ <%= error_messages_for :booking %> 
 	<%= render :partial => 'form',:locals => { :f => f } %>
 	<%=f.submit "下一步"%>                         
 <% end %>

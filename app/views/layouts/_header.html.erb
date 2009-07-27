@@ -1,27 +1,27 @@
  <div class="span-24" id='header'>
- 	<div class="span-10 last" id='top-left'>
- 	  <ul class='bookmark'>
-		<li>欢迎访问 <a href="#" class="B">满汉全席</a></li>
-		<li>即时餐饮打折平台 <a href="#" class="B" onclick="window.external.addFavorite('http://www.mhqx.com/','满汉全席 即时餐饮打折平台');return(false);">加入收藏</a></li>
-		</ul>
-		<ul id='nav-left'>
+ 	<div class="span-9">      
+	  <div style='text-align:left;padding:12px 0px 0px 40px; background: url(/images/mhqx_bg/top_bar_l.png) no-repeat;width:300px'>
+	  	  欢迎访问 <a href="#" class="B">满汉全席</a>
+		即时餐饮打折平台 <a href="#" class="B" onclick="window.external.addFavorite('http://www.mhqx.com/','满汉全席 即时餐饮打折平台');return(false);">加入收藏</a>
+	  </div>    
+		<ul style='margin:0px;padding:0px;'>
 		<li><%=link_to image_tag('mhqx_bg/xc.png'),cached_link(51) %></li>
-		<li><%=link_to image_tag('mhqx_bg/yy.png'),cached_link(17) %></li>
-		<li><%=link_to image_tag('mhqx_bg/xd.png'),cached_link(51) %></li>
-	   </ul>  
+		<li style='padding-right:20px'><%=link_to image_tag('mhqx_bg/yy.png'),cached_link(17) %></li>
+		<li style='padding-right:20px'><%=link_to image_tag('mhqx_bg/xd.png'),cached_link(51) %></li>
+	   </ul> 
  	</div> 
-    <div id="logo" class='span-2 last'>
+    <div class='span-6' style='text-align:center;' >
 		<%=link_to image_tag('/images/mhqx_bg/logo_mhqx.png'),'/'%>
     </div>
-    <div class="span-10 last" id='login-area'>
-		<div id='login-bar'>
+    <div class="span-9 last" >  
+		<div style='width:300px;padding:15px 30px 10px 0px;text-align:right;' id='login-bar'>  
 		    <%= render :partial => '/layouts/login_area' %>          	
-		</div>
-		<ul id='nav-right'>
-		<li><%=link_to image_tag('mhqx_bg/ll.png'),cached_link(32) %></li>
-		<li><%=link_to image_tag('mhqx_bg/zc.png'),cached_link(2) %></li>
-		<li><%=link_to image_tag('mhqx_bg/jb.png'),cached_link(70) %></li>
-	   </ul> 
+		</div>  
+		<ul >
+		<li style='float:left;'><%=link_to image_tag('mhqx_bg/ll.png'),cached_link(32) %></li>
+		<li style='float:left;padding-left:20px'><%=link_to image_tag('mhqx_bg/zc.png'),cached_link(2) %></li>
+		<li style='float:left;padding-left:20px'><%=link_to image_tag('mhqx_bg/jb.png'),cached_link(70) %></li>
+	   </ul>    
     </div>
  </div>
  <div  style='padding-left:260px;'>

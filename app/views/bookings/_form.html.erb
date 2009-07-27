@@ -25,7 +25,6 @@
 </script>	
 <% end %>
 
-	<%= error_messages_for :booking %>
 <ul>
 	 
 	<li class="section first">
@@ -73,14 +72,14 @@
 		<%= f.text_field :mobile, :class =>"field text" %>
 		</div>
 	</li>
-	<%= f.hidden_field :vendor_id, :value => @vendor.id %>
-	<% unless @vendor.discount.nil? %>
-		<%= f.hidden_field :discount_id, :value => @vendor.discount_id %>
-		<%= f.hidden_field :discount_version, :value => @vendor.discount.version %>
-	<% end %>
 	<li class="buttons">
 	<%= submit_tag "下一步"%> 
 	</li>
-	</ul>     
+</ul>
+<%= f.hidden_field :vendor_id, :value => @vendor.id %>
+<% unless @vendor.discount.nil? %>
+	<%= f.hidden_field :discount_id, :value => @vendor.discount_id %>
+	<%= f.hidden_field :discount_version, :value => @vendor.discount.version %>
+<% end %>     
 	 
  

@@ -17,48 +17,44 @@ ul{
 	margin:0px;
 }
 
-#header {
+#header {    
 	height:130px;                                   
-} 
-#content{
-	padding-left:40px;
-} 
+}            
+
+#header ul li{
+	list-style:none;
+	float:right;
+}
+
 
 #foot{ 
 	clear:both;
 	margin-top:30px;
 	padding-left:40px;
 }
-#top-left{ 
-	float:left;
-   background: url(/images/mhqx_bg/top_bar_l.png) no-repeat; 
-} 
 
 .bookmark {
-  float: left;
-  margin: 10px 0px 0px 15px;  
+
 }
-.bookmark li {
-  list-style: none;    
-  float:left;
-  margin:5px 0px 0px 5px;
-} 
 
 
 #logo{
 	float:left;
 	height:123px;
 }
-#nav-left { float:right; width:100%; }      
-#nav-left ul{margin:0px;padding:5px;float:right; width:100%;}
+#nav-left { float:right; }      
+#nav-left ul{margin:0px;padding:5px;float:right;}
 #nav-left li{ 
 	float:right; 
 	list-style: none; 
 	padding-right: 20px;
 	} 
-#nav-right { float:left; width:100%; }
-#nav-right ul{ margin:0px;padding:5px;float:left;}
-#nav-right li{ float:left;padding-left:20px;list-style: none; } 
+#logsfin-bar{
+	width:100%;padding:15px 30px 10px 0px;text-align:right;  
+	background: url(/images/mhqx_bg/top_bar_r.png) no-repeat top right;
+}
+
+.nav-right { text-align:left; } 
 
 #content{
 	margin: 0px;
@@ -86,7 +82,11 @@ a.top:hover {
 	font-weight: bold; 
 }
 
-/*--- login area-----*/
+/*--- login area-----*/ 
+
+.test-ie{
+	background:#eeeeee;
+}
 
 #login-area{
 	float:right; 
@@ -255,7 +255,7 @@ table.grid th{
 tr.first_row_class td{
 	cursor: pointer;
 	border-bottom:1px dotted #FFC993;
-}  
+}    
 
 table.grid thead tr th, table.grid tfoot tr th {
 	background-color: #ffffe5;
