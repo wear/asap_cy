@@ -2,7 +2,7 @@ class MobilesController < ApplicationController
   include FaceboxRender             
   def index          
     
-    @res = Hesine.request(:command => 'Bind',:user_id => 'wear',:phone => '+8615001912259',:verify_code => '365922')
+    @res = Hesine.request(:command => 'Bind',:user_id => 'wear',:phone => '+8615001912359',:verify_code => '365922')
     respond_to do |wants|
      wants.html {  }
     end
