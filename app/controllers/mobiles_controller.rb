@@ -2,14 +2,14 @@ class MobilesController < ApplicationController
   include FaceboxRender             
   def index          
     
-    @res = Hesine.request(:command => 'Bind',:user_id => 'wear',:phone => '+8615001912259',:verify_code => '365922')
+    @res = Hesine.request(:command => 'Bind',:user_id => 'wear',:phone => '+8615001912359',:verify_code => '365922')
     respond_to do |wants|
      wants.html {  }
     end
   end 
   
   def verify
-    @res = Hesine.request(:command => 'Bind',:user_id => params[:phone],:phone => '+86' + params[:phone],:verify_code => '')
+    @res = Hesine.request(:command => 'UnBind',:phone => '+86' + params[:phone])
     respond_to do |wants|
       wants.js { render :text => Hesine::Response.cn_message(@res['StatusCode']) }
     end
