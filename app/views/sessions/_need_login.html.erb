@@ -1,5 +1,3 @@
-<ul id='login'>
-     <li><%=facebox_link_to '登陆',:url => login_box_path %>   </li>
-     <li><%=link_to "注册",signup_path %></a></li>
-     <li><%=link_to "使用帮助",comatose_help_url%></a> </li>
-</ul>
+<%=facebox_link_to '登陆',:url => login_box_path %> |
+<%=link_to "注册",signup_path %> |
+<%=link_to "使用帮助",comatose_help_url%>

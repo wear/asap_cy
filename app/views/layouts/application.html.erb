@@ -9,8 +9,8 @@
 
 	<%= javascript_include_tag 'jquery','application','facebox','jquery-ui-personalized-1.5.3.min',:cache => true %>
 	<!--[if IE]>
-		<link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection">
-		<![endif]-->
+		<link type="text/css" rel="stylesheet" media="screen" href="/stylesheets/blueprint/ie.css">
+	<![endif]-->
 	<%= yield :javascripts %>          
 	<%= yield :head %>
 	<%= yield :body_tag %> 

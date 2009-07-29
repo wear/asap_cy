@@ -2,7 +2,6 @@ class UserMailer < ActionMailer::Base
   def signup_notification(user)
     setup_email(user)
     @subject    += 'Please activate your new account'
-  
     @body[:url]  = "http://www.daorails.com/activate/#{user.activation_code}"
   
   end
@@ -25,6 +24,7 @@ class UserMailer < ActionMailer::Base
       @from        = "ADMINEMAIL"
       @subject     = "[ASAP]"
       @sent_on     = Time.now
-      @body[:user] = user
+      @body[:user] = user 
+      @content_type = "text/html"
     end
 end
