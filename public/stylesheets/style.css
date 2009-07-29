@@ -57,7 +57,7 @@ ul{
 .nav-right { text-align:left; } 
 
 #content{
-	margin: 0px;
+	margin-top:30px;
 }
 
 /*--------------------------Link: Default Style----------------------------*/
@@ -134,9 +134,7 @@ a.top:hover {
 	height: 21px;
 }
 
-#content{
-	margin-top:30px;
-}
+
 /*--content--*/ 
 .vendors {
 	white-space: normal;
@@ -590,11 +588,10 @@ margin:3px 0px 20px 280px;
 #opration {
 margin:0px 0px 0px 50px;
 padding:0px;
-float:left;
 }
 
 #opration li{
-	float:right; 
+	float:left; 
 	list-style: none; 
 	padding-right: 20px;	
 }
@@ -606,7 +603,7 @@ float:left;
 .tip{
 	color:rgb(170, 170, 170);
 }
-
+     
 #login-form{  
 	margin:0px auto;     
 	width:400px;

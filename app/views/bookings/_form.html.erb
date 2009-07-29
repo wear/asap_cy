@@ -1,13 +1,12 @@
 <% content_for :head do %>
-	<%= stylesheet_link_tag 'form/structure.css' %>
-	<%= stylesheet_link_tag 'form/form.css' %>
-	<%= stylesheet_link_tag 'form/theme.css' %>
+<style type="text/css" media="screen">
+	.wufoo ul li {list-style:none;margin:10px;}
+</style>
 	<%= stylesheet_link_tag "ui.datepicker.css" %> 
-	<%= stylesheet_link_tag "jquery-ui-themeroller.css" %>
+  
 <% end %>
 
 <% content_for :javascripts do %>
-	<%= javascript_include_tag "form/wufoo.js" %>
 	<%= javascript_include_tag "ui.datepicker.js" %>
 	<%= javascript_include_tag "jquery.ui.i18n.all.js" %>
 <script type="text/javascript">    
@@ -51,7 +50,7 @@
 	   <li>
 		<label class="desc">其他要求:</label> 
 		<div>
-		<%=f.text_area :requirment, :class => "field textarea small" %>
+		<%=f.text_area :requirment,:style => 'height:80px;width:300px' %>
 		</div>
 
 		<p class="instruct">有何特殊要求请在这里填写</p>

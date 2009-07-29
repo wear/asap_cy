@@ -31,6 +31,8 @@
 }
 
 #facebox table {
+  	width: auto; 
+  margin: auto;
   border-collapse: collapse;
 }
 
