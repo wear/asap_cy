@@ -10,7 +10,7 @@ body {
 	background: url(/images/mhqx_bg/top_bg.gif) repeat-x !important;
 }    
 
-img, div { behavior:url(/stylesheets/iepngfix.htc); }
+
 a { position:relative; z-index:1000; }
 
 ul{
