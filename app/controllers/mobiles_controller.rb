@@ -1,15 +1,16 @@
 class MobilesController < ApplicationController
   include FaceboxRender             
+  
   def index          
-    
-    @res = Hesine.request(:command => 'Bind',:user_id => 'wear',:phone => '+8615001912359',:verify_code => '365922')
+    resource = RestClient::Resource.new 'http://www.hesine.com/openapi'
+    @res  = resource.post(generate_data, :content_type => 'application/xml')
     respond_to do |wants|
      wants.html {  }
     end
   end 
-  
+
   def verify
-    @res = Hesine.request(:command => 'Bind',:user_id => params[:phone],:phone => '+86' + params[:phone])
+    @res = Hesine.request(:command => 'Submit',:user_id => params[:phone],:phone => '+86' + params[:phone])
     respond_to do |wants|
       wants.js { render :text => Hesine::Response.cn_message(@res['StatusCode']) }
     end
@@ -47,5 +48,24 @@ class MobilesController < ApplicationController
     end        
   end 
   
+protected
+  def generate_data
+    data = Builder::XmlMarkup.new(:target => out_string = "", :indent => 2 )
+     data.instruct!  
+     data.XML{
+       data.System{
+         data.SystemID('mhqx001')
+         data.MsgID('0')
+         data.Signature('zzzzzz')
+         data.Command('Bind')
+       } 
+       data.User{
+         data.UserId('wear')
+         data.Phone('+8615001912259') 
+         data.VerifyCode('365922')
+       }
+     }
+     return out_string
+  end 
   
 end
