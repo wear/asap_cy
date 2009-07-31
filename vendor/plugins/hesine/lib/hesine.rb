@@ -4,7 +4,6 @@ module Hesine
   class << self
         
     def params_builder(prarams = {})         
-       encoded_params = encode_hash(prarams)  
         data = Builder::XmlMarkup.new( :target => out_string = "", :indent => 2 )
         data.instruct!  
         data.XML{
@@ -12,12 +11,12 @@ module Hesine
             data.SystemID(@config['system_id'])
             data.MsgID('0')
             data.Signature(@config['signature'])
-            data.Command(encoded_params[:command])
+            data.Command(prarams[:command])
           } 
           data.User{
-            data.UserId(encoded_params[:user_id])
-            data.Phone(encoded_params[:phone]) 
-            data.VerifyCode(encoded_params[:verify_code])
+            data.UserId(prarams[:user_id])
+            data.Phone(prarams[:phone]) 
+            data.VerifyCode(prarams[:verify_code])
           }
         }
         return out_string  

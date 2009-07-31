@@ -10,7 +10,7 @@ module VendorsHelper
       link_to(image_tag('icon/booking.gif'),new_vendor_booking_path(vendor))
     else
       link_to(image_tag('icon/booking.gif'),new_vendor_booking_path(vendor))  +  
-      facebox_link_to(image_tag('icon/mobile-booking.gif'),:url => new_mobile_path(:vendor_id => vendor.id))        
+      facebox_link_to(image_tag('icon/mobile-booking.gif'),:url => new_vendor_mobile_path(vendor))        
     end
   end 
   
