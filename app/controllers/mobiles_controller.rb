@@ -2,7 +2,9 @@ class MobilesController < ApplicationController
   include FaceboxRender             
   
   def verify
-    @res = Hesine.request(:command => 'Submit',:user_id => params[:phone],:phone => '+86' + params[:phone])
+    sent_params = params_builder(:command => 'Bind',:user_id => params[:phone],:phone => '+86' + params[:phone])
+    resource = RestClient::Resource.new 'http://www.hesine.com/openapi'   
+    @res = Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']
     respond_to do |wants|
       wants.js { render :text => Hesine::Response.cn_message(@res['StatusCode']) }
     end
@@ -38,7 +40,27 @@ class MobilesController < ApplicationController
           }
       end 
     end        
-  end 
+  end
+  
+protected
+
+ def params_builder(prarams = {})         
+     data = Builder::XmlMarkup.new( :target => out_string = "", :indent => 2 )
+     data.instruct!  
+     data.XML{
+       data.System{
+         data.SystemID('mhqx001')
+         data.MsgID('0')
+         data.Signature('zzzzzz')
+         data.Command(prarams[:command])
+       } 
+       data.User{
+         data.UserId(prarams[:user_id])
+         data.Phone(prarams[:phone]) 
+       }
+     }
+     return out_string  
+ end
 
   
 end
