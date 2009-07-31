@@ -2,7 +2,7 @@ class MobilesController < ApplicationController
   include FaceboxRender             
   
   def verify
-    @res = Hesine.request(:command => 'Submit',:user_id => params[:phone],:phone => '+86' + params[:phone])
+    @res = Hesine.request(:command => 'Bind',:user_id => params[:phone],:phone => ('+86' + params[:phone]))
     respond_to do |wants|
       wants.js { render :text => Hesine::Response.cn_message(@res['StatusCode']) }
     end
