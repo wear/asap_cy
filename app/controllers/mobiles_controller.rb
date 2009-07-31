@@ -5,6 +5,7 @@ class MobilesController < ApplicationController
     sent_params = params_builder(:command => 'Bind',:user_id => params[:phone],:phone => '+86' + params[:phone])
     resource = RestClient::Resource.new 'http://www.hesine.com/openapi'   
     @res = Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']
+
     respond_to do |wants|
       wants.js { render :text => Hesine::Response.cn_message(@res['StatusCode']) }
     end
