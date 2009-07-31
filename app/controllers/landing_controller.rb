@@ -18,7 +18,7 @@ class LandingController < ApplicationController
   def help
   end 
   
-  def openapi
+  def hesine
     
   end
   

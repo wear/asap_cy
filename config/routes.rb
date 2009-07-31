@@ -15,7 +15,7 @@ ActionController::Routing::Routes.draw do |map|
   map.forgot_password '/forgot_password',:controller => 'users', :action => 'forgot_password'
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
-  map.openapi '/openapi',:controller => 'landing',:action => 'openapi'
+  map.sms '/sms',:controller => 'landing',:action => 'hesine'
   map.cached_list 'list/:cached_list', :controller => 'vendors',  :action => 'cached_list', :cached_id => nil    
   
   map.resources :users,:member => {:setting => :get, :password => :get, :change_password => :put, :avatar => :get, 
