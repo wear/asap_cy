@@ -4,8 +4,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :merchants do |merchant|
     merchant.resources :vendors
     merchant.resources :users
-  end
+  end             
+  
   map.send_verify_code '/send_verify_code/:phone', :controller => 'mobiles', :action => 'verify',:phone => nil  
+  map.send_unbind '/send_unbind/:phone', :controller => 'mobiles', :action => 'unbind',:phone => nil
+  
+  
+  
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'

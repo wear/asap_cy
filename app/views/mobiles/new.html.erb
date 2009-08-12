@@ -1,7 +1,8 @@
-<h3>手机预定</h3>
+<h3>手机预定</h3>          
+要使用功能，请先安装<%=link_to '手机客户端','http://www.hesine.com/webmail/faq_down.php',:target => '_blank'%>,然后在下面输入您的手机号码,如果已下载请直接输入
 <div id="error_msg"></div>
 <% remote_form_for([@vendor,@mobile_user],:url => vendor_mobiles_path(@vendor)) do |f| -%>
-	<p><%= label_tag '手机' %><br/>  
+	<p><%= label_tag '手机号码' %><br/>  
 	<%= f.text_field :mobile,:id => 'phone_number' %> <%=link_to_function '发确认短信', "send_verify($('#phone_number').val())" 
  %></p>
 	<%= hidden_field_tag :vendor_id, @vendor %>
@@ -9,7 +10,7 @@
 <% end -%>
                
 <script type="text/javascript" charset="utf-8">
-	function send_verify(mobile) { 
+	function send_bing(mobile) { 
 	  var reg0=/^13\d{5,9}$/;   //130--139。至少7位
 	  var reg1=/^153\d{8}$/;  //联通153。至少7位
 	  var reg2=/^159\d{8}$/;  //移动159。至少7位
@@ -28,6 +29,6 @@
 			  alert("发送结果: " + data);
 			});
 		 }  	
-	}
+	}  
 </script>
                            
