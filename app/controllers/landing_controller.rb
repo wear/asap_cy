@@ -1,6 +1,7 @@
 class LandingController < ApplicationController 
   caches_page :index
- 
+  protect_from_forgery :only => [:hesine] 
+  
  def index 
      build_sort 
      build_top35
@@ -19,7 +20,10 @@ class LandingController < ApplicationController
   end 
   
   def hesine
-    
+    @res = Crack::XML.parse(params[])
+    respond_to do |wants|
+      wants.html {  }
+    end
   end
   
   protected

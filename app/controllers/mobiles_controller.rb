@@ -10,8 +10,8 @@ class MobilesController < ApplicationController
 	wants.html {}
     end
 
-  end 
-  
+  end
+
   def unbind
     sent_params = params_builder(:command => 'UnBind',:user_id => params[:phone],:phone => '+86' + params[:phone])
     resource = RestClient::Resource.new 'http://www.hesine.com/openapi'
@@ -23,7 +23,7 @@ class MobilesController < ApplicationController
   end           
   
   def verify
-    sent_params = params_builder(:command => 'Bind',:user_id => params[:phone],:phone => '+86' + params[:phone])
+    sent_params = params_builder(:command => 'UnBind',:user_id => params[:phone],:phone => '+86' + params[:phone])
     resource = RestClient::Resource.new 'http://www.hesine.com/openapi'   
     @res = Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']
 
@@ -79,7 +79,6 @@ protected
        data.User{
          data.UserId(prarams[:user_id])
          data.Phone(prarams[:phone]) 
-	 data.VerifyCode('365922')
        }
      }
      return out_string  

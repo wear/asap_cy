@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :hesines
+
 
 
   map.resources :merchants do |merchant|
@@ -8,8 +10,6 @@ ActionController::Routing::Routes.draw do |map|
   
   map.send_verify_code '/send_verify_code/:phone', :controller => 'mobiles', :action => 'verify',:phone => nil  
   map.send_unbind '/send_unbind/:phone', :controller => 'mobiles', :action => 'unbind',:phone => nil
-  
-  
   
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'

@@ -1,0 +1,2 @@
+module HesinesHelper
+end
