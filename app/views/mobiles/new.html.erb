@@ -3,7 +3,7 @@
 <div id="error_msg"></div>
 <% remote_form_for([@vendor,@mobile_user],:url => vendor_mobiles_path(@vendor)) do |f| -%>
 	<p><%= label_tag '手机号码' %><br/>  
-	<%= f.text_field :mobile,:id => 'phone_number' %> <%=link_to_function '发确认短信', "send_verify($('#phone_number').val())" 
+	<%= f.text_field :mobile,:id => 'phone_number' %> <%=link_to_function '发确认短信', "send_bing($('#phone_number').val())" 
  %></p>
 	<%= hidden_field_tag :vendor_id, @vendor %>
 	<p><%= submit_tag '确定' %></p>  

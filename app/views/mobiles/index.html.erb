@@ -1,3 +1,5 @@
+<%= @res %>
+
 <%= text_field_tag :mobile,'',:id => 'phone_number' %>                  
 <ul>
 	<li><%=link_to_function '绑定', "send_bing($('#phone_number').val())" %></li>
