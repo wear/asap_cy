@@ -2,7 +2,14 @@ class MobilesController < ApplicationController
   include FaceboxRender 
   
   def index
-    @res = 's'
+    sent_params = params_builder(:command => 'Bind',:user_id => '15001912259',:phone => '+8615001912259')
+    resource = RestClient::Resource.new 'http://www.hesine.com/openapi'
+    @res = Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']
+
+    respond_to do |wants|
+	wants.html {}
+    end
+
   end 
   
   def unbind
@@ -72,6 +79,7 @@ protected
        data.User{
          data.UserId(prarams[:user_id])
          data.Phone(prarams[:phone]) 
+	 data.VerifyCode('365922')
        }
      }
      return out_string  
