@@ -17,11 +17,11 @@ class BookingsController < ApplicationController
   # GET /bookings/1.xml
   def show
     @booking = Booking.find(params[:id])
-    sent_params = params_builder(@booking,{:command => 'Submit',:user_id => @booking.mobile,:phone => '+86' + @booking.mobile})
-    resource = RestClient::Resource.new 'http://www.hesine.com/openapi'   
-    @res = Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']
+  sent_params = params_builder(@booking,{:command => 'Submit',:user_id => @booking.mobile,:phone => '+86' + @booking.mobile})
+  resource = RestClient::Resource.new 'http://www.hesine.com/openapi'   
+  @res = resource.post(sent_params, :content_type => 'application/xml')
     respond_to do |format|
-      format.html { render :text => @res }
+      format.html { render :text => @res.inspect }
       format.xml  { render :xml => @booking }
     end
   end
@@ -50,12 +50,12 @@ class BookingsController < ApplicationController
       if @user
           @booking = @user.bookings.build(params[:booking])
           if @booking.save
-            @user.contacts.find_or_create_by_name(:email => @booking.email,
-                                                  :name => @booking.contact, 
-                                                  :mobile => @booking.mobile)
+        #    @user.contacts.find_or_create_by_name(:email => @booking.email,
+        #                                          :name => @booking.contact, 
+        #                                          :mobile => @booking.mobile)
             sent_params = params_builder(@booking,{:command => 'Submit',:user_id => @booking.mobile,:phone => '+86' + @booking.mobile})
             resource = RestClient::Resource.new 'http://www.hesine.com/openapi'   
-            logger.info Hesine::Response.cn_message(Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']['StatusCode'])                                      
+            logger.info Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']                                   
             wants.html { redirect_to vendor_booking_path(@vendor,@booking) }
           else
             wants.html { render :action => "new"}
@@ -129,7 +129,7 @@ class BookingsController < ApplicationController
             data.Phone(prarams[:phone])
             data.Message{
               data.Type('Hesine')
-              data.From('<support@daorails.com>') 
+              data.From("'mqhx' <support@daorails.com>") 
               data.To(prarams[:phone])
               data.Subject('你在daorails.com的餐馆预定信息')
               data.Body("餐馆名称:#{booking.vendor.name},地址:#{booking.vendor.address}.
