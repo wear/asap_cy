@@ -1,6 +1,6 @@
 class LandingController < ApplicationController 
   caches_page :index
-  protect_from_forgery :only => [:hesine] 
+  skip_before_filter :verify_authenticity_token, :only => [:hesine] 
   
  def index 
      build_sort 
@@ -19,10 +19,12 @@ class LandingController < ApplicationController
   def help
   end 
   
-  def hesine
-    @res = Crack::XML.parse(params[])
+  def hesine      
+ #   @result = "<?xml version"=>"\"1.0\" encoding=\"UTF-8\"?>\n<Xml>\n<System>\n<SystemID>mhqx001</SystemID>\n<Signature></Signature>\n<Command>BindResult</Command>\n</System>\n<User>\n<UserID></UserID>\n<Phone>+8615001912259</Phone><Status>0</Status>\n</User>\n</Xml>\n"
+  #  @res = Crack::XML.parse(@result)
     respond_to do |wants|
       wants.html {  }
+      wants.xml { render :xml => 'afsd'} 
     end
   end
   

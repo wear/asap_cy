@@ -16,7 +16,13 @@ class MobileUser < ActiveRecord::Base
   validates_numericality_of :mobile
   validates_format_of :mobile, :with => /^13[0-9]|^15[0-9][0-9]{8}$/  
   
-  acts_as_state_machine :initial => :pending, :column => 'status'
+  acts_as_state_machine :initial => :pending, :column => 'status' 
+  
+  state :opened
+  
+  event :open do
+    transitions :to => :opened, :from => :pending
+  end
 
   def validate
     unless self.mobile.to_s.size == 11
