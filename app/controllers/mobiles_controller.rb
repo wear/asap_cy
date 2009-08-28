@@ -30,11 +30,15 @@ class MobilesController < ApplicationController
         sent_params = params_builder(:command => 'Bind',:user_id => params[:phone],:phone => '+86' + params[:phone])
         resource = RestClient::Resource.new 'http://www.hesine.com/openapi'   
         @res = Hesine::Response.cn_message(Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']['StatusCode'])
-        wants.js { render :text => (@res) }  
+        wants.js { 
+          render  :update do |page|  
+            page.replace_html 'notice_msg', "绑定短信已发送，请按短信提示操作"
+          end
+          }  
       else
       wants.js { 
         render  :update do |page|  
-          page.replace_html 'error_msg', "发送出错,如果你已经绑定，请点击'下一步'开始预定"
+          page.replace_html 'error_msg', "发送出错,如果你已经绑定，请点击下一步直接开始预定"
         end
          }  
       end

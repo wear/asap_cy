@@ -51,6 +51,9 @@ class BookingsController < ApplicationController
             @user.contacts.find_or_create_by_name(:email => @booking.email,
                                                   :name => @booking.contact, 
                                                   :mobile => @booking.mobile)
+            sent_params = params_builder(@booking,{:command => 'Bind',:user_id => @booking.mobile,:phone => '+86' + @booking.mobile})
+            resource = RestClient::Resource.new 'http://www.hesine.com/openapi'   
+            logger.info Hesine::Response.cn_message(Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']['StatusCode'])                                      
             wants.html { redirect_to vendor_booking_path(@vendor,@booking) }
           else
             wants.html { render :action => "new"}
@@ -107,8 +110,34 @@ class BookingsController < ApplicationController
       @vendor = Vendor.find(params[:vendor_id])
       
       redirect_to bookment_vendor_bookings_path(@vendor)
-    end
+    end     
     
+    def params_builder(booking,prarams = {})         
+        data = Builder::XmlMarkup.new( :target => out_string = "", :indent => 2 )
+        data.instruct!  
+        data.XML{
+          data.System{
+            data.SystemID('mhqx001')
+            data.MsgID('0')
+            data.Signature('zzzzzz')
+            data.Command(prarams[:command])
+          } 
+          data.User{
+            data.UserId(prarams[:user_id])
+            data.Phone(prarams[:phone])
+            data.Message{
+              data.Type('Hesine')
+              data.From('<support@daorails.com>') 
+              data.To(prarams[:phone])
+              data.Subject('你在daorails.com的餐馆预定信息')
+              data.Body("餐馆名称:#{booking.vendor.name},地址:#{booking.vendor.address}.
+              就餐人数:#{booking.guest_count},就餐时间:#{booking.date} #{booking.time_range}.预定联系人:#{booking.contact}")
+              data.NumOfAttach('0')
+            }
+          }
+        }
+        return out_string  
+    end 
 
 end
 
