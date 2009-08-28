@@ -22,9 +22,11 @@ class MobilesController < ApplicationController
     end
   end           
   
-  def verify 
+  def verify    
+    @exist_user = MobileUser.find_by_mobile(params[:phone])
+    @mobile_user =  @exist_user.nil? ? MobileUser.create(:mobile => params[:phone]) : @exist_user
     respond_to do |wants|
-      if @mobile_user = MobileUser.find_or_create_by_mobile(params[:mobile_user]) 
+      if @mobile_user && @mobile_user.status == 'pending' 
         sent_params = params_builder(:command => 'Bind',:user_id => params[:phone],:phone => '+86' + params[:phone])
         resource = RestClient::Resource.new 'http://www.hesine.com/openapi'   
         @res = Hesine::Response.cn_message(Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']['StatusCode'])
@@ -32,7 +34,7 @@ class MobilesController < ApplicationController
       else
       wants.js { 
         render  :update do |page|  
-          page.replace_html 'error_msg', error_messages_for(:mobile_user)    
+          page.replace_html 'error_msg', "发送出错,如果你已经绑定，请点击'下一步'开始预定"
         end
          }  
       end
