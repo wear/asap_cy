@@ -1,7 +1,7 @@
 class LandingController < ApplicationController 
   caches_page :index
-  protect_from_forgery :only => [:hesine] 
-  
+  skip_before_filter :verify_authenticity_token 
+
  def index 
      build_sort 
      build_top35
@@ -20,9 +20,10 @@ class LandingController < ApplicationController
   end 
   
   def hesine
-    @res = Crack::XML.parse(params[])
+res = ('<?xml version=' + request.parameters['<?xml version']).gsub!(/\n/,'')
+logger.info res
     respond_to do |wants|
-      wants.html {  }
+      wants.html { render :text => res }
     end
   end
   
