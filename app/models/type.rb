@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20081223080043
+# Schema version: 20090814063601
 #
 # Table name: types
 #

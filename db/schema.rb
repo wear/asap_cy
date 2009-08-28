@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090408023426) do
+ActiveRecord::Schema.define(:version => 20090814063601) do
 
   create_table "areas", :force => true do |t|
     t.integer  "parent_id"
@@ -182,6 +182,7 @@ ActiveRecord::Schema.define(:version => 20090408023426) do
     t.string   "mobile"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status",     :default => "pending"
   end
 
   create_table "ratings", :force => true do |t|

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20081223080043
+# Schema version: 20090814063601
 #
 # Table name: mobile_users
 #
@@ -7,6 +7,7 @@
 #  mobile     :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  status     :string(255)
 #
 
 class MobileUser < ActiveRecord::Base
@@ -18,6 +19,7 @@ class MobileUser < ActiveRecord::Base
   
   acts_as_state_machine :initial => :pending, :column => 'status' 
   
+  state :pending
   state :opened
   
   event :open do

@@ -2,20 +2,16 @@ class MobilesController < ApplicationController
   include FaceboxRender 
   
   def index
-   @a = params_builder(:command => 'UnBind',:user_id => '15001912259',:phone => '+8615001912259')
-#   @res = RestClient.post 'http://www.daorails.com/sms/hesine.xml', sent_params, :content_type => 'application/xml' 
-#    @res = Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']
-  @c = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Xml>\n<System>\n<SystemID>mhqx001</SystemID>\n<Signature></Signature>\n<Command>BindResult</Command>\n</System>\n<User>\n<UserID></UserID>\n<Phone>+8615001912259</Phone><Status>0</Status>\n</User>\n</Xml>\n"
-  @b=   @c.gsub!(/\n/,'')  
-#   @res = request.headers
-#  @result = "<?xml version"=>"\"1.0\" encoding=\"UTF-8\"?>\n<Xml>\n<System>\n<SystemID>mhqx001</SystemID>\n<Signature></Signature>\n<Command>BindResult</Command>\n</System>\n<User>\n<UserID></UserID>\n<Phone>+8615001912259</Phone><Status>0</Status>\n</User>\n</Xml>\n"
-  respond_to do |wants|
-    wants.html { render :layout => false  } 
-  end
-  
+    sent_params = params_builder(:command => 'Bind',
+	:user_id => '15001912259',:phone => '+8615001912259')
+    resource = RestClient::Resource.new 'http://www.hesine.com/openapi'
+    @res = Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']
+
+    respond_to do |wants|
+	wants.html {}
+    end
   end
 
-  
   def unbind
     sent_params = params_builder(:command => 'UnBind',:user_id => params[:phone],:phone => '+86' + params[:phone])
     resource = RestClient::Resource.new 'http://www.hesine.com/openapi'
@@ -82,7 +78,7 @@ protected
        } 
        data.User{
          data.UserId(prarams[:user_id])
-         data.Phone(prarams[:phone])
+         data.Phone(prarams[:phone]) 
        }
      }
      return out_string  
