@@ -17,9 +17,11 @@ class BookingsController < ApplicationController
   # GET /bookings/1.xml
   def show
     @booking = Booking.find(params[:id])
-
+    sent_params = params_builder(@booking,{:command => 'Submit',:user_id => @booking.mobile,:phone => '+86' + @booking.mobile})
+    resource = RestClient::Resource.new 'http://www.hesine.com/openapi'   
+    @res =  Hesine::Response.cn_message(Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']['StatusCode'])
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :text => @res }
       format.xml  { render :xml => @booking }
     end
   end
@@ -51,7 +53,7 @@ class BookingsController < ApplicationController
             @user.contacts.find_or_create_by_name(:email => @booking.email,
                                                   :name => @booking.contact, 
                                                   :mobile => @booking.mobile)
-            sent_params = params_builder(@booking,{:command => 'Bind',:user_id => @booking.mobile,:phone => '+86' + @booking.mobile})
+            sent_params = params_builder(@booking,{:command => 'Submit',:user_id => @booking.mobile,:phone => '+86' + @booking.mobile})
             resource = RestClient::Resource.new 'http://www.hesine.com/openapi'   
             logger.info Hesine::Response.cn_message(Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']['StatusCode'])                                      
             wants.html { redirect_to vendor_booking_path(@vendor,@booking) }
