@@ -22,13 +22,20 @@ class MobilesController < ApplicationController
     end
   end           
   
-  def verify
-    sent_params = params_builder(:command => 'UnBind',:user_id => params[:phone],:phone => '+86' + params[:phone])
-    resource = RestClient::Resource.new 'http://www.hesine.com/openapi'   
-    @res = Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']
-
+  def verify 
     respond_to do |wants|
-      wants.js { render :text => Hesine::Response.cn_message(@res['StatusCode']) }
+      if @mobile_user = MobileUser.find_or_create_by_mobile(params[:mobile_user]) 
+        sent_params = params_builder(:command => 'Bind',:user_id => params[:phone],:phone => '+86' + params[:phone])
+        resource = RestClient::Resource.new 'http://www.hesine.com/openapi'   
+        @res = Hesine::Response.cn_message(Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']['StatusCode'])
+        wants.js { render :text => (@res) }  
+      else
+      wants.js { 
+        render  :update do |page|  
+          page.replace_html 'error_msg', error_messages_for(:mobile_user)    
+        end
+         }  
+      end
     end
   end 
   
@@ -42,10 +49,10 @@ class MobilesController < ApplicationController
   end    
   
   def create
-    @mobile_user = MobileUser.find_or_create_by_mobile(params[:mobile_user])
+    @mobile_user = MobileUser.find_by_mobile(params[:mobile_user][:mobile])
     @vendor = Vendor.find(params[:vendor_id])
     respond_to do |wants|
-      if @mobile_user.save
+      if @mobile_user && @mobile_user.status == 'opened'
         wants.html {redirect_to :action => "new" } 
         wants.js {
           session[:mobile_user] = @mobile_user 
@@ -56,8 +63,8 @@ class MobilesController < ApplicationController
       else  
         wants.html {redirect_to :action => "new" }
         wants.js { 
-          render  :update do |page|  
-            page.replace_html 'error_msg', error_messages_for(:mobile_user)    
+          render  :update do |page| 
+            page.replace_html 'error_msg','手机号码未绑定' 
           end
           }
       end 
