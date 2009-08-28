@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     sent_params = params_builder(@booking,{:command => 'Submit',:user_id => @booking.mobile,:phone => '+86' + @booking.mobile})
     resource = RestClient::Resource.new 'http://www.hesine.com/openapi'   
-    @res =  Hesine::Response.cn_message(Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']['StatusCode'])
+    @res = Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']
     respond_to do |format|
       format.html { render :text => @res }
       format.xml  { render :xml => @booking }
