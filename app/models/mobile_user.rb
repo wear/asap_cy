@@ -24,6 +24,10 @@ class MobileUser < ActiveRecord::Base
   
   event :open do
     transitions :to => :opened, :from => :pending
+  end 
+  
+  event :close do
+    transitions :to => :pending, :from => :opened
   end
 
   def validate

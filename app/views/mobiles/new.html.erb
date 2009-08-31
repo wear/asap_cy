@@ -33,9 +33,10 @@
 		 if (!my){
 			alert('对不起，您输入的手机号码错误。');
 		 }else{
-			$.get("/send_verify_code/" + mobile, function(data){
-			  alert("发送结果: " + data);
-			});
+			$.get("/send_verify_code/",{phone:mobile},function(data){
+			    alert(data);
+			  });
+			
 		 }  	
 	}  
 </script>

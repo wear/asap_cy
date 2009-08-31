@@ -2,13 +2,14 @@ class MobilesController < ApplicationController
   include FaceboxRender 
   
   def index
-    sent_params = params_builder(:command => 'Bind',
-	:user_id => '15001912259',:phone => '+8615001912259')
-  #  resource = RestClient::Resource.new 'http://www.hesine.com/openapi'
-  #  @res = Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']
-     @res=  sent_params
+   # sent_params = params_builder(:command => 'UnBind',
+	 # :user_id => '15001912259',:phone => '+8615001912259')
+   # resource = RestClient::Resource.new 'http://www.hesine.com/openapi'
+   # @res = Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml'] 
+   @res = Hesine::Message.send(:phone => '15001912259',:from => '"stephen"<support@mhqx001>',:to => "test@mhqx001",
+   :subject => 'sfafa',:body => 'fsdfs')
     respond_to do |wants|
-	wants.html { render :layout => false}
+	wants.html { render :text => @res.inspect,:layout => false}
     end
   end
 
@@ -29,18 +30,15 @@ class MobilesController < ApplicationController
       if @mobile_user && @mobile_user.status == 'pending' 
         sent_params = params_builder(:command => 'Bind',:user_id => params[:phone],:phone => '+86' + params[:phone])
         resource = RestClient::Resource.new 'http://www.hesine.com/openapi'   
-        @res = Hesine::Response.cn_message(Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']['StatusCode'])
-        wants.js { 
-          render  :update do |page|  
-            page.replace_html 'notice_msg', "绑定短信已发送，请按短信提示操作"
-          end
-          }  
-      else
-      wants.js { 
-        render  :update do |page|  
-          page.replace_html 'error_msg', "发送出错,如果你已经绑定，请点击下一步直接开始预定"
+        @res = Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']['StatusCode']
+        if @res == '405'  
+          @mobile_user.open!
+          wants.js { render :text => '已绑定'}
+        else
+          wants.js { render :text => "绑定短信已发送，请按短信提示操作"} 
         end
-         }  
+      else
+        wants.js { render :text => '可能已绑定，请直接点击下一步'}  
       end
     end
   end 
@@ -97,10 +95,6 @@ protected
      return out_string  
  end   
  
- def out_pra(pra)
-  pra
-  return out_string 
- end
 
   
 end

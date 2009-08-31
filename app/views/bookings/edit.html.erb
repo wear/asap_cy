@@ -1,7 +1,15 @@
-
-<% form_for @booking, :url => vendor_booking_path do |f| %> 
- <%= error_messages_for :booking %> 
-	<%= render :partial => 'form',:locals => { :f => f } %>
-	<%=f.submit "下一步"%>                         
+<% page_nav(link_to(@vendor.area.parent.name,@vendor.area.parent) + ' - ' + link_to(@vendor.area.name,@vendor.area) + ' - ' + link_to(@vendor.name,@vendor) + ' - ' + '预定')  %>    
+<% content_for :head do %>
+	<%= stylesheet_link_tag 'partial/vendor.css' %>
 <% end %>
+<div id="top-title"> 
+预定
+</div>
+<div class='span-12' id="booking-form">   
+<% form_for @booking, :url => vendor_booking_path,:html =>{:class => "wufoo",:id => "wufoo"}  do |f| %> 
+ <%= error_messages_for :booking %> 
+	<%= render :partial => 'form',:locals => { :f => f } %>                  
+<% end %>   
+</div> 
+<%= render :partial => '/shared/vendor_info' %>
 

@@ -1,2 +1,6 @@
+hesine_config = "#{RAILS_ROOT}/config/hesine.yml" 
+
 require 'hesine'
-Hesine.load_configuration("#{RAILS_ROOT}/config/hesine.yml")[RAILS_ENV]
+Hesine.load_configuration(hesine_config) 
+
+

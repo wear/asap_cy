@@ -20,19 +20,11 @@ class LandingController < ApplicationController
   end 
   
   def hesine  
-    begin
-    res = ('<?xml version=' + request.parameters['<?xml version']).gsub!(/\n/,'')
-    @res = Crack::XML.parse(res)['Xml'] 
-    command = @res['System']['Command']
-    status =  @res['User']['Status']
-    @user =   MobileUser.find_by_mobile(@res['User']['Phone'].gsub('+86',''))
-    if  command == 'BindResult' &&  status == '0' && @user
-      @user.open!
+    xml = request.parameters['<?xml version'] 
+    bind_result = bind?(xml)
+    if bind_result
+      @user = MobileUser.find_by_mobile(bind_result) 
     end
-  rescue
-    logger.info('hesine goes wrong!!!')
-  end
-
   end
   
   protected

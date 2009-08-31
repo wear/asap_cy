@@ -1,3 +1,5 @@
+require 'iconv'
+
 class BookingsController < ApplicationController
   before_filter :login_required, :only => [:index]      
   before_filter :find_vendor,:except => [:index]  
@@ -17,11 +19,9 @@ class BookingsController < ApplicationController
   # GET /bookings/1.xml
   def show
     @booking = Booking.find(params[:id])
-  sent_params = params_builder(@booking,{:command => 'Submit',:user_id => @booking.mobile,:phone => '+86' + @booking.mobile})
-  resource = RestClient::Resource.new 'http://www.hesine.com/openapi'   
-  @res = resource.post(sent_params, :content_type => 'application/xml')
+  # @res =  sent_params
     respond_to do |format|
-      format.html { render :text => @res.inspect }
+      format.html { }
       format.xml  { render :xml => @booking }
     end
   end
@@ -50,13 +50,10 @@ class BookingsController < ApplicationController
       if @user
           @booking = @user.bookings.build(params[:booking])
           if @booking.save
-        #    @user.contacts.find_or_create_by_name(:email => @booking.email,
-        #                                          :name => @booking.contact, 
-        #                                          :mobile => @booking.mobile)
-            sent_params = params_builder(@booking,{:command => 'Submit',:user_id => @booking.mobile,:phone => '+86' + @booking.mobile})
-            resource = RestClient::Resource.new 'http://www.hesine.com/openapi'   
-            logger.info Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']                                   
-            wants.html { redirect_to vendor_booking_path(@vendor,@booking) }
+            @user.contacts.find_or_create_by_name(:email => @booking.email,
+                                                  :name => @booking.contact, 
+                                                  :mobile => @booking.mobile)
+           wants.html { redirect_to vendor_booking_path(@vendor,@booking) }    
           else
             wants.html { render :action => "new"}
           end
@@ -68,8 +65,21 @@ class BookingsController < ApplicationController
   
   def edit
     @user =  session[:booking_user]
-    @booking = Booking.find(params[:id])
+    @booking = Booking.find(params[:id])  
+    respond_to do |wants|
+      wants.html {  render }
+    end
   end 
+  
+  def run     
+    @booking = Booking.find(params[:id])        
+    sent_params = params_builder(@booking,{:command => 'Submit',:user_id => @booking.mobile,:phone => '+86' + @booking.mobile})    
+    resource = RestClient::Resource.new 'http://www.hesine.com/openapi'
+    @res = Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']   
+    respond_to do |wants|
+      wants.html {  }
+    end
+  end
   
   def update
     @booking = Booking.find(params[:id])
@@ -129,11 +139,10 @@ class BookingsController < ApplicationController
             data.Phone(prarams[:phone])
             data.Message{
               data.Type('Hesine')
-              data.From("'mqhx' <support@daorails.com>") 
-              data.To(prarams[:phone])
-              data.Subject('你在daorails.com的餐馆预定信息')
-              data.Body("餐馆名称:#{booking.vendor.name},地址:#{booking.vendor.address}.
-              就餐人数:#{booking.guest_count},就餐时间:#{booking.date} #{booking.time_range}.预定联系人:#{booking.contact}")
+              data.From('"stephen"<support@mhqx001>') 
+              data.To("#{prarams[:phone]}@mhqx001")
+              data.Subject('您在mhqx的餐馆预定成功!')
+              data.Body("餐馆名称:#{booking.vendor.name},地址:#{booking.vendor.address}.就餐人数:#{booking.guest_count},就餐时间:#{booking.date} #{format_time_range(booking.time_range)}.预定联系人:#{booking.contact}")
               data.NumOfAttach('0')
             }
           }
@@ -141,5 +150,18 @@ class BookingsController < ApplicationController
         return out_string  
     end 
 
+end       
+
+private
+
+def format_time_range(range)
+  case range
+  when 0
+    '早市'
+  when 1
+    '午市'
+  when 2
+    '晚市'
+  end
 end
 

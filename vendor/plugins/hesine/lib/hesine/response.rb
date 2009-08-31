@@ -1,6 +1,23 @@
 module Hesine
   module Response
-    class << self  
+    class << self 
+      # xml is request.parameters['<?xml version'] in your controller method
+      def bind?(xml)
+        begin
+          res = ('<?xml version=' + xml).gsub!(/\n/,'')
+          @res = Crack::XML.parse(res)['Xml'] 
+          command = @res['System']['Command']
+          status =  @res['User']['Status']
+          if  command == 'BindResult' &&  status == '0' 
+            return @res['User']['Phone'] 
+          else
+            return false
+          end
+        rescue
+          logger.info('hesine goes wrong!!!')
+        end
+      end  
+      
       def cn_message(code)
         case code
         when '200'
