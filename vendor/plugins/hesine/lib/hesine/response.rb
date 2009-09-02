@@ -9,7 +9,7 @@ module Hesine
           command = @res['System']['Command']
           status =  @res['User']['Status']
           if  command == 'BindResult' &&  status == '0' 
-            return @res['User']['Phone'] 
+            return @res['User']['Phone'].gsub('+86','') 
           else
             return false
           end
