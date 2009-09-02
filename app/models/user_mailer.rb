@@ -21,7 +21,7 @@ class UserMailer < ActionMailer::Base
   protected
     def setup_email(user)
       @recipients  = "#{user.email}"
-      @from        = "ADMINEMAIL"
+      @from        = "support <support@daorails.com>"
       @subject     = "[ASAP]"
       @sent_on     = Time.now
       @body[:user] = user 
