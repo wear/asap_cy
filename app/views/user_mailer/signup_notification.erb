@@ -1,8 +1,8 @@
-Your account has been created.
+<p>Your account has been created.</p>
 
-  Username: <%=h @user.login %>
-  Password: <%=h @user.password %>
-
-Visit this url to activate your account:
-
-  <%=h @url %>
+  Username: <%=h @user.login %><br />
+  Password: <%=h @user.password %><br />
+<p>
+Visit this url to activate your account:<br />
+<%=link_to @url,@url %>
+</p>
