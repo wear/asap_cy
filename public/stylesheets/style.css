@@ -1,5 +1,5 @@
 body { 
-	font-size: 12px !important;
+	font-size: 12px !important;  
 	color: #222227;
 	line-height: 60%;
 	text-align: center;
@@ -378,13 +378,18 @@ color: #ffffff;
 	color:#9D9D9C;	
 }
 /*-------------------flash--------------------*/
+#error{
+	clear:both; 
+	min-height:110px; 
+	width:100%;
+}
 .f_notice, .f_error {
   font-size: 1.2em;
   border-width: 0;
   padding: 0;
   margin: 0;
   padding-left: 30px;
-  margin-bottom: 1.0em;
+  margin-bottom: 10px;
   text-align:left;
 }
 
@@ -445,7 +450,8 @@ clear:both;
 	 font-size:12px;
 float:left;
 clear:both;
-margin-top:2px;
+margin-top:2px; 
+margin:2px;
 	 }
 
 .spots_remaining {

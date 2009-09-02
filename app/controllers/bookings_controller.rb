@@ -72,10 +72,9 @@ class BookingsController < ApplicationController
   end 
   
   def run     
-    @booking = Booking.find(params[:id])        
-    sent_params = params_builder(@booking,{:command => 'Submit',:user_id => @booking.mobile,:phone => '+86' + @booking.mobile})    
-    resource = RestClient::Resource.new 'http://www.hesine.com/openapi'
-    @res = Crack::XML.parse(resource.post(sent_params, :content_type => 'application/xml'))['Xml']   
+    @booking = Booking.find(params[:id])
+    @res = Hesine::Message.send(:phone => @booking.mobile,:from => '"客服"<support@mhqx001>',:to => "#{@booking.mobile}@mhqx001",
+    :subject => '您在mhqx的餐馆预定成功',:body => "餐馆名称:#{@booking.vendor.name},地址:#{@booking.vendor.address}.就餐人数:#{@booking.guest_count},就餐时间:#{@booking.date} #{format_time_range(@booking.time_range)}.预定联系人:#{@booking.contact}")          
     respond_to do |wants|
       wants.html {  }
     end
@@ -123,45 +122,20 @@ class BookingsController < ApplicationController
       
       redirect_to bookment_vendor_bookings_path(@vendor)
     end     
+      
     
-    def params_builder(booking,prarams = {})         
-        data = Builder::XmlMarkup.new( :target => out_string = "", :indent => 2 )
-        data.instruct!  
-        data.XML{
-          data.System{
-            data.SystemID('mhqx001')
-            data.MsgID('0')
-            data.Signature('zzzzzz')
-            data.Command(prarams[:command])
-          } 
-          data.User{
-            data.UserId(prarams[:user_id])
-            data.Phone(prarams[:phone])
-            data.Message{
-              data.Type('Hesine')
-              data.From('"stephen"<support@mhqx001>') 
-              data.To("#{prarams[:phone]}@mhqx001")
-              data.Subject('您在mhqx的餐馆预定成功!')
-              data.Body("餐馆名称:#{booking.vendor.name},地址:#{booking.vendor.address}.就餐人数:#{booking.guest_count},就餐时间:#{booking.date} #{format_time_range(booking.time_range)}.预定联系人:#{booking.contact}")
-              data.NumOfAttach('0')
-            }
-          }
-        }
-        return out_string  
-    end 
+    def format_time_range(range)
+      case range
+      when 0
+        '早市'
+      when 1
+        '午市'
+      when 2
+        '晚市'
+      end
+    end
+       
 
-end       
 
-private
-
-def format_time_range(range)
-  case range
-  when 0
-    '早市'
-  when 1
-    '午市'
-  when 2
-    '晚市'
-  end
 end
 
