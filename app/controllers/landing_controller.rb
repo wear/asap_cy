@@ -21,9 +21,10 @@ class LandingController < ApplicationController
   
   def hesine  
     xml = request.parameters['<?xml version'] 
-    bind_result = bind?(xml)
+    bind_result = Hesine::Response.bind?(xml)
     if bind_result
-      @user = MobileUser.find_by_mobile(bind_result) 
+      @user = MobileUser.find_by_mobile(bind_result)
+      @user.open! 
     end
   end
   
