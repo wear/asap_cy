@@ -6,8 +6,10 @@
 	<p>人数:<%=@booking.guest_count%></p>
 	<h2>联系人</h2>
    <p>名称:<%= @booking.contact %></p> 
-<p>手机:<%= @booking.mobile %></p> 
+<p>手机:<%= @booking.mobile %></p>  
+<% if false %>
 <p>email:<%= @booking.email%></p> 
+<% end %>
 </div>
 
 <%= link_to '编辑', edit_vendor_booking_path(@vendor) %> | <%= link_to "确定", run_vendor_booking_path(@vendor) %>
