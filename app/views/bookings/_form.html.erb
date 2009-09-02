@@ -24,11 +24,13 @@
 </script>	
 <% end %>
 
+
+
 <ul>
-	 
 	<li class="section first">
 	<h3>订单信息(必填)</h3>
-	</li>
+	</li>   
+	<%= error_messages_for :booking %>          
 	<li> 
 		<label class="desc">就餐时间<span class="req">*</span></label>
 		<span class="left">

@@ -82,7 +82,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id.:format'
   map.connect ':controller/:action.:format'
   
-  map.connect '/sms/hesine.xml',:controller => 'landing',:action => 'hesine'   
+  map.connect '/sms',:controller => 'landing',:action => 'hesine'   
 
 
 end

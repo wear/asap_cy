@@ -7,10 +7,7 @@
 </div>  
 <div class='span-12' id="booking-form">  
 <% form_for @booking, :url => vendor_bookings_path,:html =>{:class => "wufoo",:id => "wufoo"}  do |f| %>
-                      
- <%= error_messages_for :booking %> 
 	<%= render :partial => 'form',:locals => { :f => f } %>
-                          
 <% end %> 
 </div> 
 <%= render :partial => '/shared/vendor_info' %>
