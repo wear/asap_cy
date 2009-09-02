@@ -18,7 +18,7 @@ class MobilesController < ApplicationController
           @mobile_user.open!
           wants.js { render :text => '已绑定'}
         else
-          wants.js { render :text => "绑定短信已发送，请按短信提示操作"} 
+          wants.js { render :text => "绑定短信已发送，请按短信提示操作" } 
         end
       else
         wants.js { render :text => '可能已绑定，请直接点击下一步'}  
