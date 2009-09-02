@@ -79,8 +79,14 @@ Rails::Initializer.run do |config|
 
 end
  
-ActionMailer::Base.delivery_method = :sendmail
-ActionMailer::Base.sendmail_settings = {
-    :location       => '/usr/sbin/sendmail',
-    :arguments      => '-i -t'
-}
+ExceptionNotifier.exception_recipients = %w(wear63659220@gmail.com)   
+ 
+ActionMailer::Base.smtp_settings = {
+   :tls => true,
+   :address => "smtp.gmail.com",
+   :port => "587",
+   :domain => "muutang.com",
+   :authentication => :plain,
+   :user_name => "support@muutang.com",
+   :password => "tellmewhy" 
+ }
