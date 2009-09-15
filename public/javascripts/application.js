@@ -8,12 +8,14 @@ jQuery(document).ready(function($) {
     // Binding focus and blur events for query input box
     $('#query').
         focus(function() {
-        if (this.value == "如:川菜") {
-            this.value = "";
+        if (this.value == "如:川菜") { 
+			this.style.color = "#000" 
+            this.value = "";  
         }
     }).
         blur(function() {
         if (this.value == "") {
+			this.style.color = "#666";
             this.value = "如:川菜";
         }
     });
