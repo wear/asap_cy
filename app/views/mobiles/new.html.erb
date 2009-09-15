@@ -2,17 +2,14 @@
 <h3>手机预定</h3>          
 要使用手机直接，请按以下步骤操作。如果已绑定可跳过
 <ul  STYLE="list-style-type: decimal">
-	<li>请先安装<%=link_to '手机客户端','http://www.hesine.com/webmail/faq_down.php',:target => '_blank'%></li>
-	<li>在下面输入框输入你的手机号码,然后点击'发绑定短信'链接</li>
-	<li>系统会给你的手机发送提示短信,请按短信提示操作</li>
-	<li>绑定成功后点击下一步</li>
+	<li>请先安装<%=link_to '手机客户端','http://www.hesine.com/webmail/faq_down.php',:target => '_blank'%>,如果已安装请跳过</li>
+	<li>输入手机号码,按系统提示操作</li>
 </ul>  
 <div id='notice_msg' class='f_notice'></div>
 <div id="error_msg" class='f_error'></div>
-<% remote_form_for([@vendor,@mobile_user],:url => vendor_mobiles_path(@vendor)) do |f| -%>
+<% remote_form_for([@vendor,@mobile_user],:url => vendor_mobiles_path(@vendor),:html => { :onsubmit => "send_verify($('#phone_number').val())"}  ) do |f| -%>
 	<p><%= label_tag '手机号码' %><br/>  
-	<%= f.text_field :mobile,:id => 'phone_number' %> <%=link_to_function '发绑定短信', "send_verify($('#phone_number').val())" 
- %></p>
+	<%= f.text_field :mobile,:id => 'phone_number' %> </p>
 	<%= hidden_field_tag :vendor_id, @vendor %>
 	<p><%= submit_tag '下一步' %></p>  
 
@@ -32,11 +29,6 @@
 	  if (reg4.test(mobile))my=true;
 		 if (!my){
 			alert('对不起，您输入的手机号码错误。');
-		 }else{
-			$.get("/send_verify_code/",{phone:mobile},function(data){
-			    alert(data);
-			  });
-			
 		 }  	
 	}  
 </script>
