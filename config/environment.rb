@@ -90,3 +90,23 @@ ActionMailer::Base.smtp_settings = {
    :user_name => "support@muutang.com",
    :password => "tellmewhy" 
  }
+ 
+ if defined?(PhusionPassenger)
+   # monkey patch drb so we can close its connections
+   class DRb::DRbConn
+     def self.close_all
+       @mutex.synchronize do
+         @pool.each {|c| c.close}
+         @pool = []
+       end
+     end
+   end
+
+   PhusionPassenger.on_event(:starting_worker_process) do |forked|
+     if forked
+       DRb::DRbConn.close_all  # ferret
+     else
+       # We’re in conservative spawning mode. We don’t need to do anything.
+     end
+   end
+ end
