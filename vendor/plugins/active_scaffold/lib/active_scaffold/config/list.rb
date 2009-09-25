@@ -8,10 +8,10 @@ module ActiveScaffold::Config
       # inherit from global scope
       # full configuration path is: defaults => global table => local table
       @per_page = self.class.per_page
-
+      
       # originates here
       @sorting = ActiveScaffold::DataStructures::Sorting.new(@core.columns)
-      @sorting.add @core.model.primary_key, 'ASC'
+      @sorting.set_default_sorting(@core.model)
 
       # inherit from global scope
       @empty_field_text = self.class.empty_field_text
@@ -62,9 +62,36 @@ module ActiveScaffold::Config
     # the label for this List action. used for the header.
     attr_writer :label
     def label
-      @label ? as_(@label) : @core.label
+      @label ? as_(@label, :count => 2) : @core.label(:count => 2)
     end
 
+    attr_writer :no_entries_message
+    def no_entries_message
+      @no_entries_message ? @no_entries_message : :no_entries
+    end
+
+    attr_writer :filtered_message
+    def filtered_message
+      @filtered_message ? @filtered_message : :filtered
+    end
+    
+    attr_writer :always_show_search
+    def always_show_search
+      @always_show_search && !search_partial.blank?
+    end
+    
+    def search_partial
+      return "search" if @core.actions.include?(:search)
+      return "live_search" if @core.actions.include?(:live_search)
+      return "field_search" if @core.actions.include?(:field_search)
+    end
+    
+    # always show create
+    attr_writer :always_show_create
+    def always_show_create
+      @always_show_create && @core.actions.include?(:create)
+    end
+    
     class UserSettings < UserSettings
       # This label has alread been localized.
       def label
@@ -102,7 +129,6 @@ module ActiveScaffold::Config
       def count_includes
         @conf.count_includes
       end
-      
     end
   end
 end

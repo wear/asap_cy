@@ -9,6 +9,7 @@ module ActiveScaffold
       include ActiveScaffold::Helpers::ListColumnHelpers
       include ActiveScaffold::Helpers::ShowColumnHelpers
       include ActiveScaffold::Helpers::FormColumnHelpers
+      include ActiveScaffold::Helpers::CountryHelpers
       include ActiveScaffold::Helpers::SearchColumnHelpers
 
       ##
@@ -39,7 +40,7 @@ module ActiveScaffold
       # Turns [[label, value]] into <option> tags
       # Takes optional parameter of :include_blank
       def option_tags_for(select_options, options = {})
-        select_options.insert(0,[as_('- select -'),nil]) if options[:include_blank]
+        select_options.insert(0,[as_(:_select_),nil]) if options[:include_blank]
         select_options.collect do |option|
           label, value = option[0], option[1]
           value.nil? ? "<option value="">#{label}</option>" : "<option value=\"#{value}\">#{label}</option>"
@@ -89,20 +90,24 @@ module ActiveScaffold
       
       # Provides stylesheets to include with +stylesheet_link_tag+
       def active_scaffold_stylesheets(frontend = :default)
-        ActiveScaffold::Config::Core.asset_path("stylesheet.css", frontend)
+        [ActiveScaffold::Config::Core.asset_path("stylesheet.css", frontend)]
       end
 
       # Provides stylesheets for IE to include with +stylesheet_link_tag+ 
       def active_scaffold_ie_stylesheets(frontend = :default)
-        ActiveScaffold::Config::Core.asset_path("stylesheet-ie.css", frontend)
+        [ActiveScaffold::Config::Core.asset_path("stylesheet-ie.css", frontend)]
       end
 
       # easy way to include ActiveScaffold assets
-      def active_scaffold_includes(frontend = :default)
-        js = javascript_include_tag(*active_scaffold_javascripts(frontend))
+      def active_scaffold_includes(*args)
+        frontend = args.first.is_a?(Symbol) ? args.shift : :default
+        options = args.first.is_a?(Hash) ? args.shift : {}
+        js = javascript_include_tag(*active_scaffold_javascripts(frontend).push(options))
 
-        css = stylesheet_link_tag(*active_scaffold_stylesheets(frontend))
-        ie_css = stylesheet_link_tag(*active_scaffold_ie_stylesheets(frontend))
+        css = stylesheet_link_tag(*active_scaffold_stylesheets(frontend).push(options))
+        options[:cache] += '_ie' if options[:cache].is_a? String
+        options[:concat] += '_ie' if options[:concat].is_a? String
+        ie_css = stylesheet_link_tag(*active_scaffold_ie_stylesheets(frontend).push(options))
 
         js + "\n" + css + "\n<!--[if IE]>" + ie_css + "<![endif]-->\n"
       end
@@ -119,8 +124,8 @@ module ActiveScaffold
         options[:of] ||= '$(this.parentNode).next()'
         options[:default_visible] = true if options[:default_visible].nil?
 
-        link_text = options[:default_visible] ? 'hide' : 'show'
-        link_to_function as_(link_text), "e = #{options[:of]}; e.toggle(); this.innerHTML = (e.style.display == 'none') ? '#{as_('show')}' : '#{as_('hide')}'", :class => 'visibility-toggle'
+        link_text = options[:default_visible] ? as_(:hide) : as_(:show)
+        link_to_function link_text, "e = #{options[:of]}; e.toggle(); this.innerHTML = (e.style.display == 'none') ? '#{as_(:show)}' : '#{as_(:hide)}'", :class => 'visibility-toggle'
       end
 
       def render_action_link(link, url_options)
@@ -152,7 +157,7 @@ module ActiveScaffold
         html_options[:position] = link.position if link.position and link.inline?
         html_options[:class] += ' action' if link.inline?
         html_options[:popup] = true if link.popup?
-        html_options[:id] = action_link_id(url_options[:action],url_options[:id] || url_options[:parent_id])
+        html_options[:id] = action_link_id("#{url_options[:parent_controller] + '_' if url_options[:parent_controller]}" + url_options[:action],url_options[:id] || url_options[:parent_id])
 
         if link.dhtml_confirm?
           html_options[:class] += ' action' if !link.inline?
@@ -180,8 +185,7 @@ module ActiveScaffold
       def column_empty?(column_value)
         empty = column_value.nil?
         empty ||= column_value.empty? if column_value.respond_to? :empty?
-        empty ||= (column_value == '&nbsp;')
-        empty ||= (column_value == active_scaffold_config.list.empty_field_text)
+        empty ||= ['&nbsp;', active_scaffold_config.list.empty_field_text].include? column_value if String === column_value
         return empty
       end
 

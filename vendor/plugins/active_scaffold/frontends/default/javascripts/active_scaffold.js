@@ -192,6 +192,12 @@ ActiveScaffold.ActionLink.Abstract.prototype = {
   initialize: function(a, target, loading_indicator) {
     this.tag = $(a);
     this.url = this.tag.href;
+    this.method = 'get';
+    if(this.url.match('_method=delete')){
+      this.method = 'delete';
+    } else if(this.url.match('_method=post')){
+      this.method = 'post';
+    }
     this.target = target;
     this.loading_indicator = loading_indicator;
     this.hide_target = false;
@@ -230,7 +236,7 @@ ActiveScaffold.ActionLink.Abstract.prototype = {
 	    new Ajax.Request(this.url, {
 	      asynchronous: true,
 	      evalScripts: true,
-
+              method: this.method,
 	      onSuccess: function(request) {
 	        if (this.position) {
 	          this.insert(request.responseText);
@@ -308,6 +314,10 @@ ActiveScaffold.Actions.Record.prototype = Object.extend(new ActiveScaffold.Actio
   instantiate_link: function(link) {
     var l = new ActiveScaffold.ActionLink.Record(link, this.target, this.loading_indicator);
     l.refresh_url = this.options.refresh_url;
+    if (link.hasClassName('delete')) {
+      l.url = l.url.replace(/\/delete(\?.*)?$/, '$1');
+      l.url = l.url.replace(/\/delete\/(.*)/, '/destroy/$1');
+    }
     if (l.position) l.url = l.url.append_params({adapter: '_list_inline_adapter'});
     l.set = this;
     return l;
@@ -358,7 +368,7 @@ ActiveScaffold.ActionLink.Record.prototype = Object.extend(new ActiveScaffold.Ac
     new Ajax.Request(this.refresh_url, {
       asynchronous: true,
       evalScripts: true,
-
+      method: this.method,
       onSuccess: function(request) {
         Element.replace(this.target, request.responseText);
         var new_target = $(this.target.id);

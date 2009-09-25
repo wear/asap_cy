@@ -4,7 +4,7 @@ module ActiveScaffold::DataStructures
     def initialize(action, options = {})
       # set defaults
       self.action = action.to_s
-      self.label = action.to_s
+      self.label = action
       self.confirm = false
       self.type = :table
       self.inline = true
@@ -37,7 +37,7 @@ module ActiveScaffold::DataStructures
     # what string to use to represent this action
     attr_writer :label
     def label
-      as_(@label)
+      @label.is_a?(Symbol) ? as_(@label) : @label
     end
 
     # if the action requires confirmation
