@@ -10,8 +10,10 @@ module ApplicationHelper
   end
   
   def make_score(score)
-      new_score = (score*10).to_i/10.0
-      new_score > 5.0 ? 5.0 : new_score
+     # new_score = (score*10).to_i/10.0
+     # new_score > 5.0 ? 5.0 : new_score
+     new_score = ((score/7)*10).round.to_f/10
+     new_score > 5.0 ? 5.0 : new_score
   end
   
   def admin_scope(&block)
