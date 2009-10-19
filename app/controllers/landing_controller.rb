@@ -26,12 +26,12 @@ class LandingController < ApplicationController
   protected
   
   def build_top35
-    avg_20 = Vendor.full_text_search('20-50',{ :per_page => 5,:page => params[:page]},{},@sort)
+   # avg_20 = Vendor.full_text_search('20-50',{ :per_page => 5,:page => params[:page]},{},@sort)
     avg_50 = Vendor.full_text_search('51-80',{ :per_page => 5,:page => params[:page]},{},@sort) 
     avg_100 =  Vendor.full_text_search('81-121',{ :per_page => 10,:page => params[:page]},{},@sort)
     avg_150 =  Vendor.full_text_search('121-200',{ :per_page => 5,:page => params[:page]},{},@sort)
     avg_200 =  Vendor.full_text_search('201以上',{ :per_page => 5,:page => params[:page]},{},@sort)
-    @vendors = avg_20 + avg_50 + avg_100 + avg_150 + avg_200
+    @vendors = avg_50 + avg_100 + avg_150 + avg_200
   end  
   
 end
