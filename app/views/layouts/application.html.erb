@@ -4,9 +4,7 @@
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<title>满汉全席 餐饮打折平台 ( 上海 ) <%= yield :title %></title>
-
-        <%= stylesheet_link_tag 'style','blueprint/screen','star_rating','facebox',:cache => true %>
-
+    <%= stylesheet_link_tag 'style','blueprint/screen','star_rating','facebox',:cache => true %>
 	<%= javascript_include_tag 'jquery','application','facebox','jquery-ui-personalized-1.5.3.min',:cache => true %>
 	<!--[if IE]>
 		<link type="text/css" rel="stylesheet" media="screen" href="/stylesheets/blueprint/ie.css">
@@ -25,7 +23,8 @@
 		    	<%= yield %> 
 				<%= render :partial => 'layouts/footer' %>
 		    </div>
-		</div> 
+		</div>    
+		<% if RAILS_ENV == 'production' -%>
 		<script type="text/javascript">
 		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -34,6 +33,7 @@
 		try {
 		var pageTracker = _gat._getTracker("UA-7011626-1");
 		pageTracker._trackPageview();
-		} catch(err) {}</script>
+		} catch(err) {}</script>         
+		<% end -%>
 	</body>
 </html>

@@ -5,7 +5,7 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-# RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION
+ RAILS_GEM_VERSION = '2.3.3' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -60,7 +60,9 @@ Rails::Initializer.run do |config|
     :secret      => '6d6bbf29819bab7be65d3d2c6971012e9bb9d77f02b3bc49901fa5e835ea3da7e1e6ac1d3e4858842c469817c312a0baba4f8546532cbabdda7ec2bf86274ed9'
   }                  
   
-  config.cache_store = :file_store,  RAILS_ROOT + "/public/cache/"           
+  config.load_paths += %W( #{RAILS_ROOT}/app/sweepers )
+  config.action_controller.page_cache_directory = RAILS_ROOT + "/public/cache"
+          
   # Use the database for sessions instead of the cookie-based default,
   # which shouldn't be used to store highly confidential information
   # (create the session table with "rake db:sessions:create")

@@ -187,8 +187,9 @@ class Vendor < ActiveRecord::Base
   def self.full_text_search(q,options,finder_options,sort)
 	   return "*" if q.nil? or q == ""
 	   sort ||= Ferret::Search::SortField.new(:rating_score ,:type => :float, :reverse => true)
-	   default_options = {:per_page => 10, :sort => sort,:lazy => [:name,:address,:category_name,:type_name,:area_name,
-    	                                                 :dish_list,:description,:tag_list]}
+	   default_options = {:per_page => 10, :sort => sort,
+	                      :lazy => [:name,:address,:category_name,:type_name,:area_name,
+    	                  :dish_list,:description,:tag_list]}
      
 	   options.reverse_merge!(default_options)
      Vendor.find_with_ferret(q,options,finder_options)

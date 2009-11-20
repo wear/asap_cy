@@ -1,14 +1,14 @@
 class LandingController < ApplicationController 
   caches_page :index
-  skip_before_filter :verify_authenticity_token 
 
  def index 
      build_sort 
-     build_top35
+     #build_top35  
+     @vendors = Vendor.find(:all,:limit => 10)
      @areas = Area.find(:all,:conditions => ['parent_id =?',1])
      @types = Type.find(:all,:conditions => ['parent_id =?',1],:include => :vendors )
      @prices =  Type.find(:all,:conditions => ['parent_id =?',77],:include => :vendors ) 
-     @nice = Vendor.full_text_search('121-200 OR 201',{ :per_page => 30,:page => params[:page]},{},@sort)
+     @nice = Vendor.full_text_search('121-200 OR 201',{ :per_page => 10,:page => params[:page],:limit => 10},{},@sort)
      @recent_reviews = Review.find(:all,:order => "created_at DESC", :limit => 5) 
      @votes = Vote.find(:all)
      respond_to do |wants|
@@ -19,9 +19,6 @@ class LandingController < ApplicationController
   def help
   end 
   
-  def hesine  
-    render :text => 'none'
-  end
   
   protected
   
