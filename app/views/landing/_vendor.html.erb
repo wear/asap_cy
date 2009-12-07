@@ -6,7 +6,7 @@
     <td><%= make_score(vendor.service) %></td> 	
 	<td><span class='rmb'>￥</span><%= vendor.avg.to_i %></td>
 	<td><span class='B'><%= format_discount(vendor) %></span></td>
-    <td><span class='B'><%= vendor.sum %></span></td>
+    <td><span class='B'><%= make_score(vendor.sum) %></span></td>
 	<td class="collapsible"></td>
 </tr> 
 <tr class="expand-child"> 
