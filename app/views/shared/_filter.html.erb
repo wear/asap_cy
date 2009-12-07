@@ -1,6 +1,52 @@
-<ul>
-<% filters.each do |child| -%>
-	<li><%=link_to child.name,vendors_path(:query => child.name,:cache_id => make_cache_id(child.name)) %>(<%=short_num(child.vendors_count)%>)</li> 
-<% end -%>
+  	<div id="categories">
+		<span>地区</span>  
+		<ul>
+	<li><%=link_to '卢湾区',vendors_path(:search => {:address_like => '卢湾'})%>(589)</li> 
+	<li><%=link_to '徐汇区',vendors_path(:search => {:address_like => '徐汇'})%>(970)</li> 
+	<li><%=link_to '静安区',vendors_path(:search => {:address_like => '静安'})%>(610)</li> 
+	<li><%=link_to '长宁区',vendors_path(:search => {:address_like => '长宁'})%>(1K+)</li> 
+	<li><%=link_to '浦东新区',vendors_path(:search => {:address_like => '浦东'})%>(1K+)</li> 
+	<li><%=link_to '黄浦区',vendors_path(:search => {:address_like => '黄浦'})%>(657)</li> 
+	<li><%=link_to '普陀区',vendors_path(:search => {:address_like => '普陀'})%>(568)</li> 
+	<li><%=link_to '闸北区',vendors_path(:search => {:address_like => '闸北'})%>(330)</li> 
+	<li><%=link_to '虹口区',vendors_path(:search => {:address_like => '虹口'})%>(466)</li> 
+	<li><%=link_to '杨浦区',vendors_path(:search => {:address_like => '杨浦'})%>(528)</li> 
+	<li><%=link_to '近郊',vendors_path(:search => {:address_like => '近郊'})%>(562)</li> 
+	<li><%=link_to '闵行区',vendors_path(:search => {:address_like => '闵行'})%>(766)</li> 
+	<li><%=link_to '宝山区',vendors_path(:search => {:address_like => '宝山'})%>(283)</li> 
+</ul> 
+		<div class='line'>&nbsp;</div>  
+		<span>菜系</span>
+		<ul>
+	<li><%=link_to '本帮江浙',vendors_path(:search => {:category_like => '本帮'})%>(1K+)</li> 
+	<li><%=link_to '粤菜',vendors_path(:search => {:category_like => '粤菜'})%>(750)</li> 
+	<li><%=link_to '火锅',vendors_path(:search => {:category_like => '火锅'})%>(669)</li> 
+	<li><%=link_to '小吃简餐',vendors_path(:search => {:category_like => '小吃'})%>(883)</li> 
+	<li><%=link_to '日本',vendors_path(:search => {:category_like => '日本'})%>(672)</li> 
+	<li><%=link_to '东南亚',vendors_path(:search => {:category_like => '东南亚'})%>(115)</li> 
+	<li><%=link_to '西餐',vendors_path(:search => {:category_like => '西餐'})%>(793)</li> 
+	<li><%=link_to '面包甜点',vendors_path(:search => {:category_like => '面包甜点'})%>(522)</li> 
+	<li><%=link_to '其他',vendors_path(:search => {:category_like => '其他'})%>(1K+)</li> 
+	<li><%=link_to '川菜',vendors_path(:search => {:category_like => '川菜'})%>(734)</li> 
+	<li><%=link_to '自助餐',vendors_path(:search => {:category_like => '自助餐'})%>(144)</li> 
+	<li><%=link_to '湘菜',vendors_path(:search => {:category_like => '湘菜'})%>(287)</li> 
+	<li><%=link_to '东北',vendors_path(:search => {:category_like => '东北'})%>(173)</li> 
+	<li><%=link_to '新疆清真',vendors_path(:search => {:category_like => '新疆清真'})%></a>(59)</li> 
+	<li><%=link_to '贵州',vendors_path(:search => {:category_like => '贵州'})%>(58)</li> 
+	<li><%=link_to '素菜',vendors_path(:search => {:category_like => '素菜'})%>(16)</li> 
+	<li><%=link_to '韩国',vendors_path(:search => {:category_like => '韩国'})%>(278)</li> 
+	<li><%=link_to '台湾',vendors_path(:search => {:category_like => '台湾'})%>(121)</li> 
 </ul> 
 
+
+		<div class='line'>&nbsp;</div> 
+		<span>均价</span>
+		<ul>
+	<li><%=link_to '50-80',vendors_path(:search => {:avg_greater_than => 50,:avg_less_than => 80})%>(1K+)</li> 
+	<li><%=link_to '80-140',vendors_path(:search => {:avg_greater_than => 80,:avg_less_than => 140})%>(1K+)</li> 
+	<li><%=link_to '140-200',vendors_path(:search => {:avg_greater_than => 140,:avg_less_than => 200})%>(1K+)</li> 
+	<li><%=link_to '201以上',vendors_path(:search => {:avg_greater_than => 200})%>(799)</li> 
+</ul> 
+
+ 
+	</div>

@@ -64,7 +64,7 @@
 	   <div id="table-tip">
 		<ul>
 		   <li><%=link_to image_tag("mhqx_bg/back_bot.gif"),'#',:onclick => "javascript:history.back(-1);", :title=>"返回上一页"%></li>
-		   <li><span class='title'>查找结果:</span>有 <%= vendors.total_hits %> 家餐馆符合您的条件 <span class='light'><%= fomatted_query(@query) %> </span></li>
+		   <li><span class='title'>查找结果:</span>有 <%= vendors.size %> 家餐馆符合您的条件 </span></li>
 			<li class='collapsible_tab'><%= render :partial => 'shared/collapsible' %></li>
 		</ul>	
 		</div>

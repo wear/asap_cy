@@ -10,9 +10,7 @@ module ApplicationHelper
   end
   
   def make_score(score)
-     # new_score = (score*10).to_i/10.0
-     # new_score > 5.0 ? 5.0 : new_score
-     new_score = ((score/7)*10).round.to_f/10
+     new_score = ((score.to_f/6)*10).round.to_f/10
      new_score > 5.0 ? 5.0 : new_score
   end
   
@@ -28,8 +26,9 @@ module ApplicationHelper
     yield block if current_user == user          
   end
   
-  def star(vendor) 
-    case vendor.total.score
+  def star(vendor)
+    total = vendor.sum/18 
+    case total
     when 2..11
       "onestar"
     when 11..14
@@ -38,7 +37,7 @@ module ApplicationHelper
       "threestar"
     when 18..22
       "fourstar"
-    when 22..1000
+    when 22..100
       "fivestar"
     end 
   end

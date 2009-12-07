@@ -4,16 +4,13 @@ class VendorsController < ApplicationController
 #  before_filter :login_required, :only => [:edit,:update,:new,:create]
 
 #  include FaceboxRender
-  caches_action :index, :if => Proc.new { |c| !c.params[:cache_id].nil? },:cache_path => Proc.new { |controller|
-    controller.send(:cached_list_url, controller.params[:cache_id]) }
+#  caches_action :index, :if => Proc.new { |c| !c.params[:cache_id].nil? },:cache_path => Proc.new { |controller|
+#  controller.send(:cached_list_url, controller.params[:cache_id]) }
 
   
   def index
-    build_query
-    @vendors = Vendor.full_text_search(@query,{:per_page => 30,:page => params[:page]},{},@sort)
-    @caixis = Type.find(:all,:conditions => ['parent_id =?',1])
-    @areas = Area.find(:all,:conditions => ['parent_id =?',1])
-    @avg_prices = Type.find(:all,:conditions => ['parent_id =?',77])
+    @search = Vendor.search(params[:search])
+    @vendors = @search.find(:all,:limit => 30,:order => 'sum DESC')  
     respond_to do |wants|
      wants.html {}
  #    wants.iphone { }

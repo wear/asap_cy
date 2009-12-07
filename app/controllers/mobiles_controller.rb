@@ -10,7 +10,7 @@ class MobilesController < ApplicationController
   
   def verify    
     @exist_user = MobileUser.find_by_mobile(params[:phone])
-    @mobile_user =  @exist_user.nil? ? MobileUser.create(:mobile => params[:phone]) : @exist_user
+   # @mobile_user =  @exist_user.nil? ? MobileUser.create(:mobile => params[:phone]) : @exist_user
     respond_to do |wants|
       if @mobile_user
         @res = Hesine::Bundle.bind(:phone => params[:phone])['StatusCode']
@@ -40,12 +40,12 @@ class MobilesController < ApplicationController
       if @mobile_user   
         @res = Hesine::Bundle.bind(:phone => params[:mobile_user][:mobile])['StatusCode']
         if @res == '405'
-          session[:mobile_user] = @mobile_user   
-          wants.js { 
-            render  :update do |page|  
-              page.redirect_to new_vendor_booking_path(@vendor)   
-            end
-            }
+         session[:mobile_user] = @mobile_user   
+         wants.js { 
+           render  :update do |page|  
+             page.redirect_to new_vendor_booking_path(@vendor)   
+           end
+           }
         else
           wants.js { 
             render  :update do |page| 

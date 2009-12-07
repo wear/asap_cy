@@ -4,9 +4,9 @@
 	}
 	
 </style>
- <% form_tag vendors_path,:method => 'get'  do -%> 
- <%= text_field_tag :query,(fomatted_query(params[:query]) ||"如:川菜"),:size => 18,:class => "search-input" %>        
-	   <%=image_submit_tag "/images/mhqx_bg/so_bot_big.png",:align => 'absmiddle'%>
+ <% form_for @search,:url => vendors_path,:method => 'get'  do |f| -%> 
+ <%= f.text_field :name_like,:value => (fomatted_query(params[:query]) ||"如:川菜"),:size => 18,:class => "search-input" %>        
+	<%=image_submit_tag "/images/mhqx_bg/so_bot_big.png",:align => 'absmiddle'%>
  	<% end -%>    
 
       

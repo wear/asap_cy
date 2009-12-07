@@ -34,18 +34,11 @@ class Vendor < ActiveRecord::Base
   belongs_to :merchant
   has_many :bookings
   has_many :reviews
-  has_many :ratings, :through => :reviews
   has_many :score_sumaries
   belongs_to :discount
   has_many :attachments, :as => 'attachable', :dependent => :destroy
   has_one :vendor_datastamp
           
-  validates_presence_of :area
-  validates_presence_of :category
-  validates_length_of :name, :within => 2..40
-  validates_numericality_of :tel1, :allow_nil => true 
-  validates_presence_of :address 
-  validates_associated :attachments
 
 #  after_save :set_score
 #  after_update :set_discount_state
@@ -54,128 +47,22 @@ class Vendor < ActiveRecord::Base
   
   named_scope :lastest_create, :order => 'created_at ASC',:limit => 10
   
-  acts_as_ferret :fields => {:name => { :store => :yes },
-                             :address => { :store => :yes },               
-                             :rating_score => {:index=> :untokenized, :term_vector => :no ,:boost=>30 },
-                             :category_name=>{ :store => :yes },
-                             :type_name => { :store => :yes },
-                             :area_name => { :store => :yes }, 
-                             :dish_list => { :store => :yes },
-                             :description => { :store => :yes },
-                             :tag_list => { :store => :yes },
-                             :env => { :index=> :untokenized, :term_vector => :no ,:boost=>5 },
-                             :sum => { :index=> :untokenized, :term_vector => :no ,:boost=>5 },
-                             :avg => { :index=> :untokenized, :term_vector => :no ,:boost=>5 },
-                             :taste => { :index=> :untokenized, :term_vector => :no ,:boost=>5 },
-                             :service => { :index=> :untokenized, :term_vector => :no ,:boost=>5 },
-                             :discounting => {:index=> :untokenized, :term_vector => :no ,:boost=> 200 }},
-                             :ferret => { :analyzer => Analyzer } 
+#  acts_as_ferret :fields => {:name => { :store => :yes },
+#                             :address => { :store => :yes },               
+#                             :rating_score => {:index=> :untokenized, :term_vector => :no ,:boost=>30 },
+#                             :category => { :store => :yes },
+#                             :tags => { :store => :yes },
+#                             :env => { :index=> :untokenized, :term_vector => :no ,:boost=>5 },
+#                             :sum => { :index=> :untokenized, :term_vector => :no ,:boost=>5 },
+#                             :avg => { :index=> :untokenized, :term_vector => :no ,:boost=>5 },
+#                             :taste => { :index=> :untokenized, :term_vector => :no ,:boost=>5 },
+#                             :service => { :index=> :untokenized, :term_vector => :no ,:boost=>5 },
+#                             :discounting => {:index=> :untokenized, :term_vector => :no ,:boost=> 200 }},
+#                             :ferret => { :analyzer => Analyzer } 
   
-  acts_as_taggable_on :tags, :dishes   
-    
-
-
-  def rating_score
-    total.score
-  end
+   
+  default_scope :order => 'sum'
   
-  def discounting
-    discount.count unless discount.nil?
-  end
-  
-  def sum
-    vote = Vote.find_by_short_name("sum")
-    score_sumaries.find_by_vote_id(vote.id).score
-  end
-  
-  def env
-    vote = Vote.find_by_short_name("env")
-    score_sumaries.find_by_vote_id(vote.id).score
-  end
-  
-  def avg
-    vote = Vote.find_by_short_name("avg")
-    score_sumaries.find_by_vote_id(vote.id).score
-  end
-  
-  def taste
-    vote = Vote.find_by_short_name("taste")
-    score_sumaries.find_by_vote_id(vote.id).score
-  end
-  
-  def service
-    vote = Vote.find_by_short_name("service")
-    score_sumaries.find_by_vote_id(vote.id).score
-  end
-  
-  def category_name
-    category.name
-  end 
-  
-  def area_name
-     all_area = []
-     all_area << area.name
-     all_area << area.parent.name
-     all_area.uniq.collect{|item| item}.join(" ") 
-  end
-  
-  def caixi
-    types.find(:first,:conditions => ["parent_id = ?",1 ])
-  end
-  
-  def avg_price
-    types.find(:first,:conditions => ["parent_id = ?",77 ]) 
-  end
-  
-  def type_name
-    fetch_all_item(types)
-  end
-
-  def sumary_rate
-    category.votes.find(:first,:conditions =>[" spec =? ",VOTESPEC['SUM']])
-  end
-  
-  def total_score
-     common_rates.map(&:score).inject{|sum,item| sum += item }/common_rates.size
-  end
-  
-  # common vote spec is 1
-                      
-  def common_rates
-     score_sumaries.find(:all,:include => :vote,:conditions =>[" votes.spec =? ",VOTESPEC['COMMON']])
-  end
-  
-  def average
-     average = score_sumaries.find(:first,:include => :vote,:conditions =>[" votes.spec =? ",VOTESPEC['AVG']]).score
-  end
-  
-  def total
-     total = score_sumaries.find(:first,:conditions => ["vote_id =?", sumary_rate.id])
-     if total.nil?
-       score_sumaries.create(:score => total_score,:vote => sumary_rate)
-     else
-       total
-     end   
-  end       
-  
-  # find or create the sumary score of the vendor and update it      
-  def update_total_score
-      d_count = self.discount.nil? ? 0 : self.discount.count/2
-      score = imdb_score(self) + d_count
-      total.update_attribute(:score,score) 
-  end
-  
-  def update_score_sumary
-    disable_ferret(:index_when_finished) do 
-      Vote.by_spec(VOTESPEC['COMMON']).each do |v|
-        score_sum = ratings.by_vote(v.id).sum("score")
-        sumary = score_sumaries.find_by_vote_id(v.id)
-        sumary.update_attribute(:score,score_sum) 
-      end
-      update_total_score
-    end
-  end 
-
   def merchant_name
     merchant.nil? ?  '' : merchant.name
   end    
@@ -188,8 +75,7 @@ class Vendor < ActiveRecord::Base
 	   return "*" if q.nil? or q == ""
 	   sort ||= Ferret::Search::SortField.new(:rating_score ,:type => :float, :reverse => true)
 	   default_options = {:per_page => 10, :sort => sort,
-	                      :lazy => [:name,:address,:category_name,:type_name,:area_name,
-    	                  :dish_list,:description,:tag_list]}
+	                      :lazy => [:name,:address,:tagst]}
      
 	   options.reverse_merge!(default_options)
      Vendor.find_with_ferret(q,options,finder_options)
@@ -223,14 +109,6 @@ class Vendor < ActiveRecord::Base
 #      end
     end
   end
-   
-   def set_score
-     if self.score_sumaries.blank?
-       self.category.votes.each do |v|
-         self.score_sumaries.create(:vote => v, :score => 0)
-       end
-     end
-   end 
    
    
    def set_discount_state

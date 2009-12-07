@@ -12,29 +12,12 @@
 #
 
 class Rating < ActiveRecord::Base
-  belongs_to :review
-  belongs_to :vote
+  belongs_to :vendor
   
-  validates_presence_of :score
-  validates_numericality_of :score
-   
-  #here to update total score, need modify
-#  after_save :sumarize
-  named_scope :by_spec, lambda { |*args| {:include => :vote,:conditions => [ "votes.spec = ?", args.first]}}
-  named_scope :by_vote, lambda { |*args| {:conditions => [ "vote_id = ?", args.first]}}
-  def sumarize
-     summary_item.update_attribute(:score,sumarize_score)
-  end
-  
-  def sumarize_score
-    if summary_item.new_record?
-      summary_item.score
-    else
-      summary_item.score + self.score
-    end
-  end
+  named_scope :env,:conditions => ["category = ?",'环境']
+  named_scope :taste,:conditions => ["category = ?",'口味']
+  named_scope :ser,:conditions => ["category = ?",'服务']  
+  named_scope :avg,:conditions => ["category = ?",'人均']
+  named_scope :normal,:conditions => ["category != ?",'人均'] 
  
-  def summary_item
-    ScoreSumary.find_or_create_by_vendor_id_and_vote_id(review.vendor_id,vote_id) 
-  end
 end

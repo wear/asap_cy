@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090814063601) do
+ActiveRecord::Schema.define(:version => 20091207091233) do
 
   create_table "areas", :force => true do |t|
     t.integer  "parent_id"
@@ -186,9 +186,9 @@ ActiveRecord::Schema.define(:version => 20090814063601) do
   end
 
   create_table "ratings", :force => true do |t|
-    t.integer  "review_id"
-    t.integer  "score",      :default => 0
-    t.integer  "vote_id"
+    t.integer  "count",      :default => 0
+    t.integer  "vendor_id"
+    t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -308,13 +308,15 @@ ActiveRecord::Schema.define(:version => 20090814063601) do
     t.string   "address"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "description"
-    t.string   "nearby"
-    t.string   "alias"
-    t.integer  "tel1"
-    t.integer  "tel2"
-    t.integer  "area_id"
-    t.integer  "category_id"
+    t.string   "tags"
+    t.string   "nickname" 
+    t.string   "category" 
+    t.integer  "phone"   
+    t.integer  "sum" 
+    t.integer  "env"
+    t.integer  "taste"
+    t.integer  "avg"
+    t.integer  "service"
     t.integer  "reviews_count", :default => 0
     t.integer  "merchant_id"
     t.integer  "discount_id"
@@ -324,10 +326,6 @@ ActiveRecord::Schema.define(:version => 20090814063601) do
     t.integer  "version",       :default => 1
   end
 
-  add_index "vendors", ["area_id"], :name => "index_vendors_on_area_id"
-  add_index "vendors", ["creator_id"], :name => "index_vendors_on_creator_id"
-  add_index "vendors", ["discount_id"], :name => "index_vendors_on_discount_id"
-  add_index "vendors", ["merchant_id"], :name => "index_vendors_on_merchant_id"
 
   create_table "votes", :force => true do |t|
     t.string   "name"

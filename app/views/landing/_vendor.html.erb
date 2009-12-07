@@ -1,12 +1,12 @@
 <tr class='first_row_class'>
     <td >&nbsp;</td>
-    <td class='vendor-name'><span class='vendor_title'><%= h(vendor.name)%></span></td> 
+    <td class='vendor-name'><span class='vendor_title'><%= h(vendor.name)%> <%= vendor.id%></span></td> 
     <td><%= make_score(vendor.taste) %></td> 
 	<td><%= make_score(vendor.env) %></td>
     <td><%= make_score(vendor.service) %></td> 	
 	<td><span class='rmb'>￥</span><%= vendor.avg.to_i %></td>
 	<td><span class='B'><%= format_discount(vendor) %></span></td>
-    <td><span class='B'><%= make_score(vendor.sum) %></span></td>
+    <td><span class='B'><%= vendor.sum %></span></td>
 	<td class="collapsible"></td>
 </tr> 
 <tr class="expand-child"> 
@@ -14,8 +14,8 @@
   <td colspan="5">
   	<div class="bold"><%= vendor.address %><%=link_to '地图', map_vendor_path(vendor),:target => '_blank' %>&nbsp;<%=fengdian_link(vendor)%></div>
   	<div>
-        电话: <%= vendor.tel1%><br/>
-          标签: <%= vendor.tag_list %></td>
+        电话: <%= vendor.phone%><br/>
+          标签: <%= vendor.tags %></td>
   	</div>
   </td>
   <td colspan='3'>星级:<%= render :partial => 'shared/star',:locals => { :vendor => vendor }%>     </td>
