@@ -20,9 +20,6 @@
 		<div class="container">
 			<%= render :partial => 'layouts/header' %>
 			<div id='content' class='span-22'> 
-				<% unless @filter %>
-				<%=render :partial => 'shared/filter'%>
-				<% end %>
 		    	<%= yield %> 
 				<%= render :partial => 'layouts/footer' %>
 		    </div>
