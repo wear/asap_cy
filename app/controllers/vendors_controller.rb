@@ -22,18 +22,19 @@ class VendorsController < ApplicationController
     
   end
   
-  def show
-     @vendor = Vendor.find(params[:id],:include => [:reviews])
-      if logged_in? 
-        if current_user.reviewed?(@vendor)
-          @review = current_user.vendor_review(@vendor)
-        else
-          @review = @vendor.reviews.new
-          @ratings = @vendor.category.votes.order_by_spec.collect{|vote| @review.ratings.build(:vote => vote )}
-        end
-      end
+  def show   
+     #@search_params = params[:search] || {}        
+     #@vendor = Vendor.find(params[:id],:include => [:reviews])
+     # if logged_in? 
+     #   if current_user.reviewed?(@vendor)
+     #     @review = current_user.vendor_review(@vendor)
+     #   else
+     #     @review = @vendor.reviews.new
+     #     @ratings = @vendor.category.votes.order_by_spec.collect{|vote| @review.ratings.build(:vote => vote )}
+     #   end
+     # end
     respond_to do |wants|
-      wants.html {  }
+      wants.html { redirect_to root_path }
       wants.js { }
       
   #    wants.iphone {}
@@ -99,10 +100,12 @@ class VendorsController < ApplicationController
     @discounts = current_user.discounts
   end
   
-  def map
+  def map  
+    @search_params = params[:search] || {}           
+    @search = Vendor.search(params[:search])  
     @vendor = Vendor.find(params[:id])
     respond_to do |wants|
-      wants.html { render :layout => 'application' }
+      wants.html {  }
       wants.js {}
     end
   end 

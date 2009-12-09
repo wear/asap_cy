@@ -291,9 +291,7 @@ color: #ffffff;
 
 /*---------------categoies-----------*/
 #categories{  
-   width:200px;
    margin-top:20px;
-   float:left;
    border:6px solid #FFC993;
    padding:8px;
    overflow: visible;

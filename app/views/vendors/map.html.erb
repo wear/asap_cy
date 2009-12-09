@@ -48,14 +48,16 @@
       }
     }
     </script>
-<% end -%>    
+<% end -%>     
+<% @filter = false %>
 
-<div id="right-content" class='span-16 last'>
-    <div id="map_canvas" style="width: 650px; height: 300px;margin-bottom:10px;"> </div> 
+<div  class='span-17'>
+    <div id="map_canvas" style="width:600px; height:400px;margin:20px 40px"> </div> 
 </div>
-<div id="categories">
+<div id="categories" class='span-4 last'>
 	<%= render :partial => '/shared/vendor_info' %>   
 </div>
+
   
 
 
