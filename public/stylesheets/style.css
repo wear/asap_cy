@@ -11,11 +11,12 @@ body {
 }    
 
 
-a { position:relative; z-index:1000; }
+a { position:relative; }
 
 ul{
 	margin:0px;
-}
+} 
+
 
 #header {    
 	height:130px;                                   
@@ -80,7 +81,9 @@ a.top:hover {
 
 .B {
 	font-weight: bold; 
-}
+}  
+
+#categories li span.ag{font-size:12px;background-color:#9D340B;color:#fff;padding:5px; }   
 
 /*--- login area-----*/ 
 
@@ -296,7 +299,7 @@ color: #ffffff;
    overflow: visible;
 }
 
-#categories span{
+span.filter{
 	font-size:14px;
 	clear:both;
 	float:left;
@@ -312,10 +315,15 @@ color: #ffffff;
 #categories li {
 	list-style: none;
 	float: left;
-	width:80px;
+	width:80px; 
+	height:21px;
 	padding-top:2px;
 	padding-bottom: 2px;
-} 
+}
+
+#categories li span{
+	color: #222;
+}
 
 .line{
 	clear:both;
@@ -615,3 +623,4 @@ padding:0px;
 	width:400px;
 	text-align:left;
 }
+

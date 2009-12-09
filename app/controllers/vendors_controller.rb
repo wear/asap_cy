@@ -8,7 +8,8 @@ class VendorsController < ApplicationController
 #  controller.send(:cached_list_url, controller.params[:cache_id]) }
 
   
-  def index
+  def index       
+    @search_params = params[:search] || {}
     @search = Vendor.search(params[:search])
     @vendors = @search.find(:all,:limit => 30,:order => 'sum DESC')  
     respond_to do |wants|

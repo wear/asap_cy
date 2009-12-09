@@ -1,51 +1,51 @@
-  	<div id="categories">
-		<span>地区</span>  
+  	<div id="categories">          
+		<span class='filter'>地区</span>  
 		<ul>
-	<li><%=link_to '卢湾区',vendors_path(:search => {:address_like => '卢湾'})%>(589)</li> 
-	<li><%=link_to '徐汇区',vendors_path(:search => {:address_like => '徐汇'})%>(970)</li> 
-	<li><%=link_to '静安区',vendors_path(:search => {:address_like => '静安'})%>(610)</li> 
-	<li><%=link_to '长宁区',vendors_path(:search => {:address_like => '长宁'})%>(1K+)</li> 
-	<li><%=link_to '浦东新区',vendors_path(:search => {:address_like => '浦东'})%>(1K+)</li> 
-	<li><%=link_to '黄浦区',vendors_path(:search => {:address_like => '黄浦'})%>(657)</li> 
-	<li><%=link_to '普陀区',vendors_path(:search => {:address_like => '普陀'})%>(568)</li> 
-	<li><%=link_to '闸北区',vendors_path(:search => {:address_like => '闸北'})%>(330)</li> 
-	<li><%=link_to '虹口区',vendors_path(:search => {:address_like => '虹口'})%>(466)</li> 
-	<li><%=link_to '杨浦区',vendors_path(:search => {:address_like => '杨浦'})%>(528)</li> 
-	<li><%=link_to '近郊',vendors_path(:search => {:address_like => '近郊'})%>(562)</li> 
-	<li><%=link_to '闵行区',vendors_path(:search => {:address_like => '闵行'})%>(766)</li> 
-	<li><%=link_to '宝山区',vendors_path(:search => {:address_like => '宝山'})%>(283)</li> 
+	<li><%=filter_link(:text => '卢湾区',:new_params => {:address_like => '卢湾'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '徐汇区',:new_params => {:address_like => '徐汇'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '静安区',:new_params => {:address_like => '静安'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '长宁区',:new_params => {:address_like => '长宁'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '浦东新区',:new_params => {:address_like => '浦东'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '黄浦区',:new_params => {:address_like => '黄浦'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '普陀区',:new_params => {:address_like => '普陀'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '闸北区',:new_params => {:address_like => '闸北'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '虹口区',:new_params => {:address_like => '虹口'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '杨浦区',:new_params => {:address_like => '杨浦'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '近郊',:new_params => {:address_like => '近郊'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '闵行区',:new_params => {:address_like => '闵行'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '宝山区',:new_params => {:address_like => '宝山'},:current_params => @search_params )%></li> 
 </ul> 
 		<div class='line'>&nbsp;</div>  
-		<span>菜系</span>
+		<span class='filter'>菜系</span>
 		<ul>
-	<li><%=link_to '本帮江浙',vendors_path(:search => {:category_like => '本帮'})%>(1K+)</li> 
-	<li><%=link_to '粤菜',vendors_path(:search => {:category_like => '粤菜'})%>(750)</li> 
-	<li><%=link_to '火锅',vendors_path(:search => {:category_like => '火锅'})%>(669)</li> 
-	<li><%=link_to '小吃简餐',vendors_path(:search => {:category_like => '小吃'})%>(883)</li> 
-	<li><%=link_to '日本',vendors_path(:search => {:category_like => '日本'})%>(672)</li> 
-	<li><%=link_to '东南亚',vendors_path(:search => {:category_like => '东南亚'})%>(115)</li> 
-	<li><%=link_to '西餐',vendors_path(:search => {:category_like => '西餐'})%>(793)</li> 
-	<li><%=link_to '面包甜点',vendors_path(:search => {:category_like => '面包甜点'})%>(522)</li> 
-	<li><%=link_to '其他',vendors_path(:search => {:category_like => '其他'})%>(1K+)</li> 
-	<li><%=link_to '川菜',vendors_path(:search => {:category_like => '川菜'})%>(734)</li> 
-	<li><%=link_to '自助餐',vendors_path(:search => {:category_like => '自助餐'})%>(144)</li> 
-	<li><%=link_to '湘菜',vendors_path(:search => {:category_like => '湘菜'})%>(287)</li> 
-	<li><%=link_to '东北',vendors_path(:search => {:category_like => '东北'})%>(173)</li> 
-	<li><%=link_to '新疆清真',vendors_path(:search => {:category_like => '新疆清真'})%></a>(59)</li> 
-	<li><%=link_to '贵州',vendors_path(:search => {:category_like => '贵州'})%>(58)</li> 
-	<li><%=link_to '素菜',vendors_path(:search => {:category_like => '素菜'})%>(16)</li> 
-	<li><%=link_to '韩国',vendors_path(:search => {:category_like => '韩国'})%>(278)</li> 
-	<li><%=link_to '台湾',vendors_path(:search => {:category_like => '台湾'})%>(121)</li> 
+	<li><%=filter_link(:text => '本帮',:new_params => {:category_like => '本帮'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '粤菜',:new_params => {:category_like => '粤菜'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '火锅',:new_params => {:category_like => '火锅'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '小吃',:new_params => {:category_like => '小吃'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '日本',:new_params => {:category_like => '日本'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '东南亚',:new_params => {:category_like => '东南亚'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '西餐',:new_params => {:category_like => '西餐'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '面包甜点',:new_params => {:category_like => '面包甜点'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '其他',:new_params => {:category_like => '其他'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '川菜',:new_params => {:category_like => '川菜'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '自助餐',:new_params => {:category_like => '自助餐'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '湘菜',:new_params => {:category_like => '湘菜'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '东北',:new_params => {:category_like => '东北'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '新疆清真',:new_params => {:category_like => '新疆清真'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '贵州',:new_params => {:category_like => '贵州'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '素菜',:new_params => {:category_like => '素菜'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '韩国',:new_params => {:category_like => '韩国'},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '台湾',:new_params => {:category_like => '台湾'},:current_params => @search_params )%></li> 
 </ul> 
 
 
 		<div class='line'>&nbsp;</div> 
-		<span>均价</span>
+		<span class='filter'>均价</span>
 		<ul>
-	<li><%=link_to '50-80',vendors_path(:search => {:avg_greater_than => 50,:avg_less_than => 80})%>(1K+)</li> 
-	<li><%=link_to '80-140',vendors_path(:search => {:avg_greater_than => 80,:avg_less_than => 140})%>(1K+)</li> 
-	<li><%=link_to '140-200',vendors_path(:search => {:avg_greater_than => 140,:avg_less_than => 200})%>(1K+)</li> 
-	<li><%=link_to '201以上',vendors_path(:search => {:avg_greater_than => 200})%>(799)</li> 
+	<li><%=filter_link(:text => '50-80',:new_params => {:avg_greater_than => 50,:avg_less_than => 80},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '80-140',:new_params => {:avg_greater_than => 81,:avg_less_than => 140},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '140-200',:new_params => {:avg_greater_than => 141,:avg_less_than => 200},:current_params => @search_params )%></li> 
+	<li><%=filter_link(:text => '201以上',:new_params => {:avg_greater_than => 201},:current_params => @search_params )%></li> 
 </ul> 
 
  

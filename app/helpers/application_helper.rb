@@ -255,5 +255,16 @@ module ApplicationHelper
      t = Type.find(type_id)
    return  vendors_path(:query => t.name,:cache_id => make_cache_id(t.name))
   end
+      
+  def filter_link(options = {}) 
+     current = options[:current_params]                                  
+     p =  options[:current_params].merge(options[:new_params]) 
+     search_count = Vendor.search(p).count  
+    if current.has_value?(options[:new_params].values.first.to_s)
+        content_tag(:span,options[:text] + "(#{search_count})",:class => 'ag')   
+     else
+       link_to(options[:text] + "(#{search_count})",vendors_path(:search =>p))
+     end 
+  end     
   
 end
