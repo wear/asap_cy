@@ -27,19 +27,19 @@ module ApplicationHelper
   end
   
   def star(vendor)
-    total = vendor.sum/18 
+    total = vendor.sum 
     case total
-    when 2..11
+    when 10..14
       "onestar"
-    when 11..14
+    when 14..20
       "twostar"
-    when 14..18
+    when 20..24
       "threestar"
-    when 18..22
+    when 24..28
       "fourstar"
-    when 22..100
+    when 28..100
       "fivestar"
-    end 
+    end                 
   end
   
   
