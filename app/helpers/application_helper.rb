@@ -58,9 +58,9 @@ module ApplicationHelper
   
   def booking_vendor_path(vendor)
     if logged_in?
-      link_to_remote '预定', :url => new_vendor_booking_path(vendor)
+      link_to_remote '手机直接预定', :url => new_vendor_booking_path(vendor)
     else
-      link_to_remote '预定', :url => new_vendor_mobile_path(vendor)
+      link_to_remote '手机直接预定', :url => new_vendor_mobile_path(vendor)
     end
   end
   

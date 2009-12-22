@@ -2,7 +2,8 @@
 class SessionsController < ApplicationController
    include FaceboxRender
   # render new.rhtml
-  def new 
+  def new  
+    @search= Vendor.avg_greater_than(100)
   end  
   
   

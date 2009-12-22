@@ -3,10 +3,9 @@
 		color:#666;
 	}
 	
-</style>
+</style>        
+
  <% form_for @search,:url => vendors_path,:method => 'get'  do |f| -%> 
  <%= f.text_field :name_like,:value => (fomatted_query(params[:query]) ||"如:川菜"),:size => 18,:class => "search-input" %>        
 	<%=image_submit_tag "/images/mhqx_bg/so_bot_big.png",:align => 'absmiddle'%>
  	<% end -%>    
-
-      

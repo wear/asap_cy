@@ -6,11 +6,12 @@
     <h3>Run rake db:bootstrap to setup startup data.</h3>
   <% end %>
   </p>
-<% end %>
+<% end %>  
+
 
 <h1>登陆</h1>  
 <% form_tag session_path do %> 
-<div id = 'login-form'>
+<div style='margin:0 atuo;'>
 	<%= render :partial => 'sessions/form' %>    
 </div>
 <p><%= submit_tag '确定' %></p>

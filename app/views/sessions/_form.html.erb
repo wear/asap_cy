@@ -1,10 +1,10 @@
 <%= flash_div %>
 <p>
 <%= label_tag '用户名' %><br />
-<%= text_field_tag 'login',@login,:id => 'nick-name' %> 
+<%= text_field_tag 'login',@login,:id => 'nick-name' %> <br />
 <span class="tip">你可用email、昵称、手机号登录</span>   
 </p>     
 <p>
 <%= label_tag '密码' %><br />    
-<%= password_field_tag 'password', nil %>      <span class="tip"><%=link_to '忘记密码',forgot_password_path%></span> 
+<%= password_field_tag 'password', nil %><br />      <span class="tip"><%=link_to '忘记密码',forgot_password_path%></span> 
 </p>
