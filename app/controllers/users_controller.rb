@@ -92,7 +92,9 @@ class UsersController < ApplicationController
     end
   end
   
-  def forgot_password
+  def forgot_password    
+    @search_params = params[:search] || {}
+    @search = Vendor.search(params[:search])
     respond_to do |wants|
       wants.html { render :layout => 'application' }
     end

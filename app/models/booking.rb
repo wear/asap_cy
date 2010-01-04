@@ -37,7 +37,6 @@ class Booking < ActiveRecord::Base
   validates_numericality_of :guest_count
   
   validates_presence_of     :contact 
-  validates_length_of       :contact, :within => 3..20
   
   validates_format_of       :mobile, :with => /^13[0-9]|^15[0-9][0-9]{8}$/ 
 
@@ -63,7 +62,5 @@ class Booking < ActiveRecord::Base
       errors.add(:mobile, "should be 11 digits")
     end
   end
-  
-  
-  
+
 end

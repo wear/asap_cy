@@ -39,7 +39,8 @@ class MobilesController < ApplicationController
     respond_to do |wants|
       if @mobile_user   
         @res = Hesine::Bundle.bind(:phone => params[:mobile_user][:mobile])['StatusCode']
-        if @res == '405'
+        if @res == '405'  
+#         User.create 
          session[:mobile_user] = @mobile_user   
          wants.js { 
            render  :update do |page|  
