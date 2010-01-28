@@ -14,7 +14,8 @@ class SessionsController < ApplicationController
      end
   end
   
-  def create
+  def create               
+    @search= Vendor.avg_greater_than(100) 
     logout_keeping_session!
     user = User.authenticate(params[:login], params[:password])
     if user

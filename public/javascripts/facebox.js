@@ -68,7 +68,7 @@
     else if (data.image) fillFaceboxFromImage(data.image)
     else if (data.div) fillFaceboxFromHref(data.div)
     else if ($.isFunction(data)) data.call($)
-    else $.facebox.reveal(data, klass)
+    else $.facebox.reveal(data, klass)             
   }
 
   /*
@@ -314,6 +314,7 @@
       hideOverlay()
       $('#facebox .loading').remove()
     })
-  })
+  })   
+
 
 })(jQuery);

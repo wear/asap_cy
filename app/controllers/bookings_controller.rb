@@ -26,7 +26,8 @@ class BookingsController < ApplicationController
     end
   end
   
-  def new 
+  def new      
+    @search = Vendor.search(params[:search])                    
     @user = current_user || session[:mobile_user]
     store_location
     respond_to do |wants|

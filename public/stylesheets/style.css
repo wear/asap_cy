@@ -393,10 +393,12 @@ span.filter{
   font-size: 1.2em;
   border-width: 0;
   padding: 0;
+  width:300px;
   margin: 0;
   padding-left: 30px;
   margin-bottom: 10px;
   text-align:left;
+  display:none;
 }
 
 .f_notice {

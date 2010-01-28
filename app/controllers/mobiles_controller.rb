@@ -37,7 +37,7 @@ class MobilesController < ApplicationController
     @mobile_user =  @exist_user.nil? ? MobileUser.create(:mobile => params[:mobile_user][:mobile]) : @exist_user 
     @vendor = Vendor.find(params[:vendor_id])
     respond_to do |wants|
-      if @mobile_user   
+      if @exist_user && @mobile_user   
         @res = Hesine::Bundle.bind(:phone => params[:mobile_user][:mobile])['StatusCode']
         if @res == '405'  
 #         User.create 
@@ -51,6 +51,7 @@ class MobilesController < ApplicationController
           wants.js { 
             render  :update do |page| 
               page.replace_html 'error_msg', "你需要绑定手机才能预定,绑定短信已发送到你的手机，请按短信提示操作" 
+              page.show  'error_msg'
             end
             } 
         end
